@@ -10,8 +10,8 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 <!-- badges: end -->
 
-> R package :package: อำนวยความสะดวกในการสร้าง PDF document จาก R
-> Markdown ที่ใช้ **ภาษาไทย**
+> R package :package: ช่วยสร้าง PDF document จาก R Markdown ที่ใช้
+> **ภาษาไทย**
 
 ## Installation
 
