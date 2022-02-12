@@ -29,6 +29,14 @@
 #' @export
 #'
 #' @examples
+#' if (FALSE) {
+#'  # Running this will write `thai-preamble.tex` to your working directory
+#'  use_thai_preamble()
+#'  # Write `thai-preamble.tex` under preTeX/ directory
+#'  use_thai_preamble(name = "preTeX/thai-preamble.tex")
+#'  # Specify Thai font to use
+#'  use_thai_preamble(thai_font = "Laksaman")
+#' }
 use_thai_preamble <- function(name = "thai-preamble.tex",
                               thai_font = "TH Sarabun New",
                               ignore = FALSE,

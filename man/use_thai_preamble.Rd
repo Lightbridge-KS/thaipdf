@@ -43,3 +43,13 @@ Here is the steps:
 \item Write some Thai language in R Markdown then knit to PDF. It's DONE!
 }
 }
+\examples{
+if (FALSE) {
+ # Running this will write `thai-preamble.tex` to your working directory
+ use_thai_preamble()
+ # Write `thai-preamble.tex` under preTeX/ directory
+ use_thai_preamble(name = "preTeX/thai-preamble.tex")
+ # Specify Thai font to use
+ use_thai_preamble(thai_font = "Laksaman")
+}
+}
