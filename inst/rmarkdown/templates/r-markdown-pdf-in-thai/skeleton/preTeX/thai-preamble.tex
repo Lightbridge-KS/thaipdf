@@ -1,0 +1,45 @@
+%% ---- ตั้งค่าให้ตัดคำภาษาไทย ---- %%
+\XeTeXlinebreaklocale "th"
+\XeTeXlinebreakskip = 0pt plus 0pt % เพิ่มความกว้างเว้นวรรคให้ความยาวแต่ละบรรทัดเท่ากัน
+
+
+%% ---- font settings ---- %%
+\usepackage{fontspec} % For Thai font
+\defaultfontfeatures{Mapping=tex-text} % map LaTeX formating, e.g., ``'', to match the current font
+% To change the main font, uncomment one of the below command.
+% \setmainfont{TeX Gyre Termes} % Free Times
+% \setsansfont{TeX Gyre Heros} % Free Helvetica
+% \setmonofont{TeX Gyre Cursor} % Free Courier
+\newfontfamily{\thaifont}[Scale=MatchUppercase,Mapping=textext]{Laksaman} % ตั้งฟอนต์หลักภาษาไทย ที่น่าใช้ เช่น: "Laksaman", "TH Sarabun New"
+\newenvironment{thailang}{\thaifont}{} % create environment for Thai language
+\usepackage[Latin,Thai]{ucharclasses} % ตั้งค่าให้ใช้ "thailang" environment เฉพาะ string ที่เป็น Unicode ภาษาไทย
+
+\setTransitionTo{Thai}{\begin{thailang}}
+\setTransitionFrom{Thai}{\end{thailang}}
+
+%% ---- spacing between lines ---- %%
+\usepackage{setspace}
+% \singlespacing % default setting
+% recommend using one-half spacing for Thai language
+\onehalfspacing % Set globally here or using as an environment
+
+%% ---- using alphabatic language ---- %%
+\usepackage{polyglossia}
+\setdefaultlanguage{english} % it is preferrable to set English as the main language, since the numeric system is compatible with most LaTeX features such as 'enumerate' and so on
+\setotherlanguages{thai}
+
+\AtBeginDocument\captionsthai % allow captions to be in Thai
+
+%% ---- hyperref settings ---- %%
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{cite}
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+    }
+
+
