@@ -103,9 +103,9 @@ ui_inform_yaml <- function(in_header = "path-to-preamble.tex") {
   cli::cli_rule(left = "Like This")
 
   usethis::ui_code_block("
-    latex_engine: xelatex
-      includes:
-        in_header: {in_header}
+  latex_engine: xelatex
+  includes:
+    in_header: {in_header}
 ", copy = F)
 
   cli::cli_rule()
