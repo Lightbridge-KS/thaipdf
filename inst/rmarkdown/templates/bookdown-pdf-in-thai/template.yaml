@@ -1,4 +1,4 @@
-name: Bookdown PDF in Thai
+name: Thai Bookdown PDF
 description: >
    Bookdown PDF template with LaTeX preamble that supports Thai language.
 create_dir: TRUE
