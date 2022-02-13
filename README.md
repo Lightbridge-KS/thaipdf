@@ -11,8 +11,8 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 <!-- badges: end -->
 
-> R package :package: ช่วยสร้าง PDF document จาก R Markdown ที่ใช้
-> **ภาษาไทย**
+> R package :package: นี้จะช่วยให้สร้าง PDF document จาก R Markdown
+> ที่ใช้ **ภาษาไทย** ได้ง่ายขึ้น
 
 | 1                                                      | 2                                                      |
 |:-------------------------------------------------------|:-------------------------------------------------------|
@@ -26,14 +26,15 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 -   [วิธีการใช้งาน (Usage)](#Usage)
 
--   [References (แหล่งอ้างอิง)](#References)
+-   [แหล่งอ้างอิง (References)](#References)
 
 # Introduction
 
 ### Goal
 
-จุดมุ่งหมายของ R package นี้ **เพื่อให้ท่านสามารถสร้าง PDF
-เป็นภาษาไทยจาก R Markdown ได้โดยง่าย**
+จุดมุ่งหมายของ R package นี้ เพื่อให้ท่านสามารถ**สร้าง PDF
+เป็นภาษาไทยจาก R Markdown ได้โดยง่าย** จาก **R Markdown template** และ
+**LaTeX preamble** ที่มีการตั้งค่าสำหรับภาษาไทยมาให้
 
 ### Problem
 
