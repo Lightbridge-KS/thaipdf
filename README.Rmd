@@ -142,6 +142,8 @@ tinytex::tlmgr_install(c(
 
 -   ใส่ path ให้ `thai-preamble.tex` ถูก includes ไปที่ `in_header:`
 
+-   ใส่คำสั่ง `\sloppy` เพื่อตัดคำภาษาไทย ไปที่ R Markdown ส่วนต้น (หลังจาก YAML header)
+
 ### Example
 
 ```{r use_thai_preamble}
@@ -161,6 +163,8 @@ output:
 ```{r unlink, include=FALSE}
 unlink("thai-preamble.tex")
 ```
+
+# References (TODO)
 
 ------------------------------------------------------------------------
 
