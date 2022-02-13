@@ -26,6 +26,8 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 -   [วิธีการใช้งาน (Usage)](#Usage)
 
+-   [References (แหล่งอ้างอิง)](#References)
+
 # Introduction
 
 ### Goal
@@ -209,17 +211,32 @@ thaipdf::use_thai_preamble()
 #> <http://pioneer.netserv.chula.ac.th/~wdittaya/LaTeX/LaTeXThai.pdf>
 ```
 
-**จากนั้นปรับ YAML header ใน R Markdown** (`pdf_document`)
+**จากนั้นใน R Markdown** (`pdf_document`) ปรับ **YAML header**
+และใส่คำสั่ง `\sloppy`
 
-``` yaml
+``` markdown
+---
+title: "ทดสอบภาษาไทย" 
 output:
   pdf_document:
     latex_engine: xelatex  # จำเป็นต้องใช้ xelatex สำหรับภาษาไทย
     includes:
       in_header: "preTeX/thai-preamble.tex" # path ไปยัง preamble ที่มีปรับให้ใช้ภาษาไทยได้
+---
+
+\sloppy
+
+# สวัสดีชาวโลก
 ```
 
-# References (TODO)
+# References
+
+-   [คําแนะนําการตั้งค่า LaTeX สําหรับใช้ภาษาไทย (ฑิตยา
+    หวานวารี)](http://pioneer.netserv.chula.ac.th/~wdittaya/LaTeX/LaTeXThai.pdf)
+-   [How to add LaTeX code to the
+    preamble](https://bookdown.org/yihui/rmarkdown-cookbook/latex-preamble.html)
+-   [polygloTeX template by
+    mathmd](https://github.com/mathmd/polygloTeX/blob/master/polyglot_template.tex)
 
 ------------------------------------------------------------------------
 
