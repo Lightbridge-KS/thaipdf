@@ -20,6 +20,8 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Bookdown
 
+หมายเหตุ: ก่อนจะ **Knit** เอกสารฉบับนี้จะต้องมี [bookdown package](https://pkgs.rstudio.com/bookdown/) install
+
 [bookdown package](https://bookdown.org) เป็น R package ช่วยในการเขียนหนังสือ และ รายงาน/บทความ ด้วย R Markdown 
 
 เมื่อกดปุ่ม **Knit** เอกสารจะถูกสร้างขึ้น โดยจะมีการรวมกันของทั้งเนื้อหาและผลลัพท์ของ R code chunk ที่แทรกอยู่ในเอกสาร โดยคุณสามารถแทรก R code chunk ได้แบบนี้:
