@@ -1,4 +1,4 @@
 name: R Markdown PDF in Thai
 description: >
-   R Markdown template with LaTeX preamble that supports Thai language.
+   R Markdown PDF template with LaTeX preamble that supports Thai language.
 create_dir: TRUE
