@@ -184,9 +184,9 @@ thaipdf::use_thai_preamble()
 #> 
 #> ── Like This ───────────────────────────────────────────────────────────────────
 #> 
-#>       latex_engine: xelatex
-#>         includes:
-#>           in_header: thai-preamble.tex
+#>     latex_engine: xelatex
+#>     includes:
+#>       in_header: thai-preamble.tex
 #> ────────────────────────────────────────────────────────────────────────────────
 #> 
 #> 
