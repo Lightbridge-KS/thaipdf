@@ -7,6 +7,7 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/Lightbridge-KS/thaipdf/workflows/R-CMD-check/badge.svg)](https://github.com/Lightbridge-KS/thaipdf/actions)
 
 <!-- badges: end -->
 
@@ -163,6 +164,9 @@ header](https://bookdown.org/yihui/rmarkdown-cookbook/rmarkdown-anatomy.html)**
 
 -   ใส่ path ให้ `thai-preamble.tex` ถูก includes ไปที่ `in_header:`
 
+-   ใส่คำสั่ง `\sloppy` เพื่อตัดคำภาษาไทย ไปที่ R Markdown ส่วนต้น
+    (หลังจาก YAML header)
+
 ### Example
 
 ``` r
@@ -214,6 +218,8 @@ output:
     includes:
       in_header: "preTeX/thai-preamble.tex" # path ไปยัง preamble ที่มีปรับให้ใช้ภาษาไทยได้
 ```
+
+# References (TODO)
 
 ------------------------------------------------------------------------
 
