@@ -19,14 +19,11 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 ### Contents
 
--   [เกริ่นนำ](#Introduction)
+-   [เกริ่นนำ (Introduction)](#Introduction)
 
--   [วิธีการติดตั้ง](#Installation)
+-   [วิธีการติดตั้ง (Installation)](#Installation)
 
--   [วิธีการใช้งาน](#Usage)
-
-    -   [สร้าง R Markdown ใหม่](#rmd-template)
-    -   [อ้างอิง LaTeX Preamble](#latex-preamble)
+-   [วิธีการใช้งาน (Usage)](#Usage)
 
 # Introduction
 
@@ -56,7 +53,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 # Installation
 
-(หมายเหตุ: การ install เหล่านี้ทำเพียงครั้งเดียวเท่านั้น)
+การ install เหล่านี้ทำเพียงครั้งเดียวเท่านั้น
 
 -   **Install thaipdf:** ติดตั้ง development version ของ thaipdf จาก
     [GitHub](https://github.com/Lightbridge-KS/thaipdf) ด้วย:
@@ -208,7 +205,7 @@ thaipdf::use_thai_preamble()
 #> <http://pioneer.netserv.chula.ac.th/~wdittaya/LaTeX/LaTeXThai.pdf>
 ```
 
-**ตัวอย่างการปรับ YAML header ใน R Markdown** (`pdf_document`)
+**จากนั้นปรับ YAML header ใน R Markdown** (`pdf_document`)
 
 ``` yaml
 output:
