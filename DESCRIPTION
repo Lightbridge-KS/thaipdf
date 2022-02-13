@@ -18,3 +18,5 @@ Imports:
     rmarkdown
 Suggests: 
     bookdown
+URL: https://github.com/Lightbridge-KS/thaipdf
+BugReports: https://github.com/Lightbridge-KS/thaipdf/issues
