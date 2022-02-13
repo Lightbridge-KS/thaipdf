@@ -17,6 +17,17 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 |:-------------------------------------------------------|:-------------------------------------------------------|
 | ![Thai book sample 1](man/figures/book-th-sample1.png) | ![Thai book sample 2](man/figures/book-th-sample2.png) |
 
+### Contents
+
+-   [เกริ่นนำ](#Introduction)
+
+-   [วิธีการติดตั้ง](#Installation)
+
+-   [วิธีการใช้งาน](#Usage)
+
+    -   [สร้าง R Markdown ใหม่](#rmd-template)
+    -   [อ้างอิง LaTeX Preamble](#latex-preamble)
+
 # Introduction
 
 ### Goal
@@ -136,25 +147,24 @@ shift + K) ได้เลย จะได้เอกสารเป็น PDF 
 เป็น xelatex และใช้ LaTeX preamble ที่มี package และคำสั่งต่างๆ สำหรับ
 type setting ภาษาไทย
 
-package นี้สามารถทำขั้นตอนนี้ให้ง่ายขึ้นด้วยฟังก์ชั่น
-`thaipdf::use_thai_preamble()` ซึ่งจะทำการ
+ฟังก์ชั่น **`thaipdf::use_thai_preamble()`** จะทำการ
 
 -   **สร้างไฟล์ LaTeX preamble** ชื่อว่า `thai-preamble.tex` (default)
     โดยจะมีการเรียกใช้ LaTeX package และคำสั่งต่างๆ
     ในการตั้งค่าภาษาไทยในไฟล์นี้ การตั้งค่า font ภาษาไทยหลักจะเป็น “TH
     Sarabun New” แต่สามารถเปลี่ยนได้ที่ argument `thai_font`
 
--   **ปรับ [YAML
-    header](https://bookdown.org/yihui/rmarkdown-cookbook/rmarkdown-anatomy.html)**
-    ของ R Markdown ในส่วนของ
-    [`pdf_document:`](https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html)
-    หรือ
-    [`bookdown::pdf_document2:`](https://pkgs.rstudio.com/bookdown/reference/html_document2.html)
-    ดังนี้
+จากนั้นให้ **ปรับ [YAML
+header](https://bookdown.org/yihui/rmarkdown-cookbook/rmarkdown-anatomy.html)**
+ของ R Markdown ในส่วนของ
+[`pdf_document:`](https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html)
+หรือ
+[`bookdown::pdf_document2:`](https://pkgs.rstudio.com/bookdown/reference/html_document2.html)
+ดังนี้
 
-    -   ตั้ง `latex_engine: xelatex`
+-   ตั้ง `latex_engine: xelatex`
 
-    -   ใส่ path ให้ `thai-preamble.tex` ถูก includes ไปที่ `in_header:`
+-   ใส่ path ให้ `thai-preamble.tex` ถูก includes ไปที่ `in_header:`
 
 ### Example
 
