@@ -238,6 +238,15 @@ output:
 -   [polygloTeX template by
     mathmd](https://github.com/mathmd/polygloTeX/blob/master/polyglot_template.tex)
 
+# Todo
+
+-   [ ] Stand-alone R Markdown for Thai (no preamble file created) NOT
+    sure good idea ???
+
+-   [ ] Write unit test
+
+-   [ ] PKG down site
+
 ------------------------------------------------------------------------
 
 Last Updated: 2022-02-13
