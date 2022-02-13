@@ -15,5 +15,6 @@ Imports:
     fs,
     cli,
     usethis,
-    rmarkdown,
+    rmarkdown
+Suggests: 
     bookdown
