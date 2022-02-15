@@ -112,11 +112,10 @@ ui_inform_yaml <- function(in_header = "path-to-preamble.tex") {
 
   cli::cli_rule(left = "Like This")
 
-  usethis::ui_code_block("
-  latex_engine: xelatex
-  includes:
-    in_header: {in_header}
-", copy = F)
+  cat("    latex_engine: xelatex
+    includes:
+      in_header:", in_header)
+  cat("\n")
 
   cli::cli_rule()
 
@@ -131,3 +130,5 @@ ui_inform_yaml <- function(in_header = "path-to-preamble.tex") {
   cli::cli_li("LaTeX setting in Thai {.url http://pioneer.netserv.chula.ac.th/~wdittaya/LaTeX/LaTeXThai.pdf}")
 
 }
+
+
