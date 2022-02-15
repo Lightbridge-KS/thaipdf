@@ -1,6 +1,6 @@
 ---
-title: "ชื่อเรื่อง"
-author: "ผู้แต่ง"
+title: "R Markdown ภาษาไทย"
+author: "`thaipdf` package"
 date: "`r format(Sys.Date(), '%d/%m/%Y')`"
 output:
   pdf_document:
