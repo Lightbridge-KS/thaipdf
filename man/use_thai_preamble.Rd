@@ -7,27 +7,24 @@
 use_thai_preamble(
   name = "thai-preamble.tex",
   thai_font = "TH Sarabun New",
-  ignore = FALSE,
   open = FALSE,
   overwrite = FALSE
 )
 }
 \arguments{
-\item{name}{(Character) Thai \LaTeX preamble file name or path of file to create, relative to root of active project. Defaults is \code{thai-preamble.tex}}
+\item{name}{(Character) Thai \LaTeX preamble file name or path of file to create, relative to current working directory. Defaults is \code{thai-preamble.tex}}
 
 \item{thai_font}{(Character) Name of the Thai font to use, i.e., "TH Sarabun New" (default), "Laksaman".}
 
-\item{ignore}{(Logical) Should the newly created file be added to .Rbuildignore?}
-
-\item{open}{(Logical) Open the newly created file for editing? Happens in RStudio, if applicable, or via \code{utils::file.edit()} otherwise.}
+\item{open}{(Logical) Open the newly created file for editing? Using default editor of \code{.tex} to open.}
 
 \item{overwrite}{(Logical) If file already exist, do you want to overwrite?}
 }
 \value{
-(Invisible) A logical vector indicating if \LaTeX preamble file was modified.
+(Invisible) A path to \LaTeX preamble being created.
 }
 \description{
-This function creates \LaTeX preamble which is needed to render Thai language in R Markdown to a PDF document.
+This function creates \LaTeX preamble file needed to render Thai language in R Markdown to a PDF document.
 }
 \details{
 Here is the steps:
