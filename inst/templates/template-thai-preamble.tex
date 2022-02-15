@@ -1,5 +1,6 @@
-%% ---- ขอบคุณแหล่งข้อมูลต่อไปนี้ สำหรับคำแนะนำการตั้งค่าภาษาไทยใน LaTeX ---- %%
+%% ---- Preamble Injected from thaipdf package (BEGIN) ---- %%
 
+%% ขอบคุณแหล่งข้อมูลต่อไปนี้ สำหรับคำแนะนำการตั้งค่าภาษาไทยใน LaTeX %%
 %   ฑิตยา หวานวารี: http://pioneer.netserv.chula.ac.th/~wdittaya/LaTeX/LaTeXThai.pdf
 %   mathmd from Github; https://github.com/mathmd/polygloTeX
 
@@ -17,7 +18,9 @@
 % \setmainfont{TeX Gyre Termes} % Free Times
 % \setsansfont{TeX Gyre Heros} % Free Helvetica
 % \setmonofont{TeX Gyre Cursor} % Free Courier
-\newfontfamily{\thaifont}[Scale=MatchUppercase,Mapping=textext]{TH Sarabun New} % ตั้งฟอนต์หลักภาษาไทย ที่น่าใช้ เช่น: "TH Sarabun New", "Laksaman"
+
+% ตั้งฟอนต์หลักภาษาไทย ที่น่าใช้ เช่น: "TH Sarabun New", "Laksaman"
+\newfontfamily{\thaifont}[Scale=MatchUppercase,Mapping=textext]{$thai_font$} 
 \newenvironment{thailang}{\thaifont}{} % create environment for Thai language
 \usepackage[Latin,Thai]{ucharclasses} % ตั้งค่าให้ใช้ "thailang" environment เฉพาะ string ที่เป็น Unicode ภาษาไทย
 
@@ -53,4 +56,4 @@
 %     urlcolor={blue!80!black}
 %     }
 
-
+%% ---- Preamble Injected from thaipdf package (END) ---- %%

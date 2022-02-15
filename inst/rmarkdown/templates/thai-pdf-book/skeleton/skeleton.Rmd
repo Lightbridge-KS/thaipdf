@@ -1,19 +1,13 @@
 ---
-title: "ชื่อเรื่อง"
-author: "ผู้แต่ง"
+title: "R Markdown ภาษาไทย"
+author: "`thaipdf` package"
 date: "`r format(Sys.Date(), '%d/%m/%Y')`"
 output:
-  bookdown::pdf_document2:
-    latex_engine: xelatex  # จำเป็นต้องใช้ xelatex สำหรับภาษาไทย
-    includes:
-      in_header: "preTeX/thai-preamble.tex" # path ไปยัง preamble ที่มีปรับให้ใช้ภาษาไทยได้
+  thaipdf::thaipdf_book:
     keep_tex: false # change to "true" to keep intermediate LaTeX for debug
     toc: true # table of content
 ---
 
-```{=latex}
-\sloppy % ช่วยตัดคำภาษาไทย
-```
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
