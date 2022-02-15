@@ -47,7 +47,7 @@ thaipdf_config_set <- function(thai_font = "TH Sarabun New"){
   )
 
   # Write config.yml
-  yaml::write_yaml(metadata, file = paths[["path_config"]])
+  suppressWarnings(yaml::write_yaml(metadata, file = paths[["path_config"]]))
 
   # Render to all output: thai-preamble.tex
   for (i in seq_along(paths_out)) {
