@@ -52,7 +52,7 @@ use_thai_preamble <- function(name = "thai-preamble.tex",
   is_file_exist <- fs::file_exists(out_path)
   if (is_file_exist && !overwrite) {
     cli::cli_alert_danger("file {.val {out_path}} already exist, to overwrite set {.code overwrite = TRUE}")
-    return(invisible(FALSE))
+    return(invisible(NA_character_))
   }
 
   # Validate Metadata
