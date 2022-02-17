@@ -1,0 +1,37 @@
+---
+title: "Pandoc with R Markdown Test"
+output: html_notebook
+---
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file()) # Set WD to Root
+here::i_am("dev/pandoc.Rmd")
+library(rmarkdown)
+library(here)
+
+```
+
+## Render a pandoc template.
+
+[Ref](https://pkgs.rstudio.com/rmarkdown/reference/pandoc_template.html)
+
+
+```{r}
+tmp <- pandoc_template(metadata = list(place = "World"), 
+                template = here("dev/test_data/temp.txt"),
+                output = here("dev/test_data/out.txt"))
+
+tmp
+rm(tmp)
+```
+
+
+
+Output path is not vectorized, this will error
+
+```{r}
+pandoc_template(metadata = list(place = "World"), 
+                template = here("dev/test_data/temp.txt"),
+                output = c(here("dev/test_data/out1.txt"), here("dev/test_data/out1.txt"))
+)
+```
+

@@ -1,0 +1,204 @@
+---
+title: "Build"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file()) # Set WD to Root
+here::i_am("dev/build.Rmd")
+library(here)
+```
+
+# Version
+
+```{r}
+usethis::use_dev_version()
+```
+
+
+# 1. Git & Build
+
+```{r use_git}
+usethis::use_git()
+```
+
+## Git Ignore
+
+```{r use_git_ignore}
+usethis::use_git_ignore("*.nb.html") # Ignore dev/ html_notebook
+# usethis::use_git_ignore("testdata/") # ignore private Test Data in `inst/testdata`
+```
+## Build Ignore
+
+May be not ignore dev/ ?
+
+```{r use_build_ignore}
+usethis::use_build_ignore("dev")
+```
+
+## Github Links
+
+```{r}
+usethis::use_github_links()
+```
+## Github Action
+
+```{r}
+usethis::use_github_actions()
+```
+
+
+
+
+# 2. DOCs
+
+
+## DESCRIPTION
+
+```{r DESCRIPTION}
+usethis::use_description(
+fields = list(
+  Title = "R Markdown for PDF in Thai language",
+  `Authors@R` = 'person("Kittipos", "Sirivongrungson", 
+                        email = "ki11ip0.s.a.s@gmail.com", 
+                        role = c("aut", "cre"))',
+  Description = "This package provides R Markdown template and LaTeX preamble which is necessary for creating PDF in Thai language.",
+  License = "MIT + file LICENSE",
+  Depends = "R (>= 4.0.0)"
+  )
+)
+```
+
+
+## LICENSE
+
+```{r LICENSE}
+usethis::use_mit_license()
+```
+
+## README
+
+```{r README}
+usethis::use_readme_rmd()
+```
+
+```{r}
+usethis::use_lifecycle_badge("experimental")
+```
+
+
+# 3. Dependencies
+
+## Import
+
+```{r import}
+# usethis::use_pipe()
+usethis::use_package("fs")
+usethis::use_package("cli")
+usethis::use_package("yaml")
+usethis::use_package("rmarkdown")
+usethis::use_package("bookdown", type = "Suggests")
+```
+
+
+
+
+## Import from
+
+```{r import_from}
+# usethis::use_import_from("rlang", ":=") # Must have if use rlang
+```
+
+## Global variables
+
+
+```{r globalVariables}
+# Put this in  R/globals.R
+# utils::globalVariables(c("var1"))
+# usethis::use_r("globals.R")
+```
+
+# 4. Tests
+
+```{r testthat}
+usethis::use_testthat()
+```
+
+Helper Functions for test -> create `testthat/helper.R` manually
+
+
+If you want to use data for testing, put data file(s) in `inst/testdata`.
+The path to this data can be obtained by `system.file("testdata",...,package="my_package")`.
+
+For example, If I put `cars.csv` in `inst/testdata`, to read into R use this command `read.csv(system.file("testdata","cars.csv", package="my_package"))`.
+
+[ref](https://stackoverflow.com/questions/32328802/where-should-i-put-data-for-automated-tests-with-testthat)
+
+
+**Path to testdata folder**: put this in `testthat/test-helper.R`:
+
+```{r path_testdata}
+path_testdata <- function(..., package = "pkg_name") {
+
+  system.file("testdata", ... ,package = package)
+
+}
+```
+
+
+# 5. Data
+
+## Exported Data
+
+-   Run: `usethis::use_data(export_df)`
+
+To store exported data in `data/`. 
+Each file in this directory should be `.rda` file containing a single object.
+
+-   Run: `usethis::use_data_raw("export_df")`
+
+To store code that used for data preparation in `data-raw/` 
+
+
+```{r export_data}
+# usethis::use_data(export_df1,export_df2) 
+
+# usethis::use_data_raw("export_df1") # Code to Prepare data
+# usethis::use_data_raw("export_df2") # Code to Prepare data
+```
+
+**How to Document a Data set**
+
+Document the name of the data in `R/` as roxygen2:
+
+```{r data_doc_example}
+#' Prices of 50,000 round cut diamonds.
+#'
+#' A dataset containing the prices and other attributes of almost 54,000
+#' diamonds.
+#'
+#' @format A data frame with 53940 rows and 10 variables:
+#' \describe{
+#'   \item{price}{price, in US dollars}
+#'   \item{carat}{weight of the diamond, in carats}
+#'   ...
+#' }
+#' @source \url{http://www.diamondse.info/}
+"diamonds"
+```
+
+
+
+
+## Internal Data
+
+Save all of the objects for internal use in `R/sysdata.rda.`
+Usually, they don’t need to be documented.
+
+```{r internal_data}
+# usethis::use_data(df1, df2, df3, internal = TRUE)
+```
+
+
+

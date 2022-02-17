@@ -1,0 +1,31 @@
+---
+title: "Path Package Test"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file()) # Set WD to Root
+here::i_am("dev/path.Rmd")
+library(fs)
+library(here)
+
+```
+
+### Path Package
+
+```{r}
+fs::path_package("thaipdf", "preTeX")
+system.file("preTeX", package ="thaipdf" )
+
+fs::path_package("thaipdf", "templates")
+system.file("templates", package ="thaipdf" )
+```
+
+
+Error if not exist
+
+```{r}
+fs::path_package("thaipdf", "foo")
+system.file("foo", package ="thaipdf" )
+```
+

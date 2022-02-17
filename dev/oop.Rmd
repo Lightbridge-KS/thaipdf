@@ -1,0 +1,52 @@
+---
+title: "OOP"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file()) # Set WD to Root
+here::i_am("dev/oop.Rmd")
+library(here)
+
+```
+
+
+```{r}
+usethis::use_r("oop")
+```
+
+
+## Class: thaipdf_config
+
+### New: thaipdf_config
+
+```{r new_thaipdf_config}
+#' New thaipdf_config object
+#'
+#' @param x a list
+#'
+#' @return a thaipdf_config object
+new_thaipdf_config <- function(x = list()){
+  # Validate
+  stopifnot(is.list(x))
+  # Add Class
+  class(x) <- c("thaipdf_config", class(x))
+  x
+}
+
+new_thaipdf_config(list(x = 2))
+```
+
+### IS: thaipdf_config
+
+```{r is_thaipdf_config}
+is_thaipdf_config <- function(x){
+  
+  inherits(x, "thaipdf_config")
+  
+}
+
+is_thaipdf_config(list())
+is_thaipdf_config(new_thaipdf_config(list(x = 2)))
+```
+

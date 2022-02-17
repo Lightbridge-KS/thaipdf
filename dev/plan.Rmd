@@ -1,0 +1,204 @@
+---
+title: "Planning for thaipdf"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file()) # Set WD to Root
+here::i_am("my_dev/plan.Rmd")
+library(here)
+```
+
+Nomenclatures: DEV (for developer), USER (for user)
+
+## Package Structure
+
+-   **inst/**
+
+    -   **rmarkdown/**
+
+        -   Thai PDF R Markdown
+
+        -   Thai PDF R Markdown (with preamble)
+
+            -   Rmd
+            -   preTeX/ thai-preamble.tex
+
+    -   **templates/**
+
+        -   config.yml
+        -   template-thai-preamble.tex
+
+    -   **preTeX/**
+
+        -   thai-preamble.tex
+        -   before_body.tex
+
+### Create Structures
+
+**templates/**
+
+```{r}
+fs::file_create(here("inst/templates/config.yml"))
+fs::file_create(here("inst/templates/template-thai-preamble.tex"))
+```
+
+**preTeX/**
+
+```{r}
+fs::dir_create(here("inst/preTeX"))
+```
+
+**rmarkdown/**
+
+thai-pdf-rmd-w-pre/
+
+- preTeX/
+
+```{r}
+# usethis::use_rmarkdown_template(
+#   template_name = "Thai PDF R Markdown (with preamble)",
+#   template_description = "R Markdown PDF template with LaTeX preamble file that supports Thai language.",
+#   template_create_dir = TRUE
+# )
+```
+
+thai-pdf-rmd/
+
+```{r}
+usethis::use_rmarkdown_template(
+  template_name = "Thai PDF R Markdown",
+  template_dir = "thai-pdf-rmd"
+  template_description = "R Markdown PDF stand-alone template that supports Thai language.",
+  template_create_dir = FALSE
+)
+```
+
+
+
+
+
+thai-pdf-book/
+
+
+```{r}
+usethis::use_rmarkdown_template(
+  template_name = "Thai PDF Bookdown",
+  template_dir = "thai-pdf-book",
+  template_description = "R Markdown PDF stand-alone template using Bookdown that supports Thai language.",
+  template_create_dir = FALSE
+)
+```
+
+
+
+
+### Paths to Files
+
+
+```{r}
+usethis::use_r("path")
+usethis::use_test("path")
+```
+
+
+`th_pre`= Thai preamble file name
+
+```{r thaipdf_paths}
+thaipdf_paths <- function(th_pre = "thai-preamble.tex") {
+
+  ## Template file name
+  temp_filename <- paste0("template-", th_pre)
+
+  # Input Path
+  ## Template path
+  path_temp <- fs::path_package("thaipdf", "templates", temp_filename)
+  ## config.yml path
+  path_config <- fs::path_package("thaipdf", "templates", "config.yml")
+
+  # Output Path
+  ## Global Preamble at PreTeX/
+  path_pre_global <- fs::path_package("thaipdf", "preTeX", th_pre)
+  ## Global PreTeX/before_body.tex for \sloppy macro
+  path_before_body <- fs::path_package("thaipdf", "preTeX", "before_body.tex")
+  ## At rmarkdown/
+  ### Thai PDF with Preamble (for Project)
+  path_pre_proj <- fs::path_package("thaipdf", "rmarkdown", "templates",
+                                   "thai-pdf-rmd-w-pre", 
+                                   "skeleton", "preTeX", th_pre)
+
+
+  list(
+    path_temp = path_temp,
+    path_config = path_config,
+    path_pre_global = path_pre_global,
+    path_before_body = path_before_body,
+    path_pre_proj = path_pre_proj
+  )
+}
+
+thaipdf_paths()
+```
+
+#### Howto: Find Paths
+
+```{r}
+fs::path_package("thaipdf")
+# File
+## Input Template File Name
+paste0("template-",file_names$th_pre)
+## Output TeX Preamble File Name
+file_names$th_pre
+
+# Path
+## Input Location path
+fs::path_package("thaipdf", "templates", paste0("template-", file_names$th_pre))
+## Input Metadata path
+fs::path_package("thaipdf", "templates", "config.yml")
+
+# Output Location
+## preTeX/
+fs::path_package("thaipdf", "preTeX")
+## rmarkdown/
+### Thai PDF with Preamble
+fs::path_package("thaipdf", "rmarkdown", "templates", "thai-pdf-rmd-w-pre", 
+                 "skeleton", "preTeX", "thai-preamble.tex")
+```
+
+
+
+## OOP
+
+**thaipdf_config**
+
+-   attributes: "attr_name" = description
+
+### Class Functions (DEV)
+
+**thaipdf_config**
+
+-   `create_*`: create "class_name" & set ... attribute
+-   `new_thaipdf_config`: add "thaipdf_config" class to existing list 
+-   `is_thaipdf_config`: check class
+
+### Method: 
+
+**thaipdf_config**
+
+-   `print.thaipdf_config()`: print `thaipdf_config` object nicely to console
+
+
+## Plan: USER functions
+
+1.  `use_thai_preamble()`: create PROJECT-based `thai-preamble.tex` from template `template-thai-preamble.tex`
+
+2.  `thaipdf_config_set()`: render USER-based `thai-preamble` in `rmarkdown/` and `preTeX/` folder from template `template-thai-preamble.tex` with metadata from `config.yml`
+
+3.  `thaipdf_config_get()`: read `config.yml` and print to console nicely
+
+## Plan: ... functions Family
+
+1.  `fun1`:
+
+2.  `fun2`:

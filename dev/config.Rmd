@@ -1,0 +1,182 @@
+---
+title: "thaipdf config"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file()) # Set WD to Root
+here::i_am("dev/config.Rmd")
+library(here)
+library(cli)
+library(dplyr)
+library(testthat)
+```
+
+```{r}
+usethis::use_r("config")
+usethis::use_test("config")
+```
+
+### Check which PKG is Active
+
+```{r}
+fs::path_package("thaipdf") 
+```
+
+
+## Setting Config
+
+`thaipdf_config_set()`:
+
+render USER-based `thai-preamble` in `rmarkdown/` and `preTeX/` folder from template `template-thai-preamble.tex` with metadata from `config.yml`
+
+args: `thai_font`
+
+```{r thaipdf_config_set}
+thaipdf_config_set <- function(thai_font = "TH Sarabun New"){
+  
+  # Validate Metadata
+  thaipdf_config_validate(thai_font = thai_font)
+  # Metadata: Named List as Pandoc Var
+  metadata <- list(thai_font = thai_font)
+    
+  # All relevant file paths in PKG
+  paths <- thaipdf_paths()
+  ## Template Path
+  paths_temp <- paths[["path_temp"]]
+  
+  ## Output Paths (UPDATE HERE)
+  paths_out <- list(
+    paths[["path_pre_global"]],
+    paths[["path_pre_proj"]]
+    )
+  
+  # Write config.yml
+  yaml::write_yaml(metadata, file = paths[["path_config"]])
+  
+  # Render to all output: thai-preamble.tex
+  for (i in seq_along(paths_out)) {
+    rmarkdown::pandoc_template(
+      metadata = metadata,
+      template = paths[["path_temp"]],
+      output = paths_out[[i]]
+    )
+  }
+  # Display Message
+  cli::cli_alert_success("Setting thaipdf global configuration")
+  thaipdf_config_get()
+
+}
+
+thaipdf_config_set()
+```
+
+### Validate Metadata
+
+```{r thaipdf_config_validate}
+thaipdf_config_validate <- function(thai_font = "TH Sarabun New"){
+    
+  is_valid <- all(is.character(thai_font), length(thai_font) == 1, (thai_font != ""))
+  if(!is_valid) stop("`thai_font` is invalid. You must provide only 1 valid Thai font name.", call. = FALSE)
+  
+}
+
+thaipdf_config_validate()
+thaipdf_config_validate(1)
+```
+#### Tes: Validation
+
+```{r}
+testthat::test_that("thaipdf_config_set() works",{
+  
+  # Error Test
+  expect_error(thaipdf_config_set(thai_font = ""))
+  expect_error(thaipdf_config_set(thai_font = c("a", "b")))
+  expect_error(thaipdf_config_set(thai_font = 1))
+
+})
+```
+
+
+
+Test Validation
+
+```{r}
+thai_font <- c(NULL)
+is_valid <- all(is.character(thai_font), length(thai_font) == 1, (thai_font != ""))
+is_valid
+rm(is_valid)
+```
+
+
+```{r}
+ft <- "ABC"
+cli_alert_success("Setting thaipdf configuration")
+cli::cli_li("Set Thai font to {.val {ft}}")
+rm(ft)
+```
+
+
+
+## Getting Config
+
+`thaipdf_config_get()`: read `config.yml` and print to console nicely
+
+```{r thaipdf_config_get}
+thaipdf_config_get <- function(){
+  
+  path_config <- fs::path_package("thaipdf", "templates", "config.yml")
+  ## Read YAML
+  config_ls <- suppressWarnings(yaml::read_yaml(file = path_config))
+  ## Add class "thaipdf_config
+  new_thaipdf_config(config_ls)
+  
+}
+
+thaipdf_config_get()
+```
+
+To get list value
+
+```{r}
+l <- thaipdf_config_get()
+unclass(l)
+
+rm(l)
+```
+
+
+
+### Print Method: `thaipdf_config_get`
+
+```{r print.thaipdf_config}
+print.thaipdf_config <- function(x, ...){
+  
+  th_font <- x[["thai_font"]]
+  cli::cli_h2("thaipdf Global Setting")
+  cli::cli_li("Thai font setting is {.val {th_font}}")
+  invisible(x)
+}
+
+print(thaipdf_config_get())
+```
+
+testing
+
+```{r}
+ft <- "ABC"
+cli::cli_h2("thaipdf Global Setting")
+cli::cli_li("Thai font setting is {.val {ft}}")
+rm(ft)
+```
+
+
+
+If YAML field empty return `NULL`
+
+```{r}
+list(a = NULL, b=1) %>% is.null()
+list(a = NULL, b=1)$a %>% is.null()
+```
+
+

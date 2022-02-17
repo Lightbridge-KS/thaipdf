@@ -1,0 +1,319 @@
+---
+title: "Use Thai Preamble Template"
+output: 
+  html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file()) # Set WD to Root
+here::i_am("dev/pre-temp.Rmd")
+library(here)
+library(usethis) 
+library(cli)
+```
+
+**Goal:** Give user a `thai-preamble.tex` file to specified location to use in the project as they like.
+
+```{r}
+usethis::use_r("use_thai_preamble")
+usethis::use_test("use_thai_preamble")
+```
+
+
+### Examples
+
+```{r}
+if (FALSE) {
+  # Running this will write `thai-preamble.tex` to your working directory
+  use_thai_preamble()
+  # Write `thai-preamble.tex` under preTeX/ directory
+  use_thai_preamble(name = "preTeX/thai-preamble.tex")
+  # Specify Thai font to use
+  use_thai_preamble(thai_font = "Laksaman")
+}
+```
+
+
+### Fun: `use_thai_preamble()`
+
+`use_thai_preamble()`: create PROJECT-based `thai-preamble.tex` from template `template-thai-preamble.tex`
+
+Not Require Usethis PKG
+
+User may **overide global setting** by input metadata to  `rmarkdown::pandoc_template` 
+
+
+
+```{r use_thai_preamble}
+use_thai_preamble <- function(name = "thai-preamble.tex",
+                              thai_font = "TH Sarabun New",
+                              open = FALSE,
+                              overwrite = FALSE
+                              ){
+  
+    ### Build path
+    name_clean <- fs::path(fs::path_ext_remove(name), ext = "tex")
+    out_path <- fs::path_wd(name_clean)
+    out_name <- fs::path_file(out_path)
+    ### If file already exist, not overwrite unless instructed to do so.
+    is_file_exist <- fs::file_exists(out_path)
+    if (is_file_exist && !overwrite) {
+      cli::cli_alert_danger("file {.val {out_path}} already exist, to overwrite set {.code overwrite = TRUE}")
+      return(invisible(NA_character_))
+    }
+  
+  # Validate Metadata
+  thaipdf_config_validate(thai_font = thai_font)
+  # Metadata: Named List as Pandoc Var
+  metadata <- list(thai_font = thai_font)
+  
+  # All relevant file paths in PKG
+  paths <- thaipdf_paths()
+  ## Template Path
+  paths_temp <- paths[["path_temp"]]
+  
+  # Main Engine:
+  ## Render to Output at Specified Location
+  write_path <- rmarkdown::pandoc_template(
+      metadata = metadata,
+      template = paths[["path_temp"]],
+      output = out_path
+  )
+  # Info to Console
+  cli::cli_alert_success("Writing {.val {out_name}} at {.file {write_path}}")
+  cli::cli_alert_success("Thai font was set to {.val {thai_font}} in the preamble.")
+  
+  # Inform what TODO
+  ui_inform_yaml(name_clean)
+  
+  if (open) {
+    fs::file_show(write_path)
+  }  
+  # Return Path of Output file
+  invisible(write_path)
+  
+}
+
+use_thai_preamble(name = "my_data/something", 
+                  thai_font = "Sarabun", 
+                  overwrite = TRUE, open = F)
+```
+
+
+
+
+
+```{r}
+name <- "asdf"
+thai_font <- "sdfasdf"
+cli::cli_alert_danger("file {.file {name}} already exist, to overwrite set {.code overwrite = TRUE}")
+
+
+cli::cli_alert_success("Writing {.val {name}}")
+cli::cli_alert_success("Thai font was set to {.val {thai_font}} in the preamble.")
+
+rm(name, thai_font)
+```
+
+
+
+
+
+
+
+### YAML inform Code Block
+
+
+```{r ui_inform_yaml}
+#' Print what TODO about R Markdown YAML to the R console
+#'
+#' @param in_header Text to `in_header` fields of YAML
+#'
+#' @return A character
+ui_inform_yaml <- function(in_header = "path-to-preamble.tex") {
+  
+  par_end <- function(){ cli::cli_par(); cli::cli_end() }
+  
+  cli::cli_h1("TODO")
+
+  cli::cli_text("For YAML header of R Markdown in {.code pdf_document:} or {.code bookdown::pdf_document2:}")
+  cli::cli_li("Set {.code latex_engine} to {.code xelatex}")
+  cli::cli_li("Set to include the path to LaTeX preamble")
+
+  par_end()
+
+  cli::cli_rule(left = "Like This")
+
+  # cat("    latex_engine: xelatex
+  #   includes:
+  #     in_header:", in_header)
+  # cat("\n")
+  message("    latex_engine: xelatex
+    includes:
+      in_header:", "foo.tex")
+  message("\n")
+
+  cli::cli_rule()
+  
+  par_end()
+  
+  cli::cli_li("Add LaTeX macro {.code \\sloppy} to the beginning of the body of R Markdown (just after YAML header).")
+  
+  par_end()
+  
+  cli::cli_text("{.strong For more details see}")
+  cli::cli_li("How to include preamble in R Markdown {.url https://bookdown.org/yihui/rmarkdown-cookbook/latex-preamble.html}")
+  cli::cli_li("LaTeX setting in Thai {.url http://pioneer.netserv.chula.ac.th/~wdittaya/LaTeX/LaTeXThai.pdf}")
+  
+}
+
+ui_inform_yaml()
+```
+
+
+
+
+Cat vs Message is the same
+
+
+```{r}
+  cat("    latex_engine: xelatex
+    includes:
+      in_header:", "foo.tex")
+  cat("\n")
+```
+
+```{r}
+  message("    latex_engine: xelatex
+    includes:
+      in_header:", "foo.tex")
+  message("\n")
+```
+
+
+### HowTo
+
+#### Howto: YAML
+
+Desired message 
+
+```{yml}
+output:
+  bookdown::pdf_document2:
+    latex_engine: xelatex 
+    includes:
+      in_header: "file" 
+```
+
+
+```{r}
+cli_h1("TODO")
+
+
+cli_text("For YAML header of R Markdown in {.code pdf_document:} or {.code bookdown::pdf_document2:}")
+cli_li("Set {.code latex_engine} to {.code xelatex}")
+cli_li("Set to include the path to LaTeX preamble")
+
+cli_par()
+cli_end()
+
+cli_rule(left = "Like This")
+
+usethis::ui_code_block("
+    latex_engine: xelatex 
+      includes:
+        in_header: \"file\"
+", copy = F)
+
+cli_rule()
+cli_text("For more details see {.url https://bookdown.org/yihui/rmarkdown-cookbook/latex-preamble.html}")
+```
+
+
+```{r}
+ui_info("Make sure to set YAML header of the R Markdown file as.")
+
+ui_code_block("
+output:
+  bookdown::pdf_document2:
+    latex_engine: xelatex 
+    includes:
+      in_header: \"file\"
+", copy = F)
+
+ui_line("Or")
+
+ui_code_block("
+output:
+  pdf_document:
+    latex_engine: xelatex 
+    includes:
+      in_header: \"file\"
+", copy = F)
+```
+
+
+```{r}
+cli_li("A piece of code: {.code sum(a) / length(a)}")
+ui_line("A piece of code: {ui_code('sum(a) / length(a)')}")
+```
+
+
+#### Howto: File Stuff
+
+```{r}
+fs::file_exists("thai-preamble.tex")
+fs::file_access("thai-preamble.tex",mode = "execute")
+file.exists("thai-preamble.tex")
+
+fs::path(fs::path_ext_remove("file.tex"), ext = "tex")
+```
+
+```{r}
+fs::file_exists("./my_dev/pre-temp.nb.html")
+
+file.exists("./my_dev/pre-temp.nb.html")
+```
+
+
+
+
+#### How to: ui_*() function from Usethis
+
+```{r}
+cli::cli_alert_danger("asdf") 
+```
+
+
+```{r}
+file_ex <- "file.tex"
+th_font_ex <- "TH Sarabun New"
+## Set fonts
+usethis::ui_line("  - Set Thai font as {usethis::ui_value(th_font_ex)}")
+cli_li("Set Thai font as {.val {th_font_ex}}") # better
+## Font is
+usethis::ui_line("  - Thai font is {usethis::ui_value(th_font_ex)}")
+
+## Warning
+usethis::ui_stop("file {usethis::ui_value(file_ex)} already exist, to overwrite set {usethis::ui_code('overwrite = TRUE')}")
+
+### File Not change
+usethis::ui_info("File {usethis::ui_value(file_ex)} has not changed")
+usethis::ui_done("Checking {usethis::ui_value(file_ex)}")
+```
+
+```{r}
+cli_text("Some random numbers: {.val {runif(4)}}.")
+cli_text("  - Set Thai font as {.val {th_font_ex}}")
+```
+
+
+```{r}
+ui_todo("Redocument with {ui_code('devtools::document()')}")
+ui_stop("file {usethis::ui_value(ff)} already exist, to overwrite set {usethis::ui_code('overwrite = TRUE')}")
+
+ui_done("blah")
+usethis::ui_code("overwrite = TRUE")
+```
+
+

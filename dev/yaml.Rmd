@@ -1,0 +1,44 @@
+---
+title: "YAML testing"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file()) # Set WD to Root
+here::i_am("dev/yaml.Rmd")
+library(here)
+library(yaml)
+```
+
+
+
+### How to Read YAML 
+
+```{r}
+yaml.load("thai_font: Laksaman")
+
+# If YAML field empty return `NULL`
+yaml.load("thai_font: ")
+```
+
+```{r}
+suppressWarnings(read_yaml(here("dev/test_data/config.yml")))
+```
+
+Must suppress EOL warning from `readLines()`, unless specified `n` (which not have)
+
+```{r}
+readLines(here("dev/test_data/config.yml"), warn = T)
+```
+
+
+
+### How to Write YAML
+
+```{r}
+yaml::write_yaml(list(thai_font = "Angsana New"), 
+                 file = here("dev/test_data/config2.yml"))
+
+yaml::read_yaml(here("dev/test_data/config2.yml"))
+```
+

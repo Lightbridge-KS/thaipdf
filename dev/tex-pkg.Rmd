@@ -1,0 +1,72 @@
+---
+title: "Check TeX Package Install"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file()) # Set WD to Root
+here::i_am("my_dev/tex-pkg.Rmd")
+library(here)
+library(dplyr)
+library(stringr)
+library(tinytex)
+```
+
+### Install TinyTeX
+
+```{r}
+tinytex::install_tinytex()
+```
+
+list all installed LaTeX packages
+
+```{r}
+# list all installed LaTeX packages
+tlmgr(c('info', '--list', '--only-installed', '--data', 'name'))
+```
+
+
+## Thai LaTeX Packages Dependencies
+
+### Read Thai Preamble from `inst/template`
+
+```{r th_pre_chr}
+th_pre_chr <- readLines(con = here("inst/templates/thai-preamble.tex"))
+th_pre_chr
+```
+
+```{r}
+th_pre_chr %>% 
+  str_subset("usepackage")
+```
+
+Main one is "fontspec", "ucharclasses", "setspace", "polyglossia"
+
+```{r thai_latex_pkg}
+thai_latex_pkg <- c("fontspec", "ucharclasses", "setspace", "polyglossia", 
+                    "hyperref", "url", "cite", "xcolor")
+
+thai_latex_pkg
+```
+
+### Install Specific PKG for Thai
+
+```{r}
+thai_latex_pkg <- c("fontspec", "ucharclasses", "setspace", "polyglossia", 
+                    "hyperref", "url", "cite", "xcolor")
+thai_latex_pkg
+```
+
+```{r}
+tinytex::tlmgr_install(pkgs = thai_latex_pkg)
+```
+
+
+```{r}
+tinytex::tlmgr_install(c(
+  "fontspec", "ucharclasses", "setspace", "polyglossia",
+  "hyperref", "url", "cite", "xcolor"
+))
+```
+
+
