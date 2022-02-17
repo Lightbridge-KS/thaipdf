@@ -1,7 +1,6 @@
 ^thaipdf\.Rproj$
 ^\.Rproj\.user$
-^my_dev$
 ^LICENSE\.md$
 ^README\.Rmd$
 ^\.github$
-^my_data$
+^dev$
