@@ -20,19 +20,16 @@
 % \setmonofont{TeX Gyre Cursor} % Free Courier
 
 % ตั้งฟอนต์หลักภาษาไทย ที่น่าใช้ เช่น: "TH Sarabun New", "Laksaman"
-\newfontfamily{\thaifont}[Scale=MatchUppercase,Mapping=textext]{$thai_font$} 
+\newfontfamily{\thaifont}[Scale=MatchUppercase,Mapping=textext]{$thai_font$}
 \newenvironment{thailang}{\thaifont}{} % create environment for Thai language
 \usepackage[Latin,Thai]{ucharclasses} % ตั้งค่าให้ใช้ "thailang" environment เฉพาะ string ที่เป็น Unicode ภาษาไทย
 
 \setTransitionTo{Thai}{\begin{thailang}} % Use environment "thailang" when found Thai font.
 \setTransitionFrom{Thai}{\end{thailang}} % If not found, end the environment.
 
-%% ---- spacing between lines ---- %%
-\usepackage{setspace}
-% \singlespacing % เป็น default setting 
+%% ---- Paragraph Spacing ---- %%
+\renewcommand{\baselinestretch}{1.5} % Line Spacing (1.5 recommended for Thai language)
 
-% ใช้ one-half spacing สำหรับภาษาไทย เพราะ singlespacing นั้นแคบไปสําหรับข้อความภาษาไทยซึ่งมีอักขระบนล่างมาก
-\onehalfspacing 
 
 %% ---- using alphabatic language ---- %%
 \usepackage{polyglossia}
@@ -51,7 +48,7 @@
 % \usepackage{xcolor}
 % \hypersetup{
 %     colorlinks, % for colorful link
-%     linkcolor={red!50!black}, 
+%     linkcolor={red!50!black},
 %     citecolor={blue!50!black},
 %     urlcolor={blue!80!black}
 %     }
