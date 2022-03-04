@@ -23,6 +23,7 @@
 #'
 #' @param name (Character) Thai \LaTeX preamble file name or path of file to create, relative to current working directory. Defaults is `thai-preamble.tex`
 #' @param thai_font (Character) Name of the Thai font to use, i.e., "TH Sarabun New" (default), "Laksaman".
+#' @param line_spacing (Numeric) Spacing between each line. Line spacing 1.5 is recommended for Thai language (default).
 #' @param open (Logical) Open the newly created file for editing? Using default editor of `.tex` to open.
 #' @param overwrite (Logical) If file already exist, do you want to overwrite?
 #'
@@ -40,6 +41,7 @@
 #' }
 use_thai_preamble <- function(name = "thai-preamble.tex",
                               thai_font = "TH Sarabun New",
+                              line_spacing = 1.5,
                               open = FALSE,
                               overwrite = FALSE
 ){
@@ -56,9 +58,9 @@ use_thai_preamble <- function(name = "thai-preamble.tex",
   }
 
   # Validate Metadata
-  thaipdf_config_validate(thai_font = thai_font)
+  thaipdf_config_validate(thai_font = thai_font, line_spacing = line_spacing)
   # Metadata: Named List as Pandoc Var
-  metadata <- list(thai_font = thai_font)
+  metadata <- list(thai_font = thai_font, line_spacing = line_spacing)
 
   # All relevant file paths in PKG
   paths <- thaipdf_paths()
@@ -75,6 +77,7 @@ use_thai_preamble <- function(name = "thai-preamble.tex",
   # Info to Console
   cli::cli_alert_success("Writing {.val {out_name}} at {.file {write_path}}")
   cli::cli_alert_success("Thai font was set to {.val {thai_font}} in the preamble.")
+  cli::cli_alert_success("Line spacing was set to {.val {line_spacing}} in the preamble.")
 
   # Inform what TODO
   ui_inform_yaml(name_clean)
@@ -112,10 +115,9 @@ ui_inform_yaml <- function(in_header = "path-to-preamble.tex") {
 
   cli::cli_rule(left = "Like This")
 
-
   message("    latex_engine: xelatex
     includes:
-      in_header:", "foo.tex")
+      in_header: ", in_header)
   message("\n")
 
   cli::cli_rule()
@@ -131,5 +133,6 @@ ui_inform_yaml <- function(in_header = "path-to-preamble.tex") {
   cli::cli_li("LaTeX setting in Thai {.url http://pioneer.netserv.chula.ac.th/~wdittaya/LaTeX/LaTeXThai.pdf}")
 
 }
+
 
 

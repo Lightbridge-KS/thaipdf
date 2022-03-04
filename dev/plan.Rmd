@@ -10,6 +10,8 @@ here::i_am("my_dev/plan.Rmd")
 library(here)
 ```
 
+
+
 Nomenclatures: DEV (for developer), USER (for user)
 
 ## Package Structure
@@ -34,6 +36,15 @@ Nomenclatures: DEV (for developer), USER (for user)
 
         -   thai-preamble.tex
         -   before_body.tex
+
+
+### Config Params
+
+When update config param, I must Update
+
+- `config.yml`, `template-thai-preamble.tex`
+- `thaipdf_config_set()`, `thaipdf_config_validate()`, `print.thaipdf_config()`
+
 
 ### Create Structures
 
@@ -69,7 +80,7 @@ thai-pdf-rmd/
 ```{r}
 usethis::use_rmarkdown_template(
   template_name = "Thai PDF R Markdown",
-  template_dir = "thai-pdf-rmd"
+  template_dir = "thai-pdf-rmd",
   template_description = "R Markdown PDF stand-alone template that supports Thai language.",
   template_create_dir = FALSE
 )
