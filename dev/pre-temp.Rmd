@@ -47,6 +47,7 @@ User may **overide global setting** by input metadata to  `rmarkdown::pandoc_tem
 ```{r use_thai_preamble}
 use_thai_preamble <- function(name = "thai-preamble.tex",
                               thai_font = "TH Sarabun New",
+                              line_spacing = 1.5,
                               open = FALSE,
                               overwrite = FALSE
                               ){
@@ -63,9 +64,9 @@ use_thai_preamble <- function(name = "thai-preamble.tex",
     }
   
   # Validate Metadata
-  thaipdf_config_validate(thai_font = thai_font)
+  thaipdf_config_validate(thai_font = thai_font, line_spacing = line_spacing)
   # Metadata: Named List as Pandoc Var
-  metadata <- list(thai_font = thai_font)
+  metadata <- list(thai_font = thai_font, line_spacing = line_spacing)
   
   # All relevant file paths in PKG
   paths <- thaipdf_paths()
@@ -82,6 +83,7 @@ use_thai_preamble <- function(name = "thai-preamble.tex",
   # Info to Console
   cli::cli_alert_success("Writing {.val {out_name}} at {.file {write_path}}")
   cli::cli_alert_success("Thai font was set to {.val {thai_font}} in the preamble.")
+  cli::cli_alert_success("Line spacing was set to {.val {line_spacing}} in the preamble.")
   
   # Inform what TODO
   ui_inform_yaml(name_clean)
@@ -144,13 +146,9 @@ ui_inform_yaml <- function(in_header = "path-to-preamble.tex") {
 
   cli::cli_rule(left = "Like This")
 
-  # cat("    latex_engine: xelatex
-  #   includes:
-  #     in_header:", in_header)
-  # cat("\n")
   message("    latex_engine: xelatex
     includes:
-      in_header:", "foo.tex")
+      in_header: ", in_header)
   message("\n")
 
   cli::cli_rule()
