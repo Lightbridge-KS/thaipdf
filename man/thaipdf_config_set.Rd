@@ -5,12 +5,14 @@
 \alias{thaipdf_config_get}
 \title{Set or Get Global thaipdf Configuration}
 \usage{
-thaipdf_config_set(thai_font = "TH Sarabun New")
+thaipdf_config_set(thai_font = "TH Sarabun New", line_spacing = 1.5)
 
 thaipdf_config_get()
 }
 \arguments{
 \item{thai_font}{(Character) Global Thai font to set for this package, must be a valid font in your machine.}
+
+\item{line_spacing}{(Numeric) Global spacing between each line. Line spacing 1.5 is recommended for Thai language (default).}
 }
 \value{
 Display message to R console and return list of configurations (invisibly)

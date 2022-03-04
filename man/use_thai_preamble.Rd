@@ -7,6 +7,7 @@
 use_thai_preamble(
   name = "thai-preamble.tex",
   thai_font = "TH Sarabun New",
+  line_spacing = 1.5,
   open = FALSE,
   overwrite = FALSE
 )
@@ -15,6 +16,8 @@ use_thai_preamble(
 \item{name}{(Character) Thai \LaTeX preamble file name or path of file to create, relative to current working directory. Defaults is \code{thai-preamble.tex}}
 
 \item{thai_font}{(Character) Name of the Thai font to use, i.e., "TH Sarabun New" (default), "Laksaman".}
+
+\item{line_spacing}{(Numeric) Spacing between each line. Line spacing 1.5 is recommended for Thai language (default).}
 
 \item{open}{(Logical) Open the newly created file for editing? Using default editor of \code{.tex} to open.}
 
