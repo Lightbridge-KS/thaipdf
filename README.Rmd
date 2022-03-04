@@ -64,7 +64,7 @@ knitr::kable(
 
 การสร้าง PDF จาก R Markdown นั้น จะผ่านกระบวนการที่แปลงเอกสารหลายขั้นตอน ซึ่ง **ภาษาไทย** จะมีปัญหาที่ขั้นตอน
 
-> **LaTeX -> PDF**
+> **LaTeX -\> PDF**
 
 วิธีแก้นั้น จะต้องมีการตั้งค่าต่างๆ ใน LaTeX preamble และ YAML header ของ R Markdown เพื่อให้รองรับกับการใช้งานภาษาไทยได้ โดย R package นี้จึงถูกสร้างขึ้นเพื่อ**ช่วยให้ง่ายขึ้น**ใน workflow จุดนี้
 
@@ -152,7 +152,11 @@ output:
 
 -   **`thaipdf::thaipdf_config_get()`** ไว้เรียกดูการตั้งค่า global setting และ
 
--   **`thaipdf::thaipdf_config_set()`** ไว้ตั้งค่า global setting ซึ่งในขณะนี้มี option เดียวคือ การตั้งค่าชนิดฟอนท์ภาษาไทยที่ต้องการ (default font จะเป็น "TH Sarabun New") โดยใช้ argument `thai_font`
+-   **`thaipdf::thaipdf_config_set()`** ไว้ตั้งค่า global setting ซึ่งในขณะนี้มี option คือ argument
+
+    -   `thai_font`: ตั้งค่าชนิดฟอนท์ภาษาไทยที่ต้องการ (default font จะเป็น "TH Sarabun New")
+
+    -   `line_spacing`: ตั้งค่าระยะห่างระหว่างบรรทัด ตัวอักษรภาษาไทยแนะนำให้ห่าง บรรทัดครึ่ง default จึงเป็น `1.5`
 
 ```{r load-thaipdf}
 library(thaipdf)
@@ -220,7 +224,7 @@ output:
 
 ฟังก์ชั่น **`thaipdf::use_thai_preamble()`** ถูกออกแบบในทำนอง [usethis package](https://usethis.r-lib.org) โดยจะทำการ
 
--   **สร้างไฟล์ LaTeX preamble** ชื่อว่า `thai-preamble.tex` (default) โดยจะมีการเรียกใช้ LaTeX package และคำสั่งต่างๆ ในการตั้งค่าภาษาไทยในไฟล์นี้ การตั้งค่า font ภาษาไทยหลักจะเป็น "TH Sarabun New" แต่สามารถเปลี่ยนได้ที่ argument `thai_font`
+-   **สร้างไฟล์ LaTeX preamble** ชื่อว่า `thai-preamble.tex` (default) โดยจะมีการเรียกใช้ LaTeX package และคำสั่งต่างๆ ในการตั้งค่าภาษาไทยในไฟล์นี้ เช่น ฟอนท์ภาษาไทย (`thai_font`) หรือ ระยะห่างระหว่างบรรทัด (`line_spacing`)
 
 จากนั้นให้ **ปรับ [YAML header](https://bookdown.org/yihui/rmarkdown-cookbook/rmarkdown-anatomy.html)** ของ R Markdown ในส่วนของ [`pdf_document:`](https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html) หรือ [`bookdown::pdf_document2:`](https://pkgs.rstudio.com/bookdown/reference/html_document2.html) ซึ่งต้องทำเอง ดังนี้
 
@@ -265,7 +269,7 @@ unlink("thai-preamble.tex")
 
 # Todo
 
--   [ ] Write unit test
+-   [x] Write unit test
 
 -   [ ] PKG down site
 

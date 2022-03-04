@@ -54,7 +54,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 การสร้าง PDF จาก R Markdown นั้น จะผ่านกระบวนการที่แปลงเอกสารหลายขั้นตอน
 ซึ่ง **ภาษาไทย** จะมีปัญหาที่ขั้นตอน
 
-> **LaTeX -> PDF**
+> **LaTeX -\> PDF**
 
 วิธีแก้นั้น จะต้องมีการตั้งค่าต่างๆ ใน LaTeX preamble และ YAML header
 ของ R Markdown เพื่อให้รองรับกับการใช้งานภาษาไทยได้ โดย R package
@@ -154,7 +154,7 @@ output field ของ YAML header ที่ 2 function หลังนี้ย
 ``` yaml
 title: "R Markdown ภาษาไทย"
 author: "`thaipdf` package"
-date: "16/02/2022"
+date: "04/03/2022"
 fontsize: 10pt
 output: 
   thaipdf::thaipdf_document:
@@ -174,8 +174,13 @@ output:
     setting และ
 
 -   **`thaipdf::thaipdf_config_set()`** ไว้ตั้งค่า global setting
-    ซึ่งในขณะนี้มี option เดียวคือ การตั้งค่าชนิดฟอนท์ภาษาไทยที่ต้องการ
-    (default font จะเป็น “TH Sarabun New”) โดยใช้ argument `thai_font`
+    ซึ่งในขณะนี้มี option คือ argument
+
+    -   `thai_font`: ตั้งค่าชนิดฟอนท์ภาษาไทยที่ต้องการ (default font
+        จะเป็น “TH Sarabun New”)
+
+    -   `line_spacing`: ตั้งค่าระยะห่างระหว่างบรรทัด
+        ตัวอักษรภาษาไทยแนะนำให้ห่าง บรรทัดครึ่ง default จึงเป็น `1.5`
 
 ``` r
 library(thaipdf)
@@ -190,6 +195,7 @@ thaipdf_config_get()
 #> ── thaipdf Global Setting ──
 #> 
 #> • Thai font setting is "TH Sarabun New"
+#> • Line spacing is 1.5
 ```
 
 เปลี่ยน font เป็น “Laksaman”
@@ -202,6 +208,7 @@ thaipdf_config_set(thai_font = "Laksaman")
 #> ── thaipdf Global Setting ──
 #> 
 #> • Thai font setting is "Laksaman"
+#> • Line spacing is 1.5
 ```
 
 ------------------------------------------------------------------------
@@ -262,8 +269,8 @@ package](https://usethis.r-lib.org) โดยจะทำการ
 
 -   **สร้างไฟล์ LaTeX preamble** ชื่อว่า `thai-preamble.tex` (default)
     โดยจะมีการเรียกใช้ LaTeX package และคำสั่งต่างๆ
-    ในการตั้งค่าภาษาไทยในไฟล์นี้ การตั้งค่า font ภาษาไทยหลักจะเป็น “TH
-    Sarabun New” แต่สามารถเปลี่ยนได้ที่ argument `thai_font`
+    ในการตั้งค่าภาษาไทยในไฟล์นี้ เช่น ฟอนท์ภาษาไทย (`thai_font`) หรือ
+    ระยะห่างระหว่างบรรทัด (`line_spacing`)
 
 จากนั้นให้ **ปรับ [YAML
 header](https://bookdown.org/yihui/rmarkdown-cookbook/rmarkdown-anatomy.html)**
@@ -286,6 +293,7 @@ header](https://bookdown.org/yihui/rmarkdown-cookbook/rmarkdown-anatomy.html)**
 thaipdf::use_thai_preamble()
 #> ✓ Writing "thai-preamble.tex" at '/Users/kittipos/my_pkg/thaipdf/thai-preamble.tex'
 #> ✓ Thai font was set to "TH Sarabun New" in the preamble.
+#> ✓ Line spacing was set to 1.5 in the preamble.
 #> 
 #> ── TODO ────────────────────────────────────────────────────────────────────────
 #> For YAML header of R Markdown in `pdf_document:` or `bookdown::pdf_document2:`
@@ -296,20 +304,15 @@ thaipdf::use_thai_preamble()
 #>     latex_engine: xelatex
 #>     includes:
 #>       in_header: thai-preamble.tex
+#> 
 #> ────────────────────────────────────────────────────────────────────────────────
-#> 
-#> 
 #> 
 #> • Add LaTeX macro `\sloppy` to the beginning of the body of R Markdown (just
 #> after YAML header).
 #> 
-#> 
-#> 
 #> For more details see
-#> 
 #> • How to include preamble in R Markdown
 #> <https://bookdown.org/yihui/rmarkdown-cookbook/latex-preamble.html>
-#> 
 #> • LaTeX setting in Thai
 #> <http://pioneer.netserv.chula.ac.th/~wdittaya/LaTeX/LaTeXThai.pdf>
 ```
@@ -343,10 +346,10 @@ output:
 
 # Todo
 
--   [ ] Write unit test
+-   [x] Write unit test
 
 -   [ ] PKG down site
 
 ------------------------------------------------------------------------
 
-Last Updated: 2022-02-16
+Last Updated: 2022-03-04
