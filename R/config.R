@@ -17,7 +17,7 @@
 #'
 #'
 #' @param thai_font (Character) Global Thai font to set for this package, must be a valid font in your machine.
-#'
+#' @param line_spacing (Numeric) Global spacing between each line. Line spacing 1.5 is recommended for Thai language (default).
 #' @return Display message to R console and return list of configurations (invisibly)
 #' @export
 #'
@@ -28,12 +28,12 @@
 #' # View Settings
 #' thaipdf_config_get()
 #' }
-thaipdf_config_set <- function(thai_font = "TH Sarabun New"){
+thaipdf_config_set <- function(thai_font = "TH Sarabun New", line_spacing = 1.5){
 
   # Validate Metadata
-  thaipdf_config_validate(thai_font = thai_font)
+  thaipdf_config_validate(thai_font = thai_font, line_spacing = line_spacing)
   # Metadata: Named List as Pandoc Var
-  metadata <- list(thai_font = thai_font)
+  metadata <- list(thai_font = thai_font, line_spacing = line_spacing)
 
   # All relevant file paths in PKG
   paths <- thaipdf_paths()
@@ -47,7 +47,7 @@ thaipdf_config_set <- function(thai_font = "TH Sarabun New"){
   )
 
   # Write config.yml
-  suppressWarnings(yaml::write_yaml(metadata, file = paths[["path_config"]]))
+  yaml::write_yaml(metadata, file = paths[["path_config"]])
 
   # Render to all output: thai-preamble.tex
   for (i in seq_along(paths_out)) {
@@ -62,6 +62,7 @@ thaipdf_config_set <- function(thai_font = "TH Sarabun New"){
   thaipdf_config_get()
 
 }
+
 
 
 # Get Config --------------------------------------------------------------
@@ -88,13 +89,23 @@ thaipdf_config_get <- function(){
 #' Validate thaipdf_config Input
 #'
 #' @param thai_font
+#' @param line_spacing
 #'
 #' @return display error if invalid
 #' @noRd
-thaipdf_config_validate <- function(thai_font = "TH Sarabun New"){
+thaipdf_config_validate <- function(thai_font = "TH Sarabun New",
+                                    line_spacing = 1.5
+){
 
-  is_valid <- all(is.character(thai_font), length(thai_font) == 1, (thai_font != ""))
-  if(!is_valid) stop("`thai_font` is invalid. You must provide only 1 valid Thai font name.", call. = FALSE)
+  # Validate Thai font
+  is_valid_font <- all(is.character(thai_font), length(thai_font) == 1, (thai_font != ""))
+  if(!is_valid_font) stop("`thai_font` is invalid. You must provide only 1 valid Thai font name.", call. = FALSE)
+
+  # Validate Line Spacing
+  is_valid_lin_sp <- all(is.numeric(line_spacing), length(line_spacing) == 1, line_spacing > 0)
+  if(!is_valid_lin_sp) stop("`line_spacing` is invalid. You must provide a numeric value.", call. = FALSE)
+
+
 
 }
 
@@ -105,8 +116,11 @@ thaipdf_config_validate <- function(thai_font = "TH Sarabun New"){
 print.thaipdf_config <- function(x, ...){
 
   th_font <- x[["thai_font"]]
+  line_spacing <- x[["line_spacing"]]
+
   cli::cli_h2("thaipdf Global Setting")
   cli::cli_li("Thai font setting is {.val {th_font}}")
+  cli::cli_li("Line spacing is {.val {line_spacing}}")
   invisible(x)
-
 }
+
