@@ -49,6 +49,34 @@ usethis::use_github_actions()
 ```
 
 
+## Test coverage workflow
+
+1. Call `usethis::use_coverage()`
+
+```{r}
+# usethis::use_coverage()
+```
+
+2. Set github action
+
+```{r}
+use_github_action("test-coverage")
+```
+
+[Ref](https://github.com/r-lib/actions/tree/v1/examples#test-coverage-workflow)
+
+
+3. Package Coverage (Local)
+
+```{r}
+covr::package_coverage()
+```
+
+for interactive use
+
+```{r}
+covr::report()
+```
 
 
 # 2. DOCs

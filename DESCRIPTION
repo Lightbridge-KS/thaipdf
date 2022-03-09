@@ -18,7 +18,8 @@ Imports:
     rmarkdown
 Suggests: 
     testthat (>= 3.0.0),
-    bookdown
+    bookdown,
+    covr
 URL: https://github.com/Lightbridge-KS/thaipdf
 BugReports: https://github.com/Lightbridge-KS/thaipdf/issues
 Config/testthat/edition: 3

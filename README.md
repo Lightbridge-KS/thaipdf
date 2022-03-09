@@ -8,6 +8,8 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/Lightbridge-KS/thaipdf/workflows/R-CMD-check/badge.svg)](https://github.com/Lightbridge-KS/thaipdf/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/Lightbridge-KS/thaipdf/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Lightbridge-KS/thaipdf?branch=main)
 
 <!-- badges: end -->
 
@@ -154,7 +156,7 @@ output field ของ YAML header ที่ 2 function หลังนี้ย
 ``` yaml
 title: "R Markdown ภาษาไทย"
 author: "`thaipdf` package"
-date: "04/03/2022"
+date: "09/03/2022"
 fontsize: 10pt
 output: 
   thaipdf::thaipdf_document:
@@ -352,4 +354,4 @@ output:
 
 ------------------------------------------------------------------------
 
-Last Updated: 2022-03-04
+Last Updated: 2022-03-09
