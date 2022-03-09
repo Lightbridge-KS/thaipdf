@@ -1,0 +1,84 @@
+---
+title: "Package Down Site"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file()) # Set WD to Root
+here::i_am("dev/pkg-down.Rmd")
+library(here)
+```
+
+
+## Setup GitHub Pages
+
+The GitHub page will be deployed from "gh-pages" branch of the package repo.
+
+```{r use_pkgdown_github_pages}
+usethis::use_pkgdown_github_pages()
+```
+
+## Preview Site
+
+```{r preview_site}
+pkgdown::preview_site()
+```
+
+## Build Site
+
+### Build Whole Site (Wrapper)
+
+```{r build_site}
+pkgdown::build_site()
+```
+
+### Build Article
+
+```{r}
+pkgdown::build_articles()
+```
+
+
+### Build Ref 
+
+```{r build_ref}
+pkgdown::build_reference()
+```
+
+
+After commit changes to main branch, Github action (bot) will push necessary changes to "gh-pages" branch.
+
+## Customize Pages
+
+```{r}
+rstudioapi::navigateToFile("_pkgdown.yml")
+```
+
+
+
+```{yml}
+# Template
+template:
+  bootstrap: 5
+  bootswatch: flatly
+
+# Navigation Bar
+navbar:
+  right:
+   - icon: fa-github
+     href: https://github.com/Lightbridge-KS/repo
+```
+
+
+```{yml}
+# Function References
+reference:
+- title: Main Group of Functions: |
+    These functions do what.
+  contents:
+  - '`fun_1`'
+  - '`fun_2`'
+```
+
+To not list internal function, include `@noRd` tags in Roxygen of the function.
