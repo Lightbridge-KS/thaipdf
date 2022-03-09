@@ -124,6 +124,13 @@ usethis::use_readme_rmd()
 usethis::use_lifecycle_badge("experimental")
 ```
 
+## NEWS
+
+```{r}
+usethis::use_news_md()
+```
+
+
 ## Article
 
 ```{r}
