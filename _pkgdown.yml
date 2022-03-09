@@ -1,4 +1,23 @@
 url: https://lightbridge-ks.github.io/thaipdf/
 template:
   bootstrap: 5
+  bslib:
+    primary: "#096B72"
+    navbar-background: "#e6f3fc"
+    pkgdown-nav-height: 90px
 
+
+reference:
+- subtitle: Create PDF from R Markdown in Thai
+  contents:
+  - '`thaipdf_document`'
+  - '`thaipdf_book`'
+
+- subtitle: Use LaTeX preamble in Thai
+  contents:
+  - '`use_thai_preamble`'
+
+- subtitle: thaipdf configuration
+  contents:
+  - '`thaipdf_config_set`'
+  - '`thaipdf_config_get`'
