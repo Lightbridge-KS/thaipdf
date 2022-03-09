@@ -65,6 +65,12 @@ use_github_action("test-coverage")
 
 [Ref](https://github.com/r-lib/actions/tree/v1/examples#test-coverage-workflow)
 
+this will connect your package to codecov.
+
+```{r}
+covr::codecov(token = "")
+```
+
 
 3. Package Coverage (Local)
 
@@ -77,6 +83,9 @@ for interactive use
 ```{r}
 covr::report()
 ```
+
+
+
 
 
 # 2. DOCs
@@ -114,6 +123,19 @@ usethis::use_readme_rmd()
 ```{r}
 usethis::use_lifecycle_badge("experimental")
 ```
+
+## Article
+
+```{r}
+usethis::use_article("thaipdf")
+```
+
+Images folder
+
+```{r}
+fs::dir_create(here("vignettes/articles/img"))
+```
+
 
 
 # 3. Dependencies
