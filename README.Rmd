@@ -83,6 +83,8 @@ tinytex::tlmgr_install(c(
 
 # Learn more
 
+-   [**Get Started with thaipdf**](https://lightbridge-ks.github.io/thaipdf/articles/thaipdf.html)
+
 ------------------------------------------------------------------------
 
 Last Updated: `r Sys.Date()`

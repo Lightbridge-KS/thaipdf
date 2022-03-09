@@ -79,6 +79,9 @@ PDF ภาษาไทยที่มี เนื้อหา โค้ด แ�
 
 # Learn more
 
+-   [**Get Started with
+    thaipdf**](https://lightbridge-ks.github.io/thaipdf/articles/thaipdf.html)
+
 ------------------------------------------------------------------------
 
 Last Updated: 2022-03-09
