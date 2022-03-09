@@ -19,7 +19,10 @@ Imports:
 Suggests: 
     testthat (>= 3.0.0),
     bookdown,
-    covr
-URL: https://github.com/Lightbridge-KS/thaipdf
+    covr,
+    knitr
+URL: https://github.com/Lightbridge-KS/thaipdf,
+    https://lightbridge-ks.github.io/thaipdf/
 BugReports: https://github.com/Lightbridge-KS/thaipdf/issues
 Config/testthat/edition: 3
+VignetteBuilder: knitr
