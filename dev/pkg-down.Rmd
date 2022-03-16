@@ -33,6 +33,14 @@ pkgdown::preview_site()
 pkgdown::build_site()
 ```
 
+### Build Home
+
+```{r}
+pkgdown::build_home_index()
+pkgdown::init_site()
+```
+
+
 ### Build Article
 
 ```{r}

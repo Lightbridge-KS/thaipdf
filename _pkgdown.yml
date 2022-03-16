@@ -1,11 +1,18 @@
 url: https://lightbridge-ks.github.io/thaipdf/
 template:
   bootstrap: 5
+  #bootswatch: litera
   bslib:
-    primary: "#096B72"
-    navbar-background: "#e6f3fc"
     pkgdown-nav-height: 90px
+    #primary: "#096B72"
+    #navbar-background: "#e6f3fc"
 
+lang: th
+
+navbar:
+  structure:
+    left:  [intro, reference, articles, tutorials, news]
+    right: [search, github]
 
 reference:
 - subtitle: Create PDF from R Markdown in Thai
