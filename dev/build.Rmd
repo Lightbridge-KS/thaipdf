@@ -10,11 +10,24 @@ here::i_am("dev/build.Rmd")
 library(here)
 ```
 
-# Version
+# Release PKG
+
+## Version
 
 ```{r}
 usethis::use_dev_version()
 ```
+
+```{r}
+# usethis::use_version("patch")
+```
+
+## Github Release
+
+```{r}
+usethis::use_github_release()
+```
+
 
 
 # 1. Git & Build
@@ -42,6 +55,7 @@ usethis::use_build_ignore("dev")
 ```{r}
 usethis::use_github_links()
 ```
+
 ## Github Action
 
 ```{r}
