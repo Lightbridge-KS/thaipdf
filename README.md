@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# thaipdf <a href="https://lightbridge-ks.github.io/thaipdf/"><img src="man/figures/logo.png" align="right" height="138" /></a>
+# thaipdf <a href="https://lightbridge-ks.github.io/thaipdf/"><img src="man/figures/logo.png" align="right" height="138"/></a>
 
 <!-- badges: start -->
 
@@ -10,6 +10,7 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 [![R-CMD-check](https://github.com/Lightbridge-KS/thaipdf/workflows/R-CMD-check/badge.svg)](https://github.com/Lightbridge-KS/thaipdf/actions)
 [![codecov](https://codecov.io/gh/Lightbridge-KS/thaipdf/branch/main/graph/badge.svg?token=QPhwQZt2vf)](https://codecov.io/gh/Lightbridge-KS/thaipdf)
 [![R-CMD-check](https://github.com/Lightbridge-KS/thaipdf/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Lightbridge-KS/thaipdf/actions/workflows/R-CMD-check.yaml)
+
 <!-- badges: end -->
 
 > R package :package: ช่วยสร้าง PDF document จาก R Markdown ที่ใช้
@@ -21,9 +22,18 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 
 # Goal
 
-จุดมุ่งหมายของ R package นี้ เพื่อให้สามารถ**สร้าง PDF เป็นภาษาไทย
-:thailand: จาก R Markdown ได้โดยง่าย** จาก **R Markdown template** และ
-**LaTeX preamble** ที่มีการตั้งค่าสำหรับภาษาไทยมาให้
+R package นี้ช่วย**สร้าง PDF เป็นภาษาไทย :thailand: จาก [R
+Markdown](https://rmarkdown.rstudio.com) ได้โดยง่าย**
+
+-   **ผู้เริ่มต้น** สามารถ **knit** เอกสาร R Markdown เป็น PDF
+    ได้ทันทีโดยใช้ template ที่มีให้ และ
+
+-   **ผู้ที่ใช้งาน [LaTeX](https://www.latex-project.org) เป็น**
+    สามารถเรียกใช้ LaTeX preamble ที่มีการตั้งค่าภาษาไทยมาให้แล้ว มา
+    customize เพิ่มเติมอย่างที่ต้องการได้
+
+โดยจะพยามคง option ต่างๆ ของ R Markdown ไว้ให้ได้มากที่สุด
+ซึ่งสามารถส่งต่อ YAML parameter ไปยัง R Markdown หรือ bookdown ได้ด้วย
 
 # Install
 
