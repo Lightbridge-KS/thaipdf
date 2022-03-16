@@ -114,6 +114,13 @@ fields = list(
 usethis::use_mit_license()
 ```
 
+## Logo
+
+```{r}
+usethis::use_logo("man/figures/logo.png")
+```
+
+
 ## README
 
 ```{r README}
