@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# thaipdf
+# thaipdf <a href="https://lightbridge-ks.github.io/thaipdf/"><img src="man/figures/logo.svg" align="right" height="138.5" /></a>
 
 <!-- badges: start -->
 

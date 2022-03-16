@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# thaipdf
+# thaipdf <a href="https://lightbridge-ks.github.io/thaipdf/"><img src="man/figures/logo.svg" align="right" height="138.5" /></a>
 
 <!-- badges: start -->
 
@@ -84,4 +84,4 @@ PDF ภาษาไทยที่มี เนื้อหา โค้ด แ�
 
 ------------------------------------------------------------------------
 
-Last Updated: 2022-03-09
+Last Updated: 2022-03-16
