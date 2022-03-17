@@ -114,7 +114,7 @@ fields = list(
   `Authors@R` = 'person("Kittipos", "Sirivongrungson", 
                         email = "ki11ip0.s.a.s@gmail.com", 
                         role = c("aut", "cre"))',
-  Description = "This package provides R Markdown template and LaTeX preamble which is necessary for creating PDF in Thai language.",
+  Description = "Provide R Markdown templates and LaTeX preamble which is necessary for creating PDF in Thai language.",
   License = "MIT + file LICENSE",
   Depends = "R (>= 4.0.0)"
   )

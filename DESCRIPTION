@@ -3,7 +3,7 @@ Title: R Markdown for PDF in Thai language
 Version: 0.0.1
 Authors@R: 
     person("Kittipos", "Sirivongrungson", , "ki11ip0.s.a.s@gmail.com", role = c("aut", "cre"))
-Description: This package provides R Markdown template and LaTeX preamble
+Description: Provide R Markdown templates and LaTeX preamble
     which is necessary for creating PDF in Thai language.
 License: MIT + file LICENSE
 Depends: 
