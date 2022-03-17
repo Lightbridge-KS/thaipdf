@@ -88,8 +88,8 @@ thaipdf_config_get <- function(){
 
 #' Validate thaipdf_config Input
 #'
-#' @param thai_font
-#' @param line_spacing
+#' @param thai_font (Character) Thai language font name
+#' @param line_spacing (Numeric) line spacing multiplier
 #'
 #' @return display error if invalid
 #' @noRd
