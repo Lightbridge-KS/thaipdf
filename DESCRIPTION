@@ -7,7 +7,7 @@ Description: Provide R Markdown templates and LaTeX preamble
     which is necessary for creating PDF in Thai language.
 License: MIT + file LICENSE
 Depends: 
-    R (>= 4.0.0)
+    R (>= 3.4)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
