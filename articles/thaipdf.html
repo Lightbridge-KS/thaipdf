@@ -157,7 +157,7 @@
 <p>เนื่องจากที่ทั้ง 2 function ของ thaipdf นี้ (<code><a href="../reference/thaipdf_document.html">thaipdf_document()</a></code>, <code><a href="../reference/thaipdf_book.html">thaipdf_book()</a></code>) สามารถส่ง argument อื่นๆต่อไปยัง <a href="https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html" class="external-link"><code>pdf_document()</code></a> หรือ <a href="https://pkgs.rstudio.com/bookdown/reference/pdf_book.html" class="external-link"><code>bookdown::pdf_book()</code></a> ได้ ดังนั้นเราจึงสามารถ customize เพิ่มเติม โดยใส่ metadata อื่นๆ ใน output field ของ YAML header ที่ 2 function หลังนี้ยอมรับได้เลย เช่น</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"R Markdown ภาษาไทย"</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"`thaipdf` package"</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"16/03/2022"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"17/03/2022"</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fontsize</span><span class="kw">:</span><span class="at"> 10pt</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">  thaipdf:</span><span class="fu">:thaipdf_document</span><span class="kw">:</span></span>
@@ -235,9 +235,14 @@
 <p>ดังนั้นเราจึงสามารถเขียน LaTeX เพิ่มเติม หรือ load package และตั้งค่าอื่นๆ ในไฟล์ <code>thai-preamble.tex</code> ได้อีกด้วย เช่นทำ link ให้มีสี (เหมือนภาพแรกสุดที่แสดง)</p>
 </div>
 <div class="section level3">
-<h3 id="latex-preamble">Use LaTeX preamble for Thai Language<a class="anchor" aria-label="anchor" href="#latex-preamble"></a>
+<h3 id="latex-preamble">Use LaTeX preamble<a class="anchor" aria-label="anchor" href="#latex-preamble"></a>
 </h3>
-<p>ทางเลือกนี้สำหรับผู้ที่มีไฟล์ R Markdown อยู่แล้ว แต่ต้องการปรับให้ใช้กับภาษาไทยได้ โดยหลักการคือจะต้องใช้ LaTeX engine เป็น xelatex และใช้ LaTeX preamble ที่มี package และคำสั่งต่างๆ สำหรับ type setting ภาษาไทย</p>
+<p>จะเป็นการสร้างไฟล์ <code>thai-preamble.tex</code> ที่เป็น LaTeX preamble สำหรับภาษาไทย ขึ้นมาใน working directory (สามารถเปลี่ยนได้) และมีคำแนะนำการตั้งค่าใน YAML ของ R Markdown ให้ด้วย</p>
+<p>ทางเลือกนี้เหมาะสำหรับ</p>
+<ol style="list-style-type: decimal">
+<li>ผู้ที่มีไฟล์ R Markdown อยู่แล้ว แต่ต้องการปรับให้ใช้กับภาษาไทยได้</li>
+<li>ผู้ที่ใช้ LaTeX เป็น สามารถดึงตัว LaTeX preamble ภาษาไทยมาใช้ และ customize เพิ่มเติมตามที่ต้องการได้เลย</li>
+</ol>
 <p>ฟังก์ชั่น <strong><code><a href="../reference/use_thai_preamble.html">thaipdf::use_thai_preamble()</a></code></strong> ถูกออกแบบในทำนอง <a href="https://usethis.r-lib.org" class="external-link">usethis package</a> โดยจะทำการ</p>
 <ul>
 <li>
@@ -279,19 +284,23 @@
 <span class="co">#&gt; <span style="color: #0000BB; font-style: italic;">&lt;https://bookdown.org/yihui/rmarkdown-cookbook/latex-preamble.html&gt;</span></span>
 <span class="co">#&gt; • LaTeX setting in Thai</span>
 <span class="co">#&gt; <span style="color: #0000BB; font-style: italic;">&lt;http://pioneer.netserv.chula.ac.th/~wdittaya/LaTeX/LaTeXThai.pdf&gt;</span></span></code></pre></div>
-<p><strong>จากนั้นใน R Markdown</strong> (<code>pdf_document</code>) ปรับ <strong>YAML header</strong> และใส่คำสั่ง <code>\sloppy</code></p>
+<p><strong>ใน R Markdown</strong> (<code>pdf_document</code>) ให้ปรับ <strong>YAML header</strong> และใส่คำสั่ง <code>\sloppy</code></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "ทดสอบภาษาไทย" </span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf_document:</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">    latex_engine: xelatex  # จำเป็นต้องใช้ xelatex สำหรับภาษาไทย</span></span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">    includes:</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">      in_header: "preTeX/thai-preamble.tex" # path ไปยัง preamble ที่มีปรับให้ใช้ภาษาไทยได้</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">      in_header: thai-preamble.tex # path ไปยัง preamble ที่มีปรับให้ใช้ภาษาไทยได้</span></span>
 <span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>\sloppy</span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu"># สวัสดีชาวโลก</span></span></code></pre></div>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu"># สวัสดีชาวโลก</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>นี่คือเอกสาร R Markdown **ภาษาไทย** ที่สร้าง PDF ด้วย \LaTeX</span></code></pre></div>
+<p>เสร็จแล้วสามารถกด <strong><code>knit</code></strong> ได้เลย</p>
+<p><img src="img/rmd-simple.png"></p>
 </div>
 </div>
 <div class="section level2">
@@ -303,7 +312,7 @@
 <li><a href="https://github.com/mathmd/polygloTeX/blob/master/polyglot_template.tex" class="external-link">polygloTeX template by mathmd</a></li>
 </ul>
 <hr>
-<p>Last Updated: 2022-03-16</p>
+<p>Last Updated: 2022-03-17</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
