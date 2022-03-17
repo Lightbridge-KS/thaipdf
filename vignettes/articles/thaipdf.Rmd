@@ -173,9 +173,14 @@ output:
 
 ดังนั้นเราจึงสามารถเขียน LaTeX เพิ่มเติม หรือ load package และตั้งค่าอื่นๆ ในไฟล์ `thai-preamble.tex` ได้อีกด้วย เช่นทำ link ให้มีสี (เหมือนภาพแรกสุดที่แสดง)
 
-## Use LaTeX preamble for Thai Language {#latex-preamble}
+## Use LaTeX preamble {#latex-preamble}
 
-ทางเลือกนี้สำหรับผู้ที่มีไฟล์ R Markdown อยู่แล้ว แต่ต้องการปรับให้ใช้กับภาษาไทยได้ โดยหลักการคือจะต้องใช้ LaTeX engine เป็น xelatex และใช้ LaTeX preamble ที่มี package และคำสั่งต่างๆ สำหรับ type setting ภาษาไทย
+จะเป็นการสร้างไฟล์ `thai-preamble.tex` ที่เป็น LaTeX preamble สำหรับภาษาไทย ขึ้นมาใน working directory (สามารถเปลี่ยนได้) และมีคำแนะนำการตั้งค่าใน YAML ของ R Markdown ให้ด้วย
+
+ทางเลือกนี้เหมาะสำหรับ
+
+1.  ผู้ที่มีไฟล์ R Markdown อยู่แล้ว แต่ต้องการปรับให้ใช้กับภาษาไทยได้
+2.  ผู้ที่ใช้ LaTeX เป็น สามารถดึงตัว LaTeX preamble ภาษาไทยมาใช้ และ customize เพิ่มเติมตามที่ต้องการได้เลย
 
 ฟังก์ชั่น **`thaipdf::use_thai_preamble()`** ถูกออกแบบในทำนอง [usethis package](https://usethis.r-lib.org) โดยจะทำการ
 
@@ -195,7 +200,7 @@ output:
 thaipdf::use_thai_preamble()
 ```
 
-**จากนั้นใน R Markdown** (`pdf_document`) ปรับ **YAML header** และใส่คำสั่ง `\sloppy`
+**ใน R Markdown** (`pdf_document`) ให้ปรับ **YAML header** และใส่คำสั่ง `\sloppy`
 
 ``` markdown
 ---
@@ -204,13 +209,19 @@ output:
   pdf_document:
     latex_engine: xelatex  # จำเป็นต้องใช้ xelatex สำหรับภาษาไทย
     includes:
-      in_header: "preTeX/thai-preamble.tex" # path ไปยัง preamble ที่มีปรับให้ใช้ภาษาไทยได้
+      in_header: thai-preamble.tex # path ไปยัง preamble ที่มีปรับให้ใช้ภาษาไทยได้
 ---
 
 \sloppy
 
 # สวัสดีชาวโลก
+
+นี่คือเอกสาร R Markdown **ภาษาไทย** ที่สร้าง PDF ด้วย \LaTeX
 ```
+
+เสร็จแล้วสามารถกด **`knit`** ได้เลย
+
+![](img/rmd-simple.png)
 
 ```{r unlink, include=FALSE}
 unlink("thai-preamble.tex")
