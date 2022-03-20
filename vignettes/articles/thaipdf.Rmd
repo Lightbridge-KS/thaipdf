@@ -46,11 +46,11 @@ tinytex::install_tinytex()
 
 # Install LaTeX PKG required by `thaipdf`
 tinytex::tlmgr_install(c(
-  "fontspec", "ucharclasses", "setspace", "polyglossia"
+  "fontspec", "ucharclasses", "polyglossia"
 ))
 ```
 
-โดย LaTeX package ที่จำเป็นสำหรับ type setting ภาษาไทยคือ "fontspec", "ucharclasses", "setspace" และ "polyglossia"
+โดย LaTeX package ที่จำเป็นสำหรับ type setting ภาษาไทยคือ "fontspec", "ucharclasses" และ "polyglossia"
 
 -   **Check font:** ตรวจสอบว่าในเครื่องมีฟอนท์ [TH Sarabun New](https://www.f0nt.com/release/th-sarabun-new/) ถ้าไม่มีให้ติดตั้งด้วย (เนื่องจาก thaipdf ใช้ font นี้เป็นตัวหลัก)
 
