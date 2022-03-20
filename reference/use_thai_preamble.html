@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">thaipdf</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -66,7 +66,7 @@
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>name</dt>
-<dd><p>(Character) Thai LaTeX preamble file name or path of file to create, relative to current working directory. Defaults is <code>thai-preamble.tex</code></p></dd>
+<dd><p>(Character) Thai LaTeX preamble file name or path of file to create, which can be relative path or absolute path. Default value is <code>thai-preamble.tex</code>.</p></dd>
 <dt>thai_font</dt>
 <dd><p>(Character) Name of the Thai font to use, i.e., "TH Sarabun New" (default), "Laksaman".</p></dd>
 <dt>line_spacing</dt>
@@ -96,7 +96,7 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in"> <span class="co"># Running this will write `thai-preamble.tex` to your working directory</span></span>
 <span class="r-in"> <span class="fu">use_thai_preamble</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-in"> <span class="co"># Write `thai-preamble.tex` under preTeX/ directory</span></span>
+<span class="r-in"> <span class="co"># Write `thai-preamble.tex` under preTeX/ directory (a directory must exist)</span></span>
 <span class="r-in"> <span class="fu">use_thai_preamble</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"preTeX/thai-preamble.tex"</span><span class="op">)</span></span>
 <span class="r-in"> <span class="co"># Specify Thai font to use</span></span>
 <span class="r-in"> <span class="fu">use_thai_preamble</span><span class="op">(</span>thai_font <span class="op">=</span> <span class="st">"Laksaman"</span><span class="op">)</span></span>
