@@ -63,7 +63,7 @@ tinytex::install_tinytex()
 
 # Install LaTeX PKG required by `thaipdf`
 tinytex::tlmgr_install(c(
-  "fontspec", "ucharclasses", "setspace", "polyglossia"
+  "fontspec", "ucharclasses", "polyglossia"
 ))
 ```
 

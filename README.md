@@ -56,7 +56,7 @@ tinytex::install_tinytex()
 
 # Install LaTeX PKG required by `thaipdf`
 tinytex::tlmgr_install(c(
-  "fontspec", "ucharclasses", "setspace", "polyglossia"
+  "fontspec", "ucharclasses", "polyglossia"
 ))
 ```
 
@@ -93,4 +93,4 @@ PDF ภาษาไทยที่มี เนื้อหา โค้ด แ�
 
 ------------------------------------------------------------------------
 
-Last Updated: 2022-03-16
+Last Updated: 2022-03-20

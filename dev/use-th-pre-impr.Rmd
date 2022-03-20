@@ -1,0 +1,114 @@
+---
+title: "Improving use_thai_preamble()"
+author: "kittipos sirivongrungson"
+date: '2022-03-20'
+output: html_document
+---
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file()) # Set WD to Root
+here::i_am("dev/use-th-pre-impr.Rmd")
+library(here)
+
+```
+
+### Desired Behavior of `use_thai_preamble()`
+
+Relative to WD
+
+- `use_thai_preamble("some_file")` : some_file at current wd -> Works
+- `use_thai_preamble("../some_file")` : 1 level up -> Works
+- `use_thai_preamble("out/some_file")` : 1 level down -> Works
+
+Create at arbitrary location 
+
+- `use_thai_preamble("~/new_file")` or `use_thai_preamble("/../../new_file")`
+
+We need to test `rmarkdown::pandoc_template()`
+
+- `template` and `output` args only accept ABSOLUTE path
+
+plan using `fs::path_abs()` to wrap `output` since, it accept both relative path to WD and absolute path
+
+```{r}
+getwd()
+```
+
+Works
+
+```{r}
+rmarkdown::pandoc_template(
+  metadata = list(thai_font = "Somefonts", line_spacing = 2),
+  template = thaipdf:::thaipdf_paths()[["path_temp"]],
+  # To Relative Location to WD
+  output = fs::path_abs("dev/test_data/test-thai-preamble.tex")
+  )
+```
+
+Works 
+
+```{r}
+# rmarkdown::pandoc_template(
+#   metadata = list(thai_font = "Somefonts", line_spacing = 2),
+#   template = thaipdf:::thaipdf_paths()[["path_temp"]],
+#   # To Absolute Location 
+#   output = fs::path_abs("/Users/kittipos/my_pkg/test-thai-preamble.tex")
+#   )
+```
+
+### HowTo: Write Template to Temp file
+
+```{r}
+tmpdir <- tempdir()
+
+file.path(tempdir(), "thai-preamble.tex")
+```
+
+```{r}
+# the same
+fs::file_show(tmpdir)
+fs::file_show(tempdir())
+```
+
+
+
+
+
+```{r}
+rmarkdown::pandoc_template(
+  metadata = list(thai_font = "Somefonts", line_spacing = 2),
+  template = thaipdf:::thaipdf_paths()[["path_temp"]],
+  # To Relative Location to WD
+  output = fs::path_abs(file.path(tempdir(), "thai-preamble.tex"))
+  )
+
+# fs::file_show(tempdir())
+fs::file_exists(file.path(tempdir(), "thai-preamble.tex"))
+```
+
+```{r}
+tmp_file <- file.path(tempdir(), "thai-preamble.tex")
+
+thaipdf::use_thai_preamble(tmp_file)
+
+fs::file_exists(tmp_file)
+# fs::file_show(tempdir())
+#unlink(tmp_file)
+```
+
+```{r}
+.old_wd <- setwd(tempdir())
+
+thaipdf::use_thai_preamble()
+
+fs::file_exists("thai-preamble.tex")
+#fs::file_show("thai-preamble.tex")
+unlink("thai-preamble.tex")
+setwd(.old_wd)
+```
+
+```{r}
+.old_wd <- setwd(tempdir())
+
+thaipdf::use_thai_preamble()
+```
+

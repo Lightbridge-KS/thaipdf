@@ -1,0 +1,78 @@
+---
+title: "Test fs package function"
+author: "kittipos sirivongrungson"
+date: '2022-03-20'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file()) # Set WD to Root
+here::i_am("dev/fs-test.Rmd")
+library(fs)
+library(here)
+library(dplyr)
+
+```
+
+```{r path_chr}
+path_chr <- c("thai.tex", 
+              "thai.zip.tex", 
+              "./thai.tex", 
+              "../thai.tex", 
+              "out/thai.tex",
+              "/Users/kittipos/my_pkg", 
+              "~/my_pkg")
+```
+
+```{r}
+fs::path_abs(fs::path_ext_remove(path_chr))
+```
+
+```{r}
+fs::path_ext_remove(path_chr) %>% 
+  fs::path_abs() %>% 
+  fs::path(ext = "other")
+```
+
+```{r}
+fs::path_ext_remove(path_chr) %>% 
+  fs::path(ext = "other") %>% 
+  fs::path_abs() 
+```
+
+```{r}
+fs::path(fs::path_abs(fs::path_ext_remove(path_chr)), ext = "tex")
+
+fs::path(fs::path_ext_remove(path_chr), ext = "tex")
+```
+
+
+## Test `path_*`
+
+### Path Abs (best)
+
+```{r}
+fs::path_abs(path_chr)
+```
+
+### Path WD
+
+```{r}
+fs::path_wd(path_chr) # Will fail some of these
+```
+
+### Path File (Good)
+
+```{r}
+path_file(path_chr)
+```
+
+
+### Remove Ext
+
+
+```{r}
+fs::path_ext_remove(path_chr)
+```
+
+Note that 2 extension will remove the first one

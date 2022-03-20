@@ -21,7 +21,7 @@
 #'
 #'
 #'
-#' @param name (Character) Thai \LaTeX preamble file name or path of file to create, relative to current working directory. Defaults is `thai-preamble.tex`
+#' @param name (Character) Thai \LaTeX preamble file name or path of file to create, which can be relative path or absolute path. Default value is `thai-preamble.tex`.
 #' @param thai_font (Character) Name of the Thai font to use, i.e., "TH Sarabun New" (default), "Laksaman".
 #' @param line_spacing (Numeric) Spacing between each line. Line spacing 1.5 is recommended for Thai language (default).
 #' @param open (Logical) Open the newly created file for editing? Using default editor of `.tex` to open.
@@ -34,7 +34,7 @@
 #' if (FALSE) {
 #'  # Running this will write `thai-preamble.tex` to your working directory
 #'  use_thai_preamble()
-#'  # Write `thai-preamble.tex` under preTeX/ directory
+#'  # Write `thai-preamble.tex` under preTeX/ directory (a directory must exist)
 #'  use_thai_preamble(name = "preTeX/thai-preamble.tex")
 #'  # Specify Thai font to use
 #'  use_thai_preamble(thai_font = "Laksaman")
@@ -46,14 +46,16 @@ use_thai_preamble <- function(name = "thai-preamble.tex",
                               overwrite = FALSE
 ){
 
-  ### Build path
-  name_clean <- fs::path(fs::path_ext_remove(name), ext = "tex")
-  out_path <- fs::path_wd(name_clean)
-  out_name <- fs::path_file(out_path)
+  ## out path relative (set extension to .tex)
+  out_path_rel <- fs::path(fs::path_ext_remove(name), ext = "tex")
+  ## out path absolute
+  out_path_abs <- fs::path_abs(out_path_rel)
+  ## File name
+  out_name <- fs::path_file(out_path_abs)
   ### If file already exist, not overwrite unless instructed to do so.
-  is_file_exist <- fs::file_exists(out_path)
+  is_file_exist <- fs::file_exists(out_path_abs)
   if (is_file_exist && !overwrite) {
-    cli::cli_alert_danger("file {.val {out_path}} already exist, to overwrite set {.code overwrite = TRUE}")
+    cli::cli_alert_danger("file {.val {out_path_abs}} already exist, to overwrite set {.code overwrite = TRUE}")
     return(invisible(NA_character_))
   }
 
@@ -72,7 +74,7 @@ use_thai_preamble <- function(name = "thai-preamble.tex",
   write_path <- rmarkdown::pandoc_template(
     metadata = metadata,
     template = paths[["path_temp"]],
-    output = out_path
+    output = out_path_abs
   )
   # Info to Console
   cli::cli_alert_success("Writing {.val {out_name}} at {.file {write_path}}")
@@ -80,7 +82,7 @@ use_thai_preamble <- function(name = "thai-preamble.tex",
   cli::cli_alert_success("Line spacing was set to {.val {line_spacing}} in the preamble.")
 
   # Inform what TODO
-  ui_inform_yaml(name_clean)
+  ui_inform_yaml(out_path_rel)
 
   if (open) {
     fs::file_show(write_path)
