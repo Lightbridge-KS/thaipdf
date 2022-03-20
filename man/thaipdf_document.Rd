@@ -4,9 +4,13 @@
 \alias{thaipdf_document}
 \title{Convert to a PDF/LaTeX document with Thai Language Compatibility}
 \usage{
-thaipdf_document(...)
+thaipdf_document(thai_font = "TH Sarabun New", line_spacing = 1.5, ...)
 }
 \arguments{
+\item{thai_font}{(Character) Name of the Thai font to use. Default font is "TH Sarabun New". It can be any Thai font that your system have.}
+
+\item{line_spacing}{(Numeric) Spacing between each line. Line spacing 1.5 is recommended for Thai language (default).}
+
 \item{...}{Arguments passed to \href{https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html}{\code{pdf_document()}}. You may supply any arguments of \code{\link[=pdf_document]{pdf_document()}} except
 for \code{includes} and \code{latex_engine}.}
 }
@@ -29,14 +33,18 @@ if(FALSE){
  # Simple Conversion
  render("input.Rmd", output_format = thaipdf::thaipdf_document())
 
- # Render with Table of Contents and set font size to 10pt
- render("alone/alone.Rmd",
+ # Render with Thai font "Laksaman", font size 10pt, and enable Table of Contents
+ render("input.Rmd",
         output_format = thaipdf::thaipdf_document(
+          thai_font = "Laksaman", # you must have this font in your system
           toc = TRUE,
           pandoc_args = pandoc_metadata_arg("fontsize", "10pt")
         ))
 }
 }
 \seealso{
-How to use \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document}}, please see \href{https://bookdown.org/yihui/rmarkdown/pdf-document.html#other-features}{official documentation}.
+\itemize{
+\item How to use \code{\link[rmarkdown:pdf_document]{rmarkdown::pdf_document}}, please see \href{https://bookdown.org/yihui/rmarkdown/pdf-document.html#other-features}{official documentation}.
+\item How to use \code{\link[=thaipdf_book]{thaipdf_book()}}.
+}
 }
