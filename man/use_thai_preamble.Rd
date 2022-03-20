@@ -13,7 +13,7 @@ use_thai_preamble(
 )
 }
 \arguments{
-\item{name}{(Character) Thai \LaTeX preamble file name or path of file to create, relative to current working directory. Defaults is \code{thai-preamble.tex}}
+\item{name}{(Character) Thai \LaTeX preamble file name or path of file to create, which can be relative path or absolute path. Default value is \code{thai-preamble.tex}.}
 
 \item{thai_font}{(Character) Name of the Thai font to use, i.e., "TH Sarabun New" (default), "Laksaman".}
 
@@ -47,7 +47,7 @@ Here is the steps:
 if (FALSE) {
  # Running this will write `thai-preamble.tex` to your working directory
  use_thai_preamble()
- # Write `thai-preamble.tex` under preTeX/ directory
+ # Write `thai-preamble.tex` under preTeX/ directory (a directory must exist)
  use_thai_preamble(name = "preTeX/thai-preamble.tex")
  # Specify Thai font to use
  use_thai_preamble(thai_font = "Laksaman")
