@@ -23,8 +23,3 @@ reference:
 - subtitle: Use LaTeX preamble in Thai
   contents:
   - '`use_thai_preamble`'
-
-- subtitle: thaipdf configuration
-  contents:
-  - '`thaipdf_config_set`'
-  - '`thaipdf_config_get`'
