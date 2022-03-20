@@ -2,10 +2,16 @@
 title: "R Markdown ภาษาไทย"
 author: "`thaipdf` package"
 date: "`r format(Sys.Date(), '%d/%m/%Y')`"
-output:
+output: 
   thaipdf::thaipdf_book:
-    keep_tex: false # change to "true" to keep intermediate LaTeX for debug
+    thai_font: "TH Sarabun New"
+    line_spacing: 1.5
     toc: true # table of content
+    keep_tex: false # "true" to keep intermediate LaTeX
+# Color provided by LaTeX "xcolor" package
+linkcolor: BrickRed 
+urlcolor: NavyBlue
+citecolor: NavyBlue
 ---
 
 ```{r setup, include=FALSE}
