@@ -77,63 +77,73 @@ tinytex::tlmgr_install(c(
 โปรดสังเกตุว่าการที่ภาษาไทยใช้งานได้นั้น เนื่องจากมีการตั้งค่า YAML header ในส่วน
 
 ``` yaml
-output: thaipdf::thaipdf_document
+output: 
+  thaipdf::thaipdf_document:
 ```
 
 โดยที่ template ของ thaipdf ทั้ง 2 แบบ
 
 -   **Thai PDF R Markdown** --- ใช้ output เป็น `thaipdf_document()` ซึ่งเป็น wrapper ของ [`pdf_document()`](https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html) ที่สามารถรองรับ**ภาษาไทย**ได้ สำหรับการใช้งานอย่างง่าย หรือ
 
--   **Thai PDF Bookdown** --- ใช้ output เป็น `thaipdf_book()` ซึ่งเป็น wrapper ของ [`bookdown::pdf_book()`](https://pkgs.rstudio.com/bookdown/reference/pdf_book.html) ที่สามารถรองรับ**ภาษาไทย**ได้ และมี feature ของ bookdown ที่เหมาะสำหรับการเขียน technical report หรือ หนังสือที่มีการวิเคราะห์ข้อมูล
+-   **Thai PDF Bookdown** --- ใช้ output เป็น `thaipdf_book()` ซึ่งเป็น wrapper ของ [`bookdown::pdf_book()`](https://pkgs.rstudio.com/bookdown/reference/pdf_book.html) ที่สามารถรองรับ**ภาษาไทย**ได้ และมี feature ของ bookdown ที่เหมาะสำหรับการเขียนเอกสารทางวิชาการหรืองานตีพิมพ์ที่ต้องการทำ cross references หรือ citation จากแหล่งต่างๆ
 
-เนื่องจากที่ทั้ง 2 function ของ thaipdf นี้ (`thaipdf_document()`, `thaipdf_book()`) สามารถส่ง argument อื่นๆต่อไปยัง [`pdf_document()`](https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html) หรือ [`bookdown::pdf_book()`](https://pkgs.rstudio.com/bookdown/reference/pdf_book.html) ได้ ดังนั้นเราจึงสามารถ customize เพิ่มเติม โดยใส่ metadata อื่นๆ ใน output field ของ YAML header ที่ 2 function หลังนี้ยอมรับได้เลย เช่น
+## Document Setting
+
+### Thai Font & Line Spacing
+
+ทั้ง `thaipdf_document()` และ `thaipdf_book()` มีการรองรับการตั้งค่าเอกสารจาก argument ดังนี้
+
+-   **`thai_font`:** สำหรับตั้งค่า font family สำหรับภาษาไทย โดย default เป็น "TH Sarabun New" ซึ่งสามารถเปลี่ยนเป็น font ไหนก็ได้ที่มีอยู่ในเครื่อง
+
+-   **`line_spacing`:** สำหรับระยะห่างระหว่างบรรทัด โดย default ตั้งอยู่ที่ 1.5 เท่า ที่แนะนำให้ตั้งห่างขึ้น เนื่องจากภาษาไทยมีสระ และวรรณยุกต์ ที่อยู่บน/ล่างตัวอักษร
+
+``` yaml
+output: 
+  thaipdf::thaipdf_document:
+    thai_font: "TH Sarabun New"
+    line_spacing: 1.5
+```
+
+### Output Parameters
+
+จากการที่ทั้ง 2 function ของ thaipdf นี้ (`thaipdf_document()`, `thaipdf_book()`) สามารถส่ง argument อื่นๆต่อไปยัง [`rmarkdown::pdf_document`](https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html)[`()`](https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html) หรือ [`bookdown::pdf_book()`](https://pkgs.rstudio.com/bookdown/reference/pdf_book.html) ได้ ดังนั้นเราจึงสามารถ customize เพิ่มเติม โดยใส่ metadata อื่นๆ ใน output field ของ YAML header ที่ 2 function นี้ยอมรับได้เลย เช่น
 
 ``` yaml
 title: "R Markdown ภาษาไทย"
 author: "`thaipdf` package"
 date: "`r format(Sys.Date(), '%d/%m/%Y')`"
-fontsize: 10pt
 output: 
-  thaipdf::thaipdf_document:
-    toc: true
-    keep_tex: true
+  thaipdf::thaipdf_book:
+    thai_font: "TH Sarabun New"
+    line_spacing: 1.5
+    toc: true # table of content
+    keep_tex: false # "true" to keep intermediate LaTeX
 ```
 
-คือ ตั้งค่าขนาด `font` เท่ากับ 10pt คือกำหนดให้มีสารบัญ (`toc: true`) และเก็บ intermediate LaTeX ไฟล์ไว้ด้วย (`keep_tex: true`)
+จะเป็นการตั้งค่าให้มีสารบัญ (`toc: true`) และเก็บ intermediate LaTeX ไฟล์ไว้ด้วย (`keep_tex: true`)
 
-## Global Setting
+### Other Parameters
 
-`{thaipdf}` มี global setting ที่เก็บไว้ในตัว package ไว้สำหรับตั้งค่าเอกสารต่างๆ โดยมีคำสั่ง
-
--   **`thaipdf::thaipdf_config_get()`** ไว้เรียกดูการตั้งค่า global setting และ
-
--   **`thaipdf::thaipdf_config_set()`** ไว้ตั้งค่า global setting ซึ่งในขณะนี้มี option คือ argument
-
-    -   `thai_font`: ตั้งค่าชนิดฟอนท์ภาษาไทยที่ต้องการ (default font จะเป็น "TH Sarabun New")
-
-    -   `line_spacing`: ตั้งค่าระยะห่างระหว่างบรรทัด ตัวอักษรภาษาไทยแนะนำให้ห่าง บรรทัดครึ่ง default จึงเป็น `1.5`
-
-```{r load-thaipdf}
-library(thaipdf)
+``` yaml
+title: "R Markdown ภาษาไทย"
+author: "`thaipdf` package"
+date: "`r format(Sys.Date(), '%d/%m/%Y')`"
+output: 
+  thaipdf::thaipdf_book:
+    thai_font: "TH Sarabun New"
+    line_spacing: 1.5
+    toc: true # table of content
+    keep_tex: false # "true" to keep intermediate LaTeX
+fontsize: 10pt
+# Color provided by LaTeX "xcolor" package
+linkcolor: BrickRed 
+urlcolor: NavyBlue
+citecolor: NavyBlue
 ```
 
-ดูการตั้งค่า
+ส่วนถัดมาเป็น [**YAML metadata variables**](https://rmarkdown.rstudio.com/docs/reference/pdf_document.html) อื่นๆ ของ R Markdown ก็สามารถใส่ได้เช่นเดิม
 
-```{r thaipdf-config-get}
-# View Global Configuration
-thaipdf_config_get() 
-```
-
-เปลี่ยน font เป็น "Laksaman"
-
-```{r thaipdf-config-set}
-# Change Thai font to "Laksaman"
-thaipdf_config_set(thai_font = "Laksaman")
-```
-
-```{r thaipdf-config-reset, include=FALSE, message=FALSE, warning=FALSE}
-thaipdf_config_set()
-```
+เช่นจากตัวอย่าง มีปรับขนาด font (`fontsize`) หรือใส่สีให้กับ link และ cross reference ต่างๆ (`linkcolor`, `urlcolor`, `citecolor`)
 
 ------------------------------------------------------------------------
 
@@ -224,7 +234,6 @@ output:
 เสร็จแล้วสามารถกด **`knit`** ได้เลย
 
 ![](img/rmd-simple.png)
-
 
 # References
 
