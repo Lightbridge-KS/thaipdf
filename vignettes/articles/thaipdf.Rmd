@@ -197,6 +197,7 @@ output:
 ## Example
 
 ```{r use_thai_preamble}
+setwd(tempdir()) # only for demonstration
 thaipdf::use_thai_preamble()
 ```
 
@@ -223,9 +224,6 @@ output:
 
 ![](img/rmd-simple.png)
 
-```{r unlink, include=FALSE}
-unlink("thai-preamble.tex")
-```
 
 # References
 
