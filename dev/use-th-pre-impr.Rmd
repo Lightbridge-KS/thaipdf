@@ -106,3 +106,9 @@ unlink("thai-preamble.tex")
 setwd(.old_wd)
 ```
 
+```{r}
+.old_wd <- setwd(tempdir())
+
+thaipdf::use_thai_preamble()
+```
+
