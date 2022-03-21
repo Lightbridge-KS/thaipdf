@@ -1,0 +1,58 @@
+---
+title: "Write Thai Preamble to a Specified Location"
+author: "kittipos sirivongrungson"
+date: '2022-03-20'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file()) # Set WD to Root
+here::i_am("dev/write-th-pre.Rmd")
+library(here)
+
+```
+
+```{r}
+usethis::use_r("write_thai_preamble")
+usethis::use_test("write_thai_preamble")
+```
+
+## Write Thai Preamble
+
+```{r write_thai_preamble}
+write_thai_preamble <- function(path_abs,
+                                thai_font = "TH Sarabun New", 
+                                line_spacing = 1.5
+                                ) {
+  
+  # Validate Metadata
+  thaipdf_config_validate(thai_font = thai_font, line_spacing = line_spacing)
+  # Metadata: Named List as Pandoc Var
+  metadata <- list(thai_font = thai_font, line_spacing = line_spacing)
+
+  # All relevant file paths in PKG
+  paths <- thaipdf_paths()
+
+  # Main Engine:
+  ## Render to Output at Specified Location
+  write_path <- rmarkdown::pandoc_template(
+    metadata = metadata,
+    template = paths[["path_temp"]], # thai-preamble template path
+    output = path_abs
+  )
+  
+  write_path
+}
+
+
+path <- write_thai_preamble(file.path(tempdir(), "thai-preamble.tex"), 
+                            thai_font = "Sarabun")
+
+fs::file_exists(path)
+file.path(tempdir(), "thai-preamble.tex")
+
+all.equal(path, file.path(tempdir(), "thai-preamble.tex"))
+# fs::file_show(tempdir())
+```
+
+

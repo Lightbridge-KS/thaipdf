@@ -2,7 +2,9 @@
 title: "R Markdown ภาษาไทย"
 author: "`thaipdf` package"
 date: "`r format(Sys.Date(), '%d/%m/%Y')`"
-output: thaipdf::thaipdf_document
+output: 
+  thaipdf::thaipdf_document:
+    thai_font: "TH Sarabun New"
 ---
 
 ```{r setup, include=FALSE}

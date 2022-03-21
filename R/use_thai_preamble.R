@@ -22,7 +22,7 @@
 #'
 #'
 #' @param name (Character) Thai \LaTeX preamble file name or path of file to create, which can be relative path or absolute path. Default value is `thai-preamble.tex`.
-#' @param thai_font (Character) Name of the Thai font to use, i.e., "TH Sarabun New" (default), "Laksaman".
+#' @param thai_font (Character) Name of the Thai font to use. Default font is "TH Sarabun New". It can be any Thai font that your system have.
 #' @param line_spacing (Numeric) Spacing between each line. Line spacing 1.5 is recommended for Thai language (default).
 #' @param open (Logical) Open the newly created file for editing? Using default editor of `.tex` to open.
 #' @param overwrite (Logical) If file already exist, do you want to overwrite?
@@ -59,23 +59,10 @@ use_thai_preamble <- function(name = "thai-preamble.tex",
     return(invisible(NA_character_))
   }
 
-  # Validate Metadata
-  thaipdf_config_validate(thai_font = thai_font, line_spacing = line_spacing)
-  # Metadata: Named List as Pandoc Var
-  metadata <- list(thai_font = thai_font, line_spacing = line_spacing)
+  write_path <- write_thai_preamble(path_abs = out_path_abs,
+                      thai_font = thai_font,
+                      line_spacing = line_spacing)
 
-  # All relevant file paths in PKG
-  paths <- thaipdf_paths()
-  ## Template Path
-  paths_temp <- paths[["path_temp"]]
-
-  # Main Engine:
-  ## Render to Output at Specified Location
-  write_path <- rmarkdown::pandoc_template(
-    metadata = metadata,
-    template = paths[["path_temp"]],
-    output = out_path_abs
-  )
   # Info to Console
   cli::cli_alert_success("Writing {.val {out_name}} at {.file {write_path}}")
   cli::cli_alert_success("Thai font was set to {.val {thai_font}} in the preamble.")

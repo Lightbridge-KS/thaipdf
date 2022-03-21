@@ -20,6 +20,7 @@ usethis::use_dev_version()
 
 ```{r}
 usethis::use_version("patch")
+usethis::use_version("minor")
 ```
 
 ## Github Release
@@ -177,7 +178,6 @@ fs::dir_create(here("vignettes/articles/img"))
 # usethis::use_pipe()
 usethis::use_package("fs")
 usethis::use_package("cli")
-usethis::use_package("yaml")
 usethis::use_package("rmarkdown")
 usethis::use_package("bookdown", type = "Suggests")
 ```

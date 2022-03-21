@@ -1,0 +1,69 @@
+---
+title: "Test Temporary File"
+author: "kittipos sirivongrungson"
+date: '2022-03-21'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file()) # Set WD to Root
+here::i_am("dev/tmp-file-test.Rmd")
+library(here)
+library(purrr)
+library(dplyr)
+library(fs)
+```
+
+
+### Check Size of Thai Preamble
+
+```{r}
+devtools::load_all()
+
+fs::path_package("thaipdf", "inst", "templates", 
+                 "template-thai-preamble.tex") %>% 
+  fs::file_size()
+```
+
+**Not much, probably fine**
+
+
+### Temp file Delete When ?
+
+Q: Question temporary file exist for how long???
+
+A: Until Restart R
+
+```{r}
+mk_tmp <- function() {
+  
+  tmp <- tempfile("test-", fileext = ".tex")
+  write.csv(head(iris), tmp)
+  tmp
+  
+}
+
+mk_tmp()
+```
+
+
+```{r}
+tmp_chr <- character(5)
+
+for (i in 1:5) {
+  tmp_chr[i] <- mk_tmp()
+}
+
+tmp_chr
+```
+
+```{r}
+fs::file_show("/var/folders/ry/z9m8k9cs4594pv3458npy1zw0000gn/T//RtmpkYObJn")
+```
+
+```{r}
+fs::file_size(tmp_chr[1])
+```
+
+
+

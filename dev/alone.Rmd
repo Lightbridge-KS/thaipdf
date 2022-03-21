@@ -25,11 +25,79 @@ usethis::use_r("thaipdf")
 
 
 
+
+
 ## 1. Thai PDF Document — Wrap `rmarkdown::pdf_document()`
+
+### New 
+
+**Steps**
+
+1. Render a temporary file from template-thai-preamble.tex with option 
+
+-  `thai_font`
+-  `line_spacing`
+
+use `rmarkdown::pandoc_template()`
+
+2. Run `rmarkdown::pdf_document` that `includes` temp thai-preamble and before_body
 
 
 ```{r thaipdf_document}
-thaipdf_document <- function(...) {
+thaipdf_document <- function(thai_font = "TH Sarabun New", 
+                             line_spacing = 1.5,
+                             ...
+                             ) {
+  
+  # Render a tmp file from template-thai-preamble.tex
+  tmp_preamble <- tempfile("thai-preamble-", fileext = ".tex")
+  # Write pandoc template to a location with variable substitution 
+  tmp_preamble <- write_thai_preamble(path_abs = tmp_preamble, 
+                                    thai_font = thai_font, 
+                                    line_spacing = line_spacing)
+  # Clean up when function exit
+  ## See: https://stackoverflow.com/questions/28300713/how-and-when-should-i-use-on-exit
+  on.exit(unlink(tmp_preamble), add = TRUE)
+  
+  rmarkdown::pdf_document(
+    latex_engine = "xelatex",
+    includes = rmarkdown::includes(
+      in_header = tmp_preamble,
+      before_body = before_body()
+    ),
+    ...
+  )
+}
+```
+
+```{r}
+tempfile("thai-preamble-", fileext = ".tex")
+```
+
+```{r}
+{print("hello"); Sys.sleep(2); print("World")}
+```
+
+```{r}
+j06 <- function(x) {
+  cat("Hello\n")
+  on.exit({Sys.sleep(1); cat("Goodbye!\n")}, add = TRUE)
+  
+  if (x) {
+    return(10)
+  } else {
+    stop("Error")
+  }
+}
+
+j06(10)
+```
+
+
+### Old 
+
+```{r thaipdf_document2}
+thaipdf_document2 <- function(...) {
   rmarkdown::pdf_document(
     latex_engine = "xelatex",
     includes = rmarkdown::includes(
@@ -40,6 +108,8 @@ thaipdf_document <- function(...) {
   )
 }
 ```
+
+
 
 
 
