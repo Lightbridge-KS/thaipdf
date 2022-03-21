@@ -24,7 +24,7 @@ reference:
   contents:
   - '`use_thai_preamble`'
 
-- subtitle: thaipdf configuration
+- subtitle: (DEPRECATED) thaipdf configuration
   contents:
   - '`thaipdf_config_set`'
   - '`thaipdf_config_get`'

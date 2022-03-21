@@ -141,8 +141,11 @@ usethis::use_logo("man/figures/logo.png")
 usethis::use_readme_rmd()
 ```
 
+
+
 ```{r}
 usethis::use_lifecycle_badge("experimental")
+# usethis::use_lifecycle_badge("deprecated")
 ```
 
 ## NEWS

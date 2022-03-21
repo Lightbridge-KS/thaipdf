@@ -2,6 +2,7 @@
 
 #' Set or Get Global thaipdf Configuration
 #'
+#'
 #' @description
 #' Set and Get global configuration for `{thaipdf}` package. This setting will be applied to
 #' all templates from this package.

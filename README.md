@@ -9,7 +9,6 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/Lightbridge-KS/thaipdf/workflows/R-CMD-check/badge.svg)](https://github.com/Lightbridge-KS/thaipdf/actions)
 [![codecov](https://codecov.io/gh/Lightbridge-KS/thaipdf/branch/main/graph/badge.svg?token=QPhwQZt2vf)](https://codecov.io/gh/Lightbridge-KS/thaipdf)
-
 <!-- badges: end -->
 
 > R package :package: ช่วยสร้าง PDF document จาก R Markdown ที่ใช้
@@ -93,4 +92,4 @@ PDF ภาษาไทยที่มี เนื้อหา โค้ด แ�
 
 ------------------------------------------------------------------------
 
-Last Updated: 2022-03-20
+Last Updated: 2022-03-21
