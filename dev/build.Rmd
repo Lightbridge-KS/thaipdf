@@ -20,6 +20,7 @@ usethis::use_dev_version()
 
 ```{r}
 usethis::use_version("patch")
+usethis::use_version("minor")
 ```
 
 ## Github Release
