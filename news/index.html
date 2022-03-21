@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">thaipdf</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.2.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,8 +48,31 @@
     </div>
 
     <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.1.0" id="thaipdf-010">thaipdf 0.1.0<a class="anchor" aria-label="anchor" href="#thaipdf-010"></a></h2>
+<blockquote>
+<p>Self-contained Thai R Markdown settings, no need for global configuration files. (<a href="https://github.com/Lightbridge-KS/thaipdf/issues/6" class="external-link">#6</a>)</p>
+</blockquote>
+<div class="section level3">
+<h3 id="major-changes-0-1-0">Major changes<a class="anchor" aria-label="anchor" href="#major-changes-0-1-0"></a></h3>
+<div class="section level4">
+<h4 id="functions-0-1-0">Functions<a class="anchor" aria-label="anchor" href="#functions-0-1-0"></a></h4>
+<ul><li>
+<p><code><a href="../reference/thaipdf_document.html">thaipdf_document()</a></code> (also <code><a href="../reference/thaipdf_book.html">thaipdf_book()</a></code>) accept 2 new arguments:</p>
+<ul><li><p><code>thai_font</code>: for Thai font to use, default font is “TH Sarabun New”.</p></li>
+<li><p><code>line_spacing</code>: for line spacing, reccommended default is 1.5</p></li>
+</ul></li>
+<li><p><strong>Defunct</strong> <code>thaipdf_config_set()</code> and <code>thaipdf_config_get()</code></p></li>
+</ul><p>These changes enable user to supply <code>thai_font</code> or <code>line_spacing</code> in the YAML header of R Markdown directly. Therefore, self-contained document setting would facilitate more <strong>reproducible workflow</strong>.</p>
+</div>
+<div class="section level4">
+<h4 id="r-markdown-templates-0-1-0">R Markdown Templates<a class="anchor" aria-label="anchor" href="#r-markdown-templates-0-1-0"></a></h4>
+<ul><li>“Thai PDF Bookdown” and “Thai PDF R Markdown” template has an update in YAML header.</li>
+</ul></div>
+</div>
+</div>
+    <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.0.2.9000" id="thaipdf-0029000">thaipdf 0.0.2.9000<a class="anchor" aria-label="anchor" href="#thaipdf-0029000"></a></h2>
-<ul><li><p>Plan to remove <code><a href="../reference/thaipdf_config_set.html">thaipdf_config_set()</a></code> and <code><a href="../reference/thaipdf_config_set.html">thaipdf_config_get()</a></code> in an upcoming version</p></li>
+<ul><li><p>Plan to remove <code>thaipdf_config_set()</code> and <code>thaipdf_config_get()</code> in an upcoming version</p></li>
 <li><p>To enable reproducible workflow, next version will let user specify document setting such as <code>thai_font</code> and <code>line_spacing</code> in the YAML header of R Markdown.</p></li>
 </ul></div>
     <div class="section level2">

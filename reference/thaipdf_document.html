@@ -12,7 +12,7 @@ It is a wrapper around rmarkdown::pdf_document()."><meta property="og:image" con
     
     <a class="navbar-brand me-2" href="../index.html">thaipdf</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.2.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,12 +57,16 @@ It is a wrapper around <a href="https://pkgs.rstudio.com/rmarkdown/reference/pdf
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">thaipdf_document</span><span class="op">(</span><span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">thaipdf_document</span><span class="op">(</span>thai_font <span class="op">=</span> <span class="st">"TH Sarabun New"</span>, line_spacing <span class="op">=</span> <span class="fl">1.5</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>...</dt>
+    <dl><dt>thai_font</dt>
+<dd><p>(Character) Name of the Thai font to use. Default font is "TH Sarabun New". It can be any Thai font that your system have.</p></dd>
+<dt>line_spacing</dt>
+<dd><p>(Numeric) Spacing between each line. Line spacing 1.5 is recommended for Thai language (default).</p></dd>
+<dt>...</dt>
 <dd><p>Arguments passed to <a href="https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html" class="external-link"><code><a href="https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html" class="external-link">pdf_document()</a></code></a>. You may supply any arguments of <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html" class="external-link">pdf_document()</a></code> except
 for <code>includes</code> and <code>latex_engine</code>.</p></dd>
 </dl></div>
@@ -78,7 +82,10 @@ and set <code>latex_engine</code> to "xelatex".</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p>How to use <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html" class="external-link">rmarkdown::pdf_document</a></code>, please see <a href="https://bookdown.org/yihui/rmarkdown/pdf-document.html#other-features" class="external-link">official documentation</a>.</p></div>
+    <div class="dont-index">
+<ul><li><p>How to use <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html" class="external-link">rmarkdown::pdf_document</a></code>, please see <a href="https://bookdown.org/yihui/rmarkdown/pdf-document.html#other-features" class="external-link">official documentation</a>.</p></li>
+<li><p>How to use <code><a href="thaipdf_book.html">thaipdf_book()</a></code>.</p></li>
+</ul></div>
     </div>
 
     <div class="section level2">
@@ -89,9 +96,10 @@ and set <code>latex_engine</code> to "xelatex".</p>
 <span class="r-in"> <span class="co"># Simple Conversion</span></span>
 <span class="r-in"> <span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">render</a></span><span class="op">(</span><span class="st">"input.Rmd"</span>, output_format <span class="op">=</span> <span class="fu">thaipdf</span><span class="fu">::</span><span class="fu">thaipdf_document</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-in"></span>
-<span class="r-in"> <span class="co"># Render with Table of Contents and set font size to 10pt</span></span>
-<span class="r-in"> <span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">render</a></span><span class="op">(</span><span class="st">"alone/alone.Rmd"</span>,</span>
+<span class="r-in"> <span class="co"># Render with Thai font "Laksaman", font size 10pt, and enable Table of Contents</span></span>
+<span class="r-in"> <span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">render</a></span><span class="op">(</span><span class="st">"input.Rmd"</span>,</span>
 <span class="r-in">        output_format <span class="op">=</span> <span class="fu">thaipdf</span><span class="fu">::</span><span class="fu">thaipdf_document</span><span class="op">(</span></span>
+<span class="r-in">          thai_font <span class="op">=</span> <span class="st">"Laksaman"</span>, <span class="co"># you must have this font in your system</span></span>
 <span class="r-in">          toc <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span class="r-in">          pandoc_args <span class="op">=</span> <span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/pandoc_args.html" class="external-link">pandoc_metadata_arg</a></span><span class="op">(</span><span class="st">"fontsize"</span>, <span class="st">"10pt"</span><span class="op">)</span></span>
 <span class="r-in">        <span class="op">)</span><span class="op">)</span></span>

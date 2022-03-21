@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">thaipdf</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.2.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -148,62 +148,83 @@
 <img src="img/pdf-doc-1.png" alt=""><p class="caption">ตัวอย่าง R Markdown PDF ภาษาไทย</p>
 </div>
 <p>โปรดสังเกตุว่าการที่ภาษาไทยใช้งานได้นั้น เนื่องจากมีการตั้งค่า YAML header ในส่วน</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> thaipdf::thaipdf_document</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="at">  thaipdf:</span><span class="fu">:thaipdf_document</span><span class="kw">:</span></span></code></pre></div>
 <p>โดยที่ template ของ thaipdf ทั้ง 2 แบบ</p>
 <ul>
 <li><p><strong>Thai PDF R Markdown</strong> — ใช้ output เป็น <code><a href="../reference/thaipdf_document.html">thaipdf_document()</a></code> ซึ่งเป็น wrapper ของ <a href="https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html" class="external-link"><code>pdf_document()</code></a> ที่สามารถรองรับ<strong>ภาษาไทย</strong>ได้ สำหรับการใช้งานอย่างง่าย หรือ</p></li>
-<li><p><strong>Thai PDF Bookdown</strong> — ใช้ output เป็น <code><a href="../reference/thaipdf_book.html">thaipdf_book()</a></code> ซึ่งเป็น wrapper ของ <a href="https://pkgs.rstudio.com/bookdown/reference/pdf_book.html" class="external-link"><code>bookdown::pdf_book()</code></a> ที่สามารถรองรับ<strong>ภาษาไทย</strong>ได้ และมี feature ของ bookdown ที่เหมาะสำหรับการเขียน technical report หรือ หนังสือที่มีการวิเคราะห์ข้อมูล</p></li>
+<li><p><strong>Thai PDF Bookdown</strong> — ใช้ output เป็น <code><a href="../reference/thaipdf_book.html">thaipdf_book()</a></code> ซึ่งเป็น wrapper ของ <a href="https://pkgs.rstudio.com/bookdown/reference/pdf_book.html" class="external-link"><code>bookdown::pdf_book()</code></a> ที่สามารถรองรับ<strong>ภาษาไทย</strong>ได้ และมี feature ของ bookdown ที่เหมาะสำหรับการเขียนเอกสารทางวิชาการหรืองานตีพิมพ์ที่ต้องการทำ cross references หรือ citation จากแหล่งต่างๆ</p></li>
 </ul>
-<p>เนื่องจากที่ทั้ง 2 function ของ thaipdf นี้ (<code><a href="../reference/thaipdf_document.html">thaipdf_document()</a></code>, <code><a href="../reference/thaipdf_book.html">thaipdf_book()</a></code>) สามารถส่ง argument อื่นๆต่อไปยัง <a href="https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html" class="external-link"><code>pdf_document()</code></a> หรือ <a href="https://pkgs.rstudio.com/bookdown/reference/pdf_book.html" class="external-link"><code>bookdown::pdf_book()</code></a> ได้ ดังนั้นเราจึงสามารถ customize เพิ่มเติม โดยใส่ metadata อื่นๆ ใน output field ของ YAML header ที่ 2 function หลังนี้ยอมรับได้เลย เช่น</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"R Markdown ภาษาไทย"</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"`thaipdf` package"</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"21/03/2022"</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fontsize</span><span class="kw">:</span><span class="at"> 10pt</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">  thaipdf:</span><span class="fu">:thaipdf_document</span><span class="kw">:</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">keep_tex</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span></code></pre></div>
-<p>คือ ตั้งค่าขนาด <code>font</code> เท่ากับ 10pt คือกำหนดให้มีสารบัญ (<code>toc: true</code>) และเก็บ intermediate LaTeX ไฟล์ไว้ด้วย (<code>keep_tex: true</code>)</p>
 </div>
 <div class="section level3">
-<h3 id="global-setting-lifecycle-deprecated">Global Setting <a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="https://img.shields.io/badge/lifecycle-deprecated-orange.svg" alt="Lifecycle: deprecated"></a><a class="anchor" aria-label="anchor" href="#global-setting-lifecycle-deprecated"></a>
+<h3 id="customization">Customization<a class="anchor" aria-label="anchor" href="#customization"></a>
 </h3>
-<blockquote>
-<p><strong>Warning:</strong> การตั้งค่า global setting จะนำออกใน version ถัดไป โดยจะให้ตั้งค่าต่างๆ ใน YAML header</p>
-</blockquote>
-<p><a href="https://github.com/Lightbridge-KS/thaipdf" class="external-link">thaipdf</a> มี global setting ที่เก็บไว้ในตัว package ไว้สำหรับตั้งค่าเอกสารต่างๆ โดยมีคำสั่ง</p>
+<div class="section level4">
+<h4 id="thai-font-line-spacing">Thai Font &amp; Line Spacing<a class="anchor" aria-label="anchor" href="#thai-font-line-spacing"></a>
+</h4>
+<p>สำหรับ <code><a href="../reference/thaipdf_document.html">thaipdf_document()</a></code> และ <code><a href="../reference/thaipdf_book.html">thaipdf_book()</a></code> จะมี argument ที่สร้างไว้ให้รองรับ <strong>การตั้งค่าสำหรับภาษาไทย</strong> ดังนี้</p>
 <ul>
-<li><p><strong><code><a href="../reference/thaipdf_config_set.html">thaipdf::thaipdf_config_get()</a></code></strong> ไว้เรียกดูการตั้งค่า global setting และ</p></li>
-<li>
-<p><strong><code><a href="../reference/thaipdf_config_set.html">thaipdf::thaipdf_config_set()</a></code></strong> ไว้ตั้งค่า global setting ซึ่งในขณะนี้มี option คือ argument</p>
+<li><p><strong><code>thai_font</code>:</strong> สำหรับตั้งค่า font family ภาษาไทย โดย default เป็น “TH Sarabun New” ซึ่งสามารถเปลี่ยนเป็น font ใดก็ได้ที่ลงไว้ในเครื่อง</p></li>
+<li><p><strong><code>line_spacing</code>:</strong> สำหรับระยะห่างระหว่างบรรทัด โดย default ตั้งอยู่ที่ 1.5 เท่า สาเหตุที่เลือกให้ห่างขึ้นมา เพื่อเว้นที่ให้กับสระ และ วรรณยุกต์ ที่อยู่บน/ล่างตัวอักษรภาษาไทย</p></li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="at">  thaipdf:</span><span class="fu">:thaipdf_document</span><span class="kw">:</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">thai_font</span><span class="kw">:</span><span class="at"> </span><span class="st">"TH Sarabun New"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">line_spacing</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.5</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="r-markdown-bookdown-arguments">R Markdown / Bookdown Arguments<a class="anchor" aria-label="anchor" href="#r-markdown-bookdown-arguments"></a>
+</h4>
+<p>เนื่องจากทั้ง 2 function ของ thaipdf นี้ (<code><a href="../reference/thaipdf_document.html">thaipdf_document()</a></code>, <code><a href="../reference/thaipdf_book.html">thaipdf_book()</a></code>) สามารถ “<strong>ส่งต่อ argument”</strong> ไปยัง <a href="https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html" class="external-link"><code>rmarkdown::pdf_document()</code></a> หรือ <a href="https://pkgs.rstudio.com/bookdown/reference/pdf_book.html" class="external-link"><code>bookdown::pdf_book()</code></a> ได้</p>
+<p>ดังนั้นเราจึงสามารถ ใส่ argument อื่นๆ ที่รองรับโดย 2 function ดังกล่าวได้เลย (ยกเว้น <code>latex_engine</code> กับ <code>includes</code>) เช่น</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"R Markdown ภาษาไทย"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"`thaipdf` package"</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="at">  thaipdf:</span><span class="fu">:thaipdf_book</span><span class="kw">:</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">thai_font</span><span class="kw">:</span><span class="at"> </span><span class="st">"TH Sarabun New"</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">line_spacing</span><span class="kw">:</span><span class="at"> </span><span class="fl">1.5</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # table of content</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">keep_tex</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span><span class="co"> # "true" to keep intermediate LaTeX</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<p>สังเกตุว่าต้อง <strong>indent 4 space</strong> ด้วย เพราะจากตัวอย่างเป็น argument ที่ส่งเข้า <code><a href="../reference/thaipdf_book.html">thaipdf_book()</a></code></p>
 <ul>
-<li><p><code>thai_font</code>: ตั้งค่าชนิดฟอนท์ภาษาไทยที่ต้องการ (default font จะเป็น “TH Sarabun New”)</p></li>
-<li><p><code>line_spacing</code>: ตั้งค่าระยะห่างระหว่างบรรทัด ตัวอักษรภาษาไทยแนะนำให้ห่าง บรรทัดครึ่ง default จึงเป็น <code>1.5</code></p></li>
+<li><p><code>toc: true</code> คือกำหนดให้มีสารบัญ</p></li>
+<li><p><code>keep_tex: true</code> คือเก็บไฟล์ LaTeX ไว้ด้วย ก่อนที่ pandoc จะ compile เป็น PDF</p></li>
 </ul>
-</li>
+<p>สำหรับ argument ตัวอื่นๆ ที่ใช้ได้ ของ <a href="https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html" class="external-link"><code>rmarkdown::pdf_document()</code></a> ยังมีอีกมาก ลองอ่านได้ที่:</p>
+<ul>
+<li><a href="https://bookdown.org/yihui/rmarkdown/pdf-document.html#other-features" class="external-link">PDF document — R Markdown: The Definitive Guide</a></li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Lightbridge-KS/thaipdf" class="external-link">thaipdf</a></span><span class="op">)</span></code></pre></div>
-<p>ดูการตั้งค่า</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># View Global Configuration</span>
-<span class="fu"><a href="../reference/thaipdf_config_set.html">thaipdf_config_get</a></span><span class="op">(</span><span class="op">)</span> 
-<span class="co">#&gt; </span>
-<span class="co">#&gt; ── <span style="font-weight: bold;">thaipdf Global Setting</span> ──</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; • Thai font setting is <span style="color: #0000BB;">"TH Sarabun New"</span></span>
-<span class="co">#&gt; • Line spacing is <span style="color: #0000BB;">1.5</span></span></code></pre></div>
-<p>เปลี่ยน font เป็น “Laksaman”</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Change Thai font to "Laksaman"</span>
-<span class="fu"><a href="../reference/thaipdf_config_set.html">thaipdf_config_set</a></span><span class="op">(</span>thai_font <span class="op">=</span> <span class="st">"Laksaman"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Setting thaipdf global configuration</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; ── <span style="font-weight: bold;">thaipdf Global Setting</span> ──</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; • Thai font setting is <span style="color: #0000BB;">"Laksaman"</span></span>
-<span class="co">#&gt; • Line spacing is <span style="color: #0000BB;">1.5</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="pandoc-variables">Pandoc Variables<a class="anchor" aria-label="anchor" href="#pandoc-variables"></a>
+</h4>
+<p>เนื่องจาก R Markdown ใช้ pandoc เป็นตัวแปลง LaTeX เป็น PDF ดังนั้นจึงสามารถใส่ <a href="https://pandoc.org/MANUAL.html#variables-for-latex" class="external-link">pandoc variable</a> ใน YAML header ได้โดยตรง ซึ่งจะมีประโยชน์ในการปรับ setting อื่นๆ เช่น ปรับขนาด font, เปลี่ยน font family ภาษาอังกฤษ, ทำให้ link หรือ citation มีสีสัน เช่น</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"R Markdown ภาษาไทย"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"`thaipdf` package"</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="at">  thaipdf:</span><span class="fu">:thaipdf_document</span><span class="kw">:</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">thai_font</span><span class="kw">:</span><span class="at"> </span><span class="st">"TH Sarabun New"</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">fontsize</span><span class="kw">:</span><span class="at"> 12pt</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fu">mainfont</span><span class="kw">:</span><span class="at"> </span><span class="st">"TeX Gyre Termes"</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="fu">monofont</span><span class="kw">:</span><span class="at"> </span><span class="st">"Fira Code iScript"</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Color provided by LaTeX "xcolor" package</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">linkcolor</span><span class="kw">:</span><span class="at"> BrickRed </span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">urlcolor</span><span class="kw">:</span><span class="at"> NavyBlue</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code></pre></div>
+<p><strong>Font size —</strong> จากตัวอย่าง ปรับขนาด font ด้วย <code>fontsize</code></p>
+<p><strong>Font family —</strong> จากตัวอย่าง มี font family ทั้ง 3 ชนิดในเอกสารคือ</p>
+<ul>
+<li><p><code>thai_font</code>: คือ font <strong>ภาษาไทย</strong></p></li>
+<li><p><code>mainfont</code>: คือ font หลัก <strong>ภาษาอังกฤษ</strong></p></li>
+<li><p><code>monofont</code>: คือ font ของ <code>code</code></p></li>
+</ul>
+<p><strong>Color</strong> — จากตัวอย่าง ปรับสีของ link ในเอกสาร และ URL ได้ด้วย <code>linkcolor</code> และ <code>urlcolor</code> ตามลำดับ</p>
+<p>นอกจากนี้ยังมี pandoc variable อื่นๆ อีกมาก ลองอ่านได้ที่ <a href="https://pandoc.org/MANUAL.html#variables-for-latex" class="external-link">Pandoc variable for LaTeX</a></p>
 <hr>
+</div>
 </div>
 </div>
 <div class="section level2">
@@ -226,11 +247,11 @@
        |
        |--&gt; thai-preamble.tex</code></pre>
 <p>ใน folder จะมี R Markdown file ที่มี YAML header ที่ตั้งค่าที่สำคัญคือ:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">latex_engine</span><span class="kw">:</span><span class="at"> xelatex</span><span class="co">  # จำเป็นต้องใช้ xelatex สำหรับภาษาไทย</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">includes</span><span class="kw">:</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">in_header</span><span class="kw">:</span><span class="at"> </span><span class="st">"preTeX/thai-preamble.tex"</span><span class="co"> # path ไปยัง preamble ที่มีปรับให้ใช้ภาษาไทยได้</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">pdf_document</span><span class="kw">:</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">latex_engine</span><span class="kw">:</span><span class="at"> xelatex</span><span class="co">  # จำเป็นต้องใช้ xelatex สำหรับภาษาไทย</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">includes</span><span class="kw">:</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="fu">in_header</span><span class="kw">:</span><span class="at"> </span><span class="st">"preTeX/thai-preamble.tex"</span><span class="co"> # path ไปยัง preamble ที่มีปรับให้ใช้ภาษาไทยได้</span></span></code></pre></div>
 <ul>
 <li><p><strong><code>latex_engine</code></strong> เป็น “xelatex” เพื่อให้ใช้ภาษาไทยได้</p></li>
 <li><p><strong><code>includes</code></strong> คือการนำไฟล์ LaTeX preamble ที่ตั้งค่าให้ใช้ภาษาไทยได้ (<code>thai-preamble.tex</code>) มาแทรกใน preamble header (<code>in_header</code>) ของ output LaTeX อีกที ก่อนที่จะ compile เป็น PDF</p></li>
@@ -261,11 +282,11 @@
 <div class="section level3">
 <h3 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h3>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="co"># only for demonstration</span>
 
 <span class="fu">thaipdf</span><span class="fu">::</span><span class="fu"><a href="../reference/use_thai_preamble.html">use_thai_preamble</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Writing <span style="color: #0000BB;">"thai-preamble.tex"</span> at <span style="color: #0000BB;">/tmp/Rtmp0j9dDk/thai-preamble.tex</span></span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Writing <span style="color: #0000BB;">"thai-preamble.tex"</span> at <span style="color: #0000BB;">/tmp/Rtmpgi2Mee/thai-preamble.tex</span></span>
 <span class="co">#&gt; <span style="color: #00BB00;">✔</span> Thai font was set to <span style="color: #0000BB;">"TH Sarabun New"</span> in the preamble.</span>
 <span class="co">#&gt; <span style="color: #00BB00;">✔</span> Line spacing was set to <span style="color: #0000BB;">1.5</span> in the preamble.</span>
 <span class="co">#&gt; </span>
@@ -290,20 +311,20 @@
 <span class="co">#&gt; • LaTeX setting in Thai</span>
 <span class="co">#&gt; <span style="color: #0000BB; font-style: italic;">&lt;http://pioneer.netserv.chula.ac.th/~wdittaya/LaTeX/LaTeXThai.pdf&gt;</span></span></code></pre></div>
 <p><strong>ใน R Markdown</strong> (<code>pdf_document</code>) ให้ปรับ <strong>YAML header</strong> และใส่คำสั่ง <code>\sloppy</code></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "ทดสอบภาษาไทย" </span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf_document:</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">    latex_engine: xelatex  # จำเป็นต้องใช้ xelatex สำหรับภาษาไทย</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">    includes:</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">      in_header: thai-preamble.tex # path ไปยัง preamble ที่มีปรับให้ใช้ภาษาไทยได้</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>\sloppy</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu"># สวัสดีชาวโลก</span></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>นี่คือเอกสาร R Markdown **ภาษาไทย** ที่สร้าง PDF ด้วย \LaTeX</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "ทดสอบภาษาไทย" </span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="an">output:</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">  pdf_document:</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">    latex_engine: xelatex  # จำเป็นต้องใช้ xelatex สำหรับภาษาไทย</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">    includes:</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">      in_header: thai-preamble.tex # path ไปยัง preamble ที่มีปรับให้ใช้ภาษาไทยได้</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>\sloppy</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu"># สวัสดีชาวโลก</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>นี่คือเอกสาร R Markdown **ภาษาไทย** ที่สร้าง PDF ด้วย \LaTeX</span></code></pre></div>
 <p>เสร็จแล้วสามารถกด <strong><code>knit</code></strong> ได้เลย</p>
 <p><img src="img/rmd-simple.png"></p>
 </div>
