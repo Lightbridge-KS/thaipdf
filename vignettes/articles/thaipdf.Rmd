@@ -108,13 +108,7 @@ output:
 
 เนื่องจากทั้ง 2 function ของ thaipdf นี้ (`thaipdf_document()`, `thaipdf_book()`) สามารถ "**ส่งต่อ argument"** ไปยัง [`rmarkdown::pdf_document()`](https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html) หรือ [`bookdown::pdf_book()`](https://pkgs.rstudio.com/bookdown/reference/pdf_book.html) ได้
 
-ดังนั้นเราจึงสามารถ ใส่ argument อื่นๆ ที่รองรับโดย 2 function ดังกล่าวได้เลย (ยกเว้น `latex_engine` กับ `includes`)[^1] เช่น
-
-[^1]: `thaipdf_document()`, `thaipdf_book()` ไม่สามารถรับ 2 argument นี้ได้เพราะ
-
-    -   `latex_engine` บังคับเป็น xelatex จาก thaipdf package อยู่แล้ว
-
-    -   `includes` จะใส่ Thai LaTeX Preamble เข้าไปใน header ให้แล้ว
+ดังนั้นเราจึงสามารถ ใส่ argument อื่นๆ ที่รองรับโดย 2 function ดังกล่าวได้เลย (ยกเว้น `latex_engine` กับ `includes`) เช่น
 
 ``` yaml
 ---
