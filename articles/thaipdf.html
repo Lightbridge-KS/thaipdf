@@ -33,7 +33,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">thaipdf</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.2.9000</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -157,7 +157,7 @@
 <p>เนื่องจากที่ทั้ง 2 function ของ thaipdf นี้ (<code><a href="../reference/thaipdf_document.html">thaipdf_document()</a></code>, <code><a href="../reference/thaipdf_book.html">thaipdf_book()</a></code>) สามารถส่ง argument อื่นๆต่อไปยัง <a href="https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html" class="external-link"><code>pdf_document()</code></a> หรือ <a href="https://pkgs.rstudio.com/bookdown/reference/pdf_book.html" class="external-link"><code>bookdown::pdf_book()</code></a> ได้ ดังนั้นเราจึงสามารถ customize เพิ่มเติม โดยใส่ metadata อื่นๆ ใน output field ของ YAML header ที่ 2 function หลังนี้ยอมรับได้เลย เช่น</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"R Markdown ภาษาไทย"</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"`thaipdf` package"</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"20/03/2022"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> </span><span class="st">"21/03/2022"</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fontsize</span><span class="kw">:</span><span class="at"> 10pt</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">output</span><span class="kw">:</span><span class="at"> </span></span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">  thaipdf:</span><span class="fu">:thaipdf_document</span><span class="kw">:</span></span>
@@ -166,8 +166,11 @@
 <p>คือ ตั้งค่าขนาด <code>font</code> เท่ากับ 10pt คือกำหนดให้มีสารบัญ (<code>toc: true</code>) และเก็บ intermediate LaTeX ไฟล์ไว้ด้วย (<code>keep_tex: true</code>)</p>
 </div>
 <div class="section level3">
-<h3 id="global-setting">Global Setting<a class="anchor" aria-label="anchor" href="#global-setting"></a>
+<h3 id="global-setting-lifecycle-deprecated">Global Setting <a href="https://lifecycle.r-lib.org/articles/stages.html#deprecated" class="external-link"><img src="https://img.shields.io/badge/lifecycle-deprecated-orange.svg" alt="Lifecycle: deprecated"></a><a class="anchor" aria-label="anchor" href="#global-setting-lifecycle-deprecated"></a>
 </h3>
+<blockquote>
+<p><strong>Warning:</strong> การตั้งค่า global setting จะนำออกใน version ถัดไป โดยจะให้ตั้งค่าต่างๆ ใน YAML header</p>
+</blockquote>
 <p><a href="https://github.com/Lightbridge-KS/thaipdf" class="external-link">thaipdf</a> มี global setting ที่เก็บไว้ในตัว package ไว้สำหรับตั้งค่าเอกสารต่างๆ โดยมีคำสั่ง</p>
 <ul>
 <li><p><strong><code><a href="../reference/thaipdf_config_set.html">thaipdf::thaipdf_config_get()</a></code></strong> ไว้เรียกดูการตั้งค่า global setting และ</p></li>
@@ -262,7 +265,7 @@
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="co"># only for demonstration</span>
 
 <span class="fu">thaipdf</span><span class="fu">::</span><span class="fu"><a href="../reference/use_thai_preamble.html">use_thai_preamble</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Writing <span style="color: #0000BB;">"thai-preamble.tex"</span> at <span style="color: #0000BB;">/tmp/RtmpbmrKLt/thai-preamble.tex</span></span>
+<span class="co">#&gt; <span style="color: #00BB00;">✔</span> Writing <span style="color: #0000BB;">"thai-preamble.tex"</span> at <span style="color: #0000BB;">/tmp/Rtmp0j9dDk/thai-preamble.tex</span></span>
 <span class="co">#&gt; <span style="color: #00BB00;">✔</span> Thai font was set to <span style="color: #0000BB;">"TH Sarabun New"</span> in the preamble.</span>
 <span class="co">#&gt; <span style="color: #00BB00;">✔</span> Line spacing was set to <span style="color: #0000BB;">1.5</span> in the preamble.</span>
 <span class="co">#&gt; </span>
@@ -314,7 +317,7 @@
 <li><a href="https://github.com/mathmd/polygloTeX/blob/master/polyglot_template.tex" class="external-link">polygloTeX template by mathmd</a></li>
 </ul>
 <hr>
-<p>Last Updated: 2022-03-20</p>
+<p>Last Updated: 2022-03-21</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
