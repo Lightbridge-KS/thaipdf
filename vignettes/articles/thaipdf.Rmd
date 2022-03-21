@@ -87,15 +87,15 @@ output:
 
 -   **Thai PDF Bookdown** --- ใช้ output เป็น `thaipdf_book()` ซึ่งเป็น wrapper ของ [`bookdown::pdf_book()`](https://pkgs.rstudio.com/bookdown/reference/pdf_book.html) ที่สามารถรองรับ**ภาษาไทย**ได้ และมี feature ของ bookdown ที่เหมาะสำหรับการเขียนเอกสารทางวิชาการหรืองานตีพิมพ์ที่ต้องการทำ cross references หรือ citation จากแหล่งต่างๆ
 
-## Document Setting
+## Customization
 
 ### Thai Font & Line Spacing
 
-ทั้ง `thaipdf_document()` และ `thaipdf_book()` มีการรองรับการตั้งค่าเอกสารจาก argument ดังนี้
+สำหรับ `thaipdf_document()` และ `thaipdf_book()` จะมี argument ที่สร้างไว้ให้รองรับ **การตั้งค่าสำหรับภาษาไทย** ดังนี้
 
--   **`thai_font`:** สำหรับตั้งค่า font family สำหรับภาษาไทย โดย default เป็น "TH Sarabun New" ซึ่งสามารถเปลี่ยนเป็น font ไหนก็ได้ที่มีอยู่ในเครื่อง
+-   **`thai_font`:** สำหรับตั้งค่า font family ภาษาไทย โดย default เป็น "TH Sarabun New" ซึ่งสามารถเปลี่ยนเป็น font ใดก็ได้ที่ลงไว้ในเครื่อง
 
--   **`line_spacing`:** สำหรับระยะห่างระหว่างบรรทัด โดย default ตั้งอยู่ที่ 1.5 เท่า ที่แนะนำให้ตั้งห่างขึ้น เนื่องจากภาษาไทยมีสระ และวรรณยุกต์ ที่อยู่บน/ล่างตัวอักษร
+-   **`line_spacing`:** สำหรับระยะห่างระหว่างบรรทัด โดย default ตั้งอยู่ที่ 1.5 เท่า สาเหตุที่เลือกให้ห่างขึ้นมา เพื่อเว้นที่ให้กับสระ และ วรรณยุกต์ ที่อยู่บน/ล่างตัวอักษรภาษาไทย
 
 ``` yaml
 output: 
@@ -104,46 +104,74 @@ output:
     line_spacing: 1.5
 ```
 
-### Output Parameters
+### R Markdown / Bookdown Arguments
 
-จากการที่ทั้ง 2 function ของ thaipdf นี้ (`thaipdf_document()`, `thaipdf_book()`) สามารถส่ง argument อื่นๆต่อไปยัง [`rmarkdown::pdf_document`](https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html)[`()`](https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html) หรือ [`bookdown::pdf_book()`](https://pkgs.rstudio.com/bookdown/reference/pdf_book.html) ได้ ดังนั้นเราจึงสามารถ customize เพิ่มเติม โดยใส่ metadata อื่นๆ ใน output field ของ YAML header ที่ 2 function นี้ยอมรับได้เลย เช่น
+เนื่องจากทั้ง 2 function ของ thaipdf นี้ (`thaipdf_document()`, `thaipdf_book()`) สามารถ "**ส่งต่อ argument"** ไปยัง [`rmarkdown::pdf_document()`](https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html) หรือ [`bookdown::pdf_book()`](https://pkgs.rstudio.com/bookdown/reference/pdf_book.html) ได้
+
+ดังนั้นเราจึงสามารถ ใส่ argument อื่นๆ ที่รองรับโดย 2 function ดังกล่าวได้เลย (ยกเว้น `latex_engine` กับ `includes`)[^1] เช่น
+
+[^1]: `thaipdf_document()`, `thaipdf_book()` ไม่สามารถรับ 2 argument นี้ได้เพราะ
+
+    -   `latex_engine` บังคับเป็น xelatex จาก thaipdf package อยู่แล้ว
+
+    -   `includes` จะใส่ Thai LaTeX Preamble เข้าไปใน header ให้แล้ว
 
 ``` yaml
+---
 title: "R Markdown ภาษาไทย"
 author: "`thaipdf` package"
-date: "`r format(Sys.Date(), '%d/%m/%Y')`"
 output: 
   thaipdf::thaipdf_book:
     thai_font: "TH Sarabun New"
     line_spacing: 1.5
     toc: true # table of content
     keep_tex: false # "true" to keep intermediate LaTeX
+---
 ```
 
-จะเป็นการตั้งค่าให้มีสารบัญ (`toc: true`) และเก็บ intermediate LaTeX ไฟล์ไว้ด้วย (`keep_tex: true`)
+สังเกตุว่าต้อง **indent 4 space** ด้วย เพราะจากตัวอย่างเป็น argument ที่ส่งเข้า `thaipdf_book()`
 
-### Other Parameters
+-   `toc: true` คือกำหนดให้มีสารบัญ
+
+-   `keep_tex: true` คือเก็บไฟล์ LaTeX ไว้ด้วย ก่อนที่ pandoc จะ compile เป็น PDF
+
+สำหรับ argument ตัวอื่นๆ ที่ใช้ได้ ของ [`rmarkdown::pdf_document()`](https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html) ยังมีอีกมาก ลองอ่านได้ที่:
+
+-   [PDF document --- R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/pdf-document.html#other-features)
+
+### Pandoc Variables
+
+เนื่องจาก R Markdown ใช้ pandoc เป็นตัวแปลง LaTeX เป็น PDF ดังนั้นจึงสามารถใส่ [pandoc variable](https://pandoc.org/MANUAL.html#variables-for-latex) ใน YAML header ได้โดยตรง ซึ่งจะมีประโยชน์ในการปรับ setting อื่นๆ เช่น ปรับขนาด font, เปลี่ยน font family ภาษาอังกฤษ, ทำให้ link หรือ citation มีสีสัน เช่น
 
 ``` yaml
+---
 title: "R Markdown ภาษาไทย"
 author: "`thaipdf` package"
-date: "`r format(Sys.Date(), '%d/%m/%Y')`"
 output: 
-  thaipdf::thaipdf_book:
+  thaipdf::thaipdf_document:
     thai_font: "TH Sarabun New"
-    line_spacing: 1.5
-    toc: true # table of content
-    keep_tex: false # "true" to keep intermediate LaTeX
-fontsize: 10pt
+fontsize: 12pt
+mainfont: "TeX Gyre Termes"
+monofont: "Fira Code iScript"
 # Color provided by LaTeX "xcolor" package
 linkcolor: BrickRed 
 urlcolor: NavyBlue
-citecolor: NavyBlue
+---
 ```
 
-ส่วนถัดมาเป็น [**YAML metadata variables**](https://rmarkdown.rstudio.com/docs/reference/pdf_document.html) อื่นๆ ของ R Markdown ก็สามารถใส่ได้เช่นเดิม
+**Font size ---** จากตัวอย่าง ปรับขนาด font ด้วย `fontsize`
 
-เช่นจากตัวอย่าง มีปรับขนาด font (`fontsize`) หรือใส่สีให้กับ link และ cross reference ต่างๆ (`linkcolor`, `urlcolor`, `citecolor`)
+**Font family ---** จากตัวอย่าง มี font family ทั้ง 3 ชนิดในเอกสารคือ
+
+-   `thai_font`: คือ font **ภาษาไทย**
+
+-   `mainfont`: คือ font หลัก **ภาษาอังกฤษ**
+
+-   `monofont`: คือ font ของ `code`
+
+**Color** --- จากตัวอย่าง ปรับสีของ link ในเอกสาร และ URL ได้ด้วย `linkcolor` และ `urlcolor` ตามลำดับ
+
+นอกจากนี้ยังมี pandoc variable อื่นๆ อีกมาก ลองอ่านได้ที่ [Pandoc variable for LaTeX](https://pandoc.org/MANUAL.html#variables-for-latex)
 
 ------------------------------------------------------------------------
 
