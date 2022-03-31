@@ -44,3 +44,7 @@ Saving output to 'thaipdf-manual.pdf' ...
 Done
 You may want to clean up by 'rm -Rf C:/Users/USERFZ~1/AppData/Local/Temp/RtmpioRS7r/Rd2pdf18083ae71fe2'
 ```
+
+However, using win-builder from `devtools::check_win_devel()` did not produce the 2nd note.
+
+
