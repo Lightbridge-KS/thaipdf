@@ -1,0 +1,29 @@
+---
+title: "CRAN Preparation"
+author: "kittipos sirivongrungson"
+date: '2022-03-31'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file()) # Set WD to Root
+here::i_am("dev/cran.Rmd")
+library(here)
+
+```
+
+## CRAN comments
+
+```{r}
+usethis::use_cran_comments()
+```
+
+```{r}
+# Run tests and examples
+devtools::test()
+devtools::run_examples()
+```
+
+All sub-directories should be lower-case, except for R/. A citation file, if present, should be in inst/CITATION. Rename as needed.
+
+
