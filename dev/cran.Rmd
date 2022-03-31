@@ -12,11 +12,23 @@ library(here)
 
 ```
 
-## CRAN comments
+Referece
+
+1. [Release a PKG Chaper](https://r-pkgs.org/release.html)
+2. [Prepare for CRAN from ThinkR](https://github.com/ThinkR-open/prepare-for-cran)
+
+## General Check
+
+- Check DESCRIPTION File
+
+
+## CRAN comments 
 
 ```{r}
 usethis::use_cran_comments()
 ```
+
+## Run Tests & Examples
 
 ```{r}
 # Run tests and examples
@@ -24,6 +36,109 @@ devtools::test()
 devtools::run_examples()
 ```
 
-All sub-directories should be lower-case, except for R/. A citation file, if present, should be in inst/CITATION. Rename as needed.
 
+## R CMD Check as CRAN
+
+
+There will always be one NOTE when you first submit your package.
+
+```{r}
+rhub::platforms()
+```
+
+```{r}
+cran_prep <- rhub::check_for_cran()
+cran_prep$cran_summary()
+```
+
+
+```{r}
+# Check package as CRAN
+rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"))
+```
+
+
+## Check Other Distro
+
+**_rhub**
+
+```{r}
+devtools::check_rhub()
+```
+
+> checking for detritus in the temp directory ... NOTE
+  Found the following files/directories:
+    'lastMiKTeXException'
+    
+I dont' know what is this.
+
+### Check Windows    
+
+```{r}
+rhub::check_on_windows(path = here("."),
+                       check_args = "--force-multiarch")
+```
+Pass
+
+```{r}
+devtools::check_win_devel()
+```
+
+### Check Linux
+
+```{r}
+rhub::check_on_solaris(path = here("."))
+```
+
+**Fail on solaris**
+
+Error: pandoc document conversion failed with error 1
+     Backtrace:
+         ▆
+      1. └─thaipdf:::write_thai_preamble(tmp_file) at test-write_thai_preamble.R:6:2
+      2.   └─rmarkdown::pandoc_template(...)
+      3.     └─rmarkdown::pandoc_convert(...)
+      4.       └─rmarkdown:::stop2(...)
+
+But on ubantu using github action pass ??
+
+
+
+## LICENSE
+
+Complicated topic 
+
+Thai LaTeX preamble code, I reference the author as copyright holder (cph) in `DESCRIPTION` and included explanation in `LICENSE.note`.
+
+See [write R extension LICENSES](https://cran.r-project.org/doc/manuals/r-release/R-exts.html#The-DESCRIPTION-file)
+
+
+
+
+# Misc Check
+
+## Spell Check
+
+thaipdf use Thai language, so It can't spelle check.
+
+However I added 
+
+```
+Language: th, en-US
+```
+to the DESCRIPTION
+
+```{r}
+# Check spelling
+# usethis::use_spell_check()
+# spelling::spell_check_package()
+```
+
+## Check URL
+
+```{r}
+# Check URL are correct
+# remotes::install_github("r-lib/urlchecker")
+urlchecker::url_check(here("."))
+```
 
