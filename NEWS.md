@@ -1,3 +1,7 @@
+# thaipdf 0.1.1
+
+-   Rename R Markdown template folder from `preTeX` to `pre-tex` for recommended practice of all lower-case letter in sub-directory.
+
 # thaipdf 0.1.0
 
 > Self-contained Thai R Markdown settings, no need for global configuration files. (#6)
