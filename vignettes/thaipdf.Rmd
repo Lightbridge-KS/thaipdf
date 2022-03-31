@@ -232,9 +232,11 @@ output:
 ## Example
 
 ```{r use_thai_preamble}
-setwd(tempdir()) # only for demonstration
+.old_wd <- setwd(tempdir()) # for example only
 
 thaipdf::use_thai_preamble()
+
+setwd(.old_wd) # for example only
 ```
 
 **ใน R Markdown** (`pdf_document`) ให้ปรับ **YAML header** และใส่คำสั่ง `\sloppy`
