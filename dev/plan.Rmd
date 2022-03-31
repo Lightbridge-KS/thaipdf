@@ -25,14 +25,14 @@ Nomenclatures: DEV (for developer), USER (for user)
         -   Thai PDF R Markdown (with preamble)
 
             -   Rmd
-            -   preTeX/ thai-preamble.tex
+            -   pre-tex/ thai-preamble.tex
 
     -   **templates/**
 
         -   config.yml
         -   template-thai-preamble.tex
 
-    -   **preTeX/**
+    -   **pre-tex/**
 
         -   thai-preamble.tex
         -   before_body.tex
@@ -55,17 +55,17 @@ fs::file_create(here("inst/templates/config.yml"))
 fs::file_create(here("inst/templates/template-thai-preamble.tex"))
 ```
 
-**preTeX/**
+**pre-tex/**
 
 ```{r}
-fs::dir_create(here("inst/preTeX"))
+fs::dir_create(here("inst/pre-tex"))
 ```
 
 **rmarkdown/**
 
 thai-pdf-rmd-w-pre/
 
-- preTeX/
+- pre-tex/
 
 ```{r}
 # usethis::use_rmarkdown_template(
@@ -129,15 +129,15 @@ thaipdf_paths <- function(th_pre = "thai-preamble.tex") {
   path_config <- fs::path_package("thaipdf", "templates", "config.yml")
 
   # Output Path
-  ## Global Preamble at PreTeX/
-  path_pre_global <- fs::path_package("thaipdf", "preTeX", th_pre)
-  ## Global PreTeX/before_body.tex for \sloppy macro
-  path_before_body <- fs::path_package("thaipdf", "preTeX", "before_body.tex")
+  ## Global Preamble at pre-tex/
+  path_pre_global <- fs::path_package("thaipdf", "pre-tex", th_pre)
+  ## Global pre-tex/before_body.tex for \sloppy macro
+  path_before_body <- fs::path_package("thaipdf", "pre-tex", "before_body.tex")
   ## At rmarkdown/
   ### Thai PDF with Preamble (for Project)
   path_pre_proj <- fs::path_package("thaipdf", "rmarkdown", "templates",
                                    "thai-pdf-rmd-w-pre", 
-                                   "skeleton", "preTeX", th_pre)
+                                   "skeleton", "pre-tex", th_pre)
 
 
   list(
@@ -169,12 +169,12 @@ fs::path_package("thaipdf", "templates", paste0("template-", file_names$th_pre))
 fs::path_package("thaipdf", "templates", "config.yml")
 
 # Output Location
-## preTeX/
-fs::path_package("thaipdf", "preTeX")
+## pre-tex/
+fs::path_package("thaipdf", "pre-tex")
 ## rmarkdown/
 ### Thai PDF with Preamble
 fs::path_package("thaipdf", "rmarkdown", "templates", "thai-pdf-rmd-w-pre", 
-                 "skeleton", "preTeX", "thai-preamble.tex")
+                 "skeleton", "pre-tex", "thai-preamble.tex")
 ```
 
 
@@ -204,7 +204,7 @@ fs::path_package("thaipdf", "rmarkdown", "templates", "thai-pdf-rmd-w-pre",
 
 1.  `use_thai_preamble()`: create PROJECT-based `thai-preamble.tex` from template `template-thai-preamble.tex`
 
-2.  `thaipdf_config_set()`: render USER-based `thai-preamble` in `rmarkdown/` and `preTeX/` folder from template `template-thai-preamble.tex` with metadata from `config.yml`
+2.  `thaipdf_config_set()`: render USER-based `thai-preamble` in `rmarkdown/` and `pre-tex/` folder from template `template-thai-preamble.tex` with metadata from `config.yml`
 
 3.  `thaipdf_config_get()`: read `config.yml` and print to console nicely
 

@@ -24,7 +24,7 @@ thaipdf_paths <- function(th_pre = "thai-preamble.tex") {
   ### Thai PDF with Preamble (for Project)
   path_pre_proj <- fs::path_package("thaipdf", "rmarkdown", "templates",
                                     "thai-pdf-rmd-w-pre",
-                                    "skeleton", "preTeX", th_pre)
+                                    "skeleton", "pre-tex", th_pre)
   list(
     path_temp = path_temp,
     path_before_body = path_before_body,

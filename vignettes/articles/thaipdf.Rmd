@@ -185,7 +185,7 @@ urlcolor: NavyBlue
      |
      |--> <NAME>.Rmd
      |
-     |--> preTeX/
+     |--> pre-tex/
            |
            |--> thai-preamble.tex
 
@@ -196,7 +196,7 @@ output:
   pdf_document:
     latex_engine: xelatex  # จำเป็นต้องใช้ xelatex สำหรับภาษาไทย
     includes:
-      in_header: "preTeX/thai-preamble.tex" # path ไปยัง preamble ที่มีปรับให้ใช้ภาษาไทยได้
+      in_header: "pre-tex/thai-preamble.tex" # path ไปยัง preamble ที่มีปรับให้ใช้ภาษาไทยได้
 ```
 
 -   **`latex_engine`** เป็น "xelatex" เพื่อให้ใช้ภาษาไทยได้
