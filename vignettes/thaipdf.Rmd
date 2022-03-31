@@ -1,7 +1,10 @@
 ---
-title: "Get Started with thaipdf"
-description: >
-  Create PDF in Thai language using R Markdown with ease !!
+title: "thaipdf"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{thaipdf}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r, include = FALSE}
@@ -62,17 +65,17 @@ tinytex::tlmgr_install(c(
 
 ถ้าท่านใช้ RStudio ให้ไปที่ `File -> New File -> R Markdown... -> From Template`
 
-![New R Markdown Template](img/rmd-from-temp.png){alt="New R Markdown Template"}
+![New R Markdown Template](img/rmd-from-temp.png){alt="New R Markdown Template" width="600"}
 
 เลือก template **Thai PDF R Markdown** หรือ **Thai PDF Bookdown** จากเมนู
 
 กดปุ่ม **`OK`** จะเปิดไฟล์ R Markdown template ที่รองรับกับภาษาไทย
 
-![thaipdf R Markdown in RStudio](img/rstudio-rmd.png){alt="thaipdf R Markdown in RStudio"}
+![thaipdf R Markdown in RStudio](img/rstudio-rmd.png){alt="thaipdf R Markdown in RStudio" width="600"}
 
 จากนั้นกดปุ่ม **`Knit`** (cmd/ctr + shift + K) ได้เลย จะได้เอกสารเป็น PDF ภาษาไทยที่มี เนื้อหา โค้ด และ กราฟ อยู่รวมกัน
 
-![ตัวอย่าง R Markdown PDF ภาษาไทย](img/pdf-doc-1.png)
+![ตัวอย่าง R Markdown PDF ภาษาไทย](img/pdf-doc-1.png){width="600"}
 
 โปรดสังเกตุว่าการที่ภาษาไทยใช้งานได้นั้น เนื่องจากมีการตั้งค่า YAML header ในส่วน
 
@@ -175,7 +178,7 @@ urlcolor: NavyBlue
 
 สำหรับผู้ที่ใช้ LaTeX เป็น และต้องการ customize หลายสิ่งกับ LaTeX ให้ลองเลือก template ที่ชื่อว่า `Thai PDF R Markdown (with preamble)`
 
-![New R Markdown Template with Preamble](img/rmd-from-temp-preamble.png){alt="New R Markdown Template with Preamble"}
+![New R Markdown Template with Preamble](img/rmd-from-temp-preamble.png){alt="New R Markdown Template with Preamble" width="600"}
 
 จากนั้นใส่ชื่อไฟล์และตำแหน่งที่ให้สร้างที่ช่อง **Name** กับ **Location** แล้วคลิก **OK**
 
@@ -255,7 +258,7 @@ output:
 
 เสร็จแล้วสามารถกด **`knit`** ได้เลย
 
-![](img/rmd-simple.png)
+![](img/rmd-simple.png){width="600"}
 
 # References
 

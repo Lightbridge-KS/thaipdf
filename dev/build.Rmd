@@ -109,17 +109,17 @@ covr::report()
 ## DESCRIPTION
 
 ```{r DESCRIPTION}
-usethis::use_description(
-fields = list(
-  Title = "R Markdown for PDF in Thai language",
-  `Authors@R` = 'person("Kittipos", "Sirivongrungson", 
-                        email = "ki11ip0.s.a.s@gmail.com", 
-                        role = c("aut", "cre"))',
-  Description = "Provide R Markdown templates and LaTeX preamble which is necessary for creating PDF in Thai language.",
-  License = "MIT + file LICENSE",
-  Depends = "R (>= 4.0.0)"
-  )
-)
+# usethis::use_description(
+# fields = list(
+#   Title = "R Markdown for PDF in Thai language",
+#   `Authors@R` = 'person("Kittipos", "Sirivongrungson", 
+#                         email = "ki11ip0.s.a.s@gmail.com", 
+#                         role = c("aut", "cre"))',
+#   Description = "Provide R Markdown templates and LaTeX preamble which is necessary for creating PDF in Thai language.",
+#   License = "MIT + file LICENSE",
+#   Depends = "R (>= 4.0.0)"
+#   )
+# )
 ```
 
 
@@ -156,10 +156,15 @@ usethis::use_news_md()
 ```
 
 
-## Article
+## vignette
 
 ```{r}
-usethis::use_article("thaipdf")
+usethis::use_vignette("thaipdf")
+```
+
+
+```{r}
+# usethis::use_article("thaipdf")
 ```
 
 Images folder
