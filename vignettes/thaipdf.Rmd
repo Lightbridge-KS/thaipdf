@@ -26,7 +26,7 @@ knitr::opts_chunk$set(
 
 วิธีแก้นั้น จะต้องมีการตั้งค่าต่างๆ ใน LaTeX preamble และ YAML header ของ R Markdown เพื่อให้รองรับกับการใช้งานภาษาไทยได้ โดย **R package นี้จึงถูกสร้างขึ้นเพื่อช่วยใน workflow จุดนี้**
 
-(อ้างอิงจาก: [คําแนะนําการตั้งค่า LATEX สําหรับใช้ภาษาไทย](http://pioneer.netserv.chula.ac.th/~wdittaya/LaTeX/LaTeXThai.pdf))
+(ขอบคุณคำแนะนำจาก: [คําแนะนําการตั้งค่า LATEX สําหรับใช้ภาษาไทย](http://pioneer.netserv.chula.ac.th/~wdittaya/LaTeX/LaTeXThai.pdf))
 
 ## Installation
 
@@ -262,7 +262,7 @@ output:
 
 ![](img/rmd-simple.png){width="600"}
 
-# References
+# Special Thanks
 
 -   [คําแนะนําการตั้งค่า LaTeX สําหรับใช้ภาษาไทย (ฑิตยา หวานวารี)](http://pioneer.netserv.chula.ac.th/~wdittaya/LaTeX/LaTeXThai.pdf)
 -   [How to add LaTeX code to the preamble](https://bookdown.org/yihui/rmarkdown-cookbook/latex-preamble.html)
