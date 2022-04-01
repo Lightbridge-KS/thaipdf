@@ -1,10 +1,12 @@
 Package: thaipdf
-Title: R Markdown for PDF in Thai language
-Version: 0.1.0
-Authors@R: 
-    person("Kittipos", "Sirivongrungson", , "ki11ip0.s.a.s@gmail.com", role = c("aut", "cre"))
+Title: R Markdown to PDF in Thai Language
+Version: 0.1.1
+Authors@R: c(
+    person("Kittipos", "Sirivongrungson", role = c("aut", "cre"), email = "ki11ip0.s.a.s@gmail.com"),
+    person("Dittaya", "Wanvarie", role = c("cph"), email = "Dittaya.W@chula.ac.th", comment = "Author of an article on Thai language typesetting in LaTeX")
+    )
 Description: Provide R Markdown templates and LaTeX preamble
-    which is necessary for creating PDF in Thai language.
+    which are necessary for creating PDF from R Markdown documents in Thai language.
 License: MIT + file LICENSE
 Depends: 
     R (>= 3.4)
@@ -25,3 +27,4 @@ URL: https://github.com/Lightbridge-KS/thaipdf,
 BugReports: https://github.com/Lightbridge-KS/thaipdf/issues
 Config/testthat/edition: 3
 VignetteBuilder: knitr
+Language: th, en-US

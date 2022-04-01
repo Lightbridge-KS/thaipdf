@@ -39,7 +39,7 @@ TO ADD
 
 `thaipdf_config_set()`:
 
-render USER-based `thai-preamble` in `rmarkdown/` and `preTeX/` folder from template `template-thai-preamble.tex` with metadata from `config.yml`
+render USER-based `thai-preamble` in `rmarkdown/` and `pre-tex/` folder from template `template-thai-preamble.tex` with metadata from `config.yml`
 
 args: `thai_font`
 

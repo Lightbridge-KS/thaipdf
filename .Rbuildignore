@@ -9,3 +9,6 @@
 ^docs$
 ^pkgdown$
 ^vignettes/articles$
+^cran-comments\.md$
+^doc$
+^Meta$

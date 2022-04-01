@@ -47,8 +47,8 @@ Here is the steps:
 if (FALSE) {
  # Running this will write `thai-preamble.tex` to your working directory
  use_thai_preamble()
- # Write `thai-preamble.tex` under preTeX/ directory (a directory must exist)
- use_thai_preamble(name = "preTeX/thai-preamble.tex")
+ # Write `thai-preamble.tex` under pre-tex/ directory (a directory must exist)
+ use_thai_preamble(name = "pre-tex/thai-preamble.tex")
  # Specify Thai font to use
  use_thai_preamble(thai_font = "Laksaman")
 }

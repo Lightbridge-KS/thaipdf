@@ -14,8 +14,8 @@ library(here)
 ### Path Package
 
 ```{r}
-fs::path_package("thaipdf", "preTeX")
-system.file("preTeX", package ="thaipdf" )
+fs::path_package("thaipdf", "pre-tex")
+system.file("pre-tex", package ="thaipdf" )
 
 fs::path_package("thaipdf", "templates")
 system.file("templates", package ="thaipdf" )
