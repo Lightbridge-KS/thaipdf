@@ -22,8 +22,7 @@ Suggests:
     bookdown,
     covr,
     knitr
-URL: https://github.com/Lightbridge-KS/thaipdf,
-    https://lightbridge-ks.github.io/thaipdf/
+URL: https://lightbridge-ks.github.io/thaipdf/
 BugReports: https://github.com/Lightbridge-KS/thaipdf/issues
 Config/testthat/edition: 3
 VignetteBuilder: knitr
