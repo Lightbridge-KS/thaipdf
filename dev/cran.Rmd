@@ -70,8 +70,6 @@ devtools::check_rhub()
   Found the following files/directories:
     'lastMiKTeXException'
     
-I dont' know what is this.
-
 ### Check Windows    
 
 ```{r}
@@ -141,4 +139,11 @@ to the DESCRIPTION
 # remotes::install_github("r-lib/urlchecker")
 urlchecker::url_check(here("."))
 ```
+
+# Release
+
+```{r}
+# devtools::release()
+```
+
 
