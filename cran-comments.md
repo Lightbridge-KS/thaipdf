@@ -10,10 +10,9 @@ There were 2 NOTEs:
 
 -   2nd Note (in Windows): Found the following files/directories: 'lastMiKTeXException'
 
-```{=html}
-<!-- -->
 ```
-    checking for detritus in the temp directory ... NOTE Found the following files/directories: 'lastMiKTeXException'
+checking for detritus in the temp directory ... NOTE Found the following files/directories: 'lastMiKTeXException'
+```
 
 The 2nd note was appears in this platform
 
