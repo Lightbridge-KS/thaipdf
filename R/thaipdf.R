@@ -18,15 +18,14 @@
 #' for `includes` and `latex_engine`.
 #'
 #'
-#' @return R Markdown output format passing to [`rmarkdown::render()`]
-#' @export
+#' @return An S3 object of class "rmarkdown_output_format" to pass to [`rmarkdown::render()`]
 #'
 #' @seealso
 #' * How to use [`rmarkdown::pdf_document`], please see [official documentation](https://bookdown.org/yihui/rmarkdown/pdf-document.html#other-features).
 #' * How to use [thaipdf_book()].
 #' @examples
-#' if(FALSE){
-#'  library(rmarkdown)
+#' \dontrun{
+#' library(rmarkdown)
 #'
 #'  # Simple Conversion
 #'  render("input.Rmd", output_format = thaipdf::thaipdf_document())
@@ -39,6 +38,7 @@
 #'           pandoc_args = pandoc_metadata_arg("fontsize", "10pt")
 #'         ))
 #' }
+#' @export
 thaipdf_document <- function(thai_font = "TH Sarabun New",
                              line_spacing = 1.5,
                              ...
@@ -52,8 +52,6 @@ thaipdf_document <- function(thai_font = "TH Sarabun New",
                                       line_spacing = line_spacing)
 
   # Pandoc conversion will fail If I remove temp file when exit
-  ## See: https://stackoverflow.com/questions/28300713/how-and-when-should-i-use-on-exit
-  # on.exit({unlink(tmp_preamble)}, add = TRUE)
   rmarkdown::pdf_document(
     latex_engine = "xelatex",
     includes = rmarkdown::includes(
@@ -74,13 +72,14 @@ thaipdf_document <- function(thai_font = "TH Sarabun New",
 #' It is a wrapper around [`bookdown::pdf_book()`](https://pkgs.rstudio.com/bookdown/reference/pdf_book.html) with argument `base_format` set to [thaipdf_document()].
 #'
 #' @param ... Arguments passed to [`pdf_book()`](https://pkgs.rstudio.com/bookdown/reference/pdf_book.html), and then to [thaipdf_document()]. You may supply argument `thai_font` and `line_spacing` in here.
+#'
+#' @return An S3 object of class "rmarkdown_output_format" to pass to [`rmarkdown::render()`]
 #' @seealso
 #' * How to use [`bookdown::pdf_book()`], please see [official documentation](https://bookdown.org/yihui/bookdown/latexpdf.html)
 #' * How to use [thaipdf_document()].
 #'
-#' @export
 #' @examples
-#' if(FALSE){
+#' \dontrun{
 #'  library(rmarkdown)
 #'
 #'  # Simple Conversion
@@ -93,6 +92,7 @@ thaipdf_document <- function(thai_font = "TH Sarabun New",
 #'           pandoc_args = pandoc_metadata_arg("fontsize", "10pt")
 #'         ))
 #' }
+#' @export
 thaipdf_book <- function(...) {
 
   # Check bookdown

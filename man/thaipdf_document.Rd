@@ -15,7 +15,7 @@ thaipdf_document(thai_font = "TH Sarabun New", line_spacing = 1.5, ...)
 for \code{includes} and \code{latex_engine}.}
 }
 \value{
-R Markdown output format passing to \code{\link[rmarkdown:render]{rmarkdown::render()}}
+An S3 object of class "rmarkdown_output_format" to pass to \code{\link[rmarkdown:render]{rmarkdown::render()}}
 }
 \description{
 \strong{Thai language} supported conversion of R Markdown to a PDF or LaTeX document.
@@ -27,8 +27,8 @@ This function injects preamble fragment of Thai \LaTeX typesetting into the prea
 and set \code{latex_engine} to "xelatex".
 }
 \examples{
-if(FALSE){
- library(rmarkdown)
+\dontrun{
+library(rmarkdown)
 
  # Simple Conversion
  render("input.Rmd", output_format = thaipdf::thaipdf_document())

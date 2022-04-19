@@ -1,0 +1,29 @@
+---
+title: "Fix Resubmit 1"
+author: "kittipos sirivongrungson"
+date: '2022-04-19'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file()) # Set WD to Root
+here::i_am("dev/cran-fix.Rmd")
+library(here)
+
+```
+
+### Questions
+
+What is the return value of `bookdown::pdf_book()`
+
+```{r}
+sloop::otype(rmarkdown::pdf_document())
+class(rmarkdown::pdf_document())
+```
+
+
+```{r}
+sloop::otype(bookdown::pdf_book())
+class(bookdown::pdf_book())
+```
+
