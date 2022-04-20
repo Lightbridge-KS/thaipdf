@@ -14,7 +14,7 @@
 #'
 #' @param thai_font (Character) Name of the Thai font to use. Default font is "TH Sarabun New". It can be any Thai font that your system have.
 #' @param line_spacing (Numeric) Spacing between each line. Line spacing 1.5 is recommended for Thai language (default).
-#' @param ... Arguments passed to [`pdf_document()`](https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html). You may supply any arguments of [`pdf_document()`] except
+#' @param ... Arguments to pass to [`pdf_document()`](https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html). You may supply any valid arguments of [`pdf_document()`] except
 #' for `includes` and `latex_engine`.
 #'
 #'
@@ -30,7 +30,7 @@
 #'  # Simple Conversion
 #'  render("input.Rmd", output_format = thaipdf::thaipdf_document())
 #'
-#'  # Render with Thai font "Laksaman", font size 10pt, and enable Table of Contents
+#'  # Render with Thai font "Laksaman", font size 10pt, enable table of contents
 #'  render("input.Rmd",
 #'         output_format = thaipdf::thaipdf_document(
 #'           thai_font = "Laksaman", # you must have this font in your system
@@ -71,7 +71,7 @@ thaipdf_document <- function(thai_font = "TH Sarabun New",
 #' @description **Thai language** supported conversion of R Markdown to a PDF after resolving the special tokens of **bookdown** (e.g., the tokens for references and labels) to native LaTeX commands.
 #' It is a wrapper around [`bookdown::pdf_book()`](https://pkgs.rstudio.com/bookdown/reference/pdf_book.html) with argument `base_format` set to [thaipdf_document()].
 #'
-#' @param ... Arguments passed to [`pdf_book()`](https://pkgs.rstudio.com/bookdown/reference/pdf_book.html), and then to [thaipdf_document()]. You may supply argument `thai_font` and `line_spacing` in here.
+#' @param ... Arguments to pass to [`bookdown::pdf_book()`](https://pkgs.rstudio.com/bookdown/reference/pdf_book.html), and then to [thaipdf_document()]. You may supply argument `thai_font` and `line_spacing` in here.
 #'
 #' @return An S3 object of class "rmarkdown_output_format" to pass to [`rmarkdown::render()`]
 #' @seealso
