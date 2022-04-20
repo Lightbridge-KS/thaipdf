@@ -46,6 +46,8 @@ There will always be one NOTE when you first submit your package.
 rhub::platforms()
 ```
 
+Run this
+
 ```{r}
 cran_prep <- rhub::check_for_cran()
 cran_prep$cran_summary()
