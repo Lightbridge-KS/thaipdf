@@ -7,7 +7,7 @@
 thaipdf_document(thai_font = "TH Sarabun New", line_spacing = 1.5, ...)
 }
 \arguments{
-\item{thai_font}{(Character) Name of the Thai font to use. Default font is "TH Sarabun New". It can be any Thai font that your system have.}
+\item{thai_font}{(Character) Name of the Thai font to use. Default font is "TH Sarabun New". It can be any Thai font that installed in your system.}
 
 \item{line_spacing}{(Numeric) Spacing between each line. Line spacing 1.5 is recommended for Thai language (default).}
 

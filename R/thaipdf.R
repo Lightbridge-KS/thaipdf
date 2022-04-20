@@ -12,7 +12,7 @@
 #' This function injects preamble fragment of Thai \LaTeX typesetting into the preamble of output \LaTeX via [`includes`](https://pkgs.rstudio.com/rmarkdown/reference/includes.html) argument,
 #' and set `latex_engine` to "xelatex".
 #'
-#' @param thai_font (Character) Name of the Thai font to use. Default font is "TH Sarabun New". It can be any Thai font that your system have.
+#' @param thai_font (Character) Name of the Thai font to use. Default font is "TH Sarabun New". It can be any Thai font that installed in your system.
 #' @param line_spacing (Numeric) Spacing between each line. Line spacing 1.5 is recommended for Thai language (default).
 #' @param ... Arguments to pass to [`pdf_document()`](https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html). You may supply any valid arguments of [`pdf_document()`] except
 #' for `includes` and `latex_engine`.
