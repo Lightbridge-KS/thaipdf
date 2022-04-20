@@ -7,14 +7,17 @@
 thaipdf_book(...)
 }
 \arguments{
-\item{...}{Arguments passed to \href{https://pkgs.rstudio.com/bookdown/reference/pdf_book.html}{\code{pdf_book()}}, and then to \code{\link[=thaipdf_document]{thaipdf_document()}}. You may supply argument \code{thai_font} and \code{line_spacing} in here.}
+\item{...}{Arguments to pass to \href{https://pkgs.rstudio.com/bookdown/reference/pdf_book.html}{\code{bookdown::pdf_book()}}, and then to \code{\link[=thaipdf_document]{thaipdf_document()}}. You may supply argument \code{thai_font} and \code{line_spacing} in here.}
+}
+\value{
+An S3 object of class "rmarkdown_output_format" to pass to \code{\link[rmarkdown:render]{rmarkdown::render()}}
 }
 \description{
 \strong{Thai language} supported conversion of R Markdown to a PDF after resolving the special tokens of \strong{bookdown} (e.g., the tokens for references and labels) to native LaTeX commands.
 It is a wrapper around \href{https://pkgs.rstudio.com/bookdown/reference/pdf_book.html}{\code{bookdown::pdf_book()}} with argument \code{base_format} set to \code{\link[=thaipdf_document]{thaipdf_document()}}.
 }
 \examples{
-if(FALSE){
+\dontrun{
  library(rmarkdown)
 
  # Simple Conversion

@@ -3,18 +3,6 @@
 # Test: use_thai_preamble() -----------------------------------------------
 
 
-# test_that("use_thai_preamble() works (test in package root)", {
-#
-#   # create file
-#   path <- suppressMessages(use_thai_preamble())
-#   # Check exist & path
-#   expect_true(fs::file_exists("thai-preamble.tex"))
-#   expect_type(path, "character")
-#   # clean up
-#   unlink("thai-preamble.tex")
-#
-# })
-
 test_that("use_thai_preamble() generate file in working dir (use temp file)", {
   # Set Working Dir to Temp Dir
   .old_wd <- setwd(tempdir())

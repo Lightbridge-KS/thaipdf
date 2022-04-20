@@ -1,3 +1,18 @@
+## Resubmission
+
+This is a re-submission. In this version I have:
+
+-   Added \value to .Rd file of `thaipdf_book.Rd` with an explanation of the returned object (object type and class), and the use case of that object.
+
+-   Removed `if(FALSE)` from all examples.
+
+-   Wrapped examples of `thaipdf_book.Rd` and `thaipdf_document.Rd` in `\dontrun{}`. The reasons are the followings: 
+
+    -   A specific Thai font is required to be installed in the system to be able to render example to a PDF.
+    -   It takes a long time to run in each render (about 4.9 - 5.3 sec).
+    -   I also checked the source code of the main function that this package depends on `rmarkdown::pdf_document()` which use `\dontrun{}` in their example as well.
+  
+
 ## R CMD check results
 
 `rhub::check_for_cran()` was used to perform checking.

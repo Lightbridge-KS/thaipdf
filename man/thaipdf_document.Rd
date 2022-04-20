@@ -7,15 +7,15 @@
 thaipdf_document(thai_font = "TH Sarabun New", line_spacing = 1.5, ...)
 }
 \arguments{
-\item{thai_font}{(Character) Name of the Thai font to use. Default font is "TH Sarabun New". It can be any Thai font that your system have.}
+\item{thai_font}{(Character) Name of the Thai font to use. Default font is "TH Sarabun New". It can be any Thai font that installed in your system.}
 
 \item{line_spacing}{(Numeric) Spacing between each line. Line spacing 1.5 is recommended for Thai language (default).}
 
-\item{...}{Arguments passed to \href{https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html}{\code{pdf_document()}}. You may supply any arguments of \code{\link[=pdf_document]{pdf_document()}} except
+\item{...}{Arguments to pass to \href{https://pkgs.rstudio.com/rmarkdown/reference/pdf_document.html}{\code{pdf_document()}}. You may supply any valid arguments of \code{\link[=pdf_document]{pdf_document()}} except
 for \code{includes} and \code{latex_engine}.}
 }
 \value{
-R Markdown output format passing to \code{\link[rmarkdown:render]{rmarkdown::render()}}
+An S3 object of class "rmarkdown_output_format" to pass to \code{\link[rmarkdown:render]{rmarkdown::render()}}
 }
 \description{
 \strong{Thai language} supported conversion of R Markdown to a PDF or LaTeX document.
@@ -27,13 +27,13 @@ This function injects preamble fragment of Thai \LaTeX typesetting into the prea
 and set \code{latex_engine} to "xelatex".
 }
 \examples{
-if(FALSE){
- library(rmarkdown)
+\dontrun{
+library(rmarkdown)
 
  # Simple Conversion
  render("input.Rmd", output_format = thaipdf::thaipdf_document())
 
- # Render with Thai font "Laksaman", font size 10pt, and enable Table of Contents
+ # Render with Thai font "Laksaman", font size 10pt, enable table of contents
  render("input.Rmd",
         output_format = thaipdf::thaipdf_document(
           thai_font = "Laksaman", # you must have this font in your system

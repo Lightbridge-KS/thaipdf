@@ -31,7 +31,7 @@
 #' @export
 #'
 #' @examples
-#' if (FALSE) {
+#' \dontrun{
 #'  # Running this will write `thai-preamble.tex` to your working directory
 #'  use_thai_preamble()
 #'  # Write `thai-preamble.tex` under pre-tex/ directory (a directory must exist)
@@ -39,6 +39,11 @@
 #'  # Specify Thai font to use
 #'  use_thai_preamble(thai_font = "Laksaman")
 #' }
+#'
+#'  # Example
+#'  .old_wd <- setwd(tempdir())
+#'  use_thai_preamble()
+#'  setwd(.old_wd)
 use_thai_preamble <- function(name = "thai-preamble.tex",
                               thai_font = "TH Sarabun New",
                               line_spacing = 1.5,
