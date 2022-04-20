@@ -22,7 +22,7 @@
 #'
 #'
 #' @param name (Character) Thai \LaTeX preamble file name or path of file to create, which can be relative path or absolute path. Default value is `thai-preamble.tex`.
-#' @param thai_font (Character) Name of the Thai font to use. Default font is "TH Sarabun New". It can be any Thai font that your system have.
+#' @param thai_font (Character) Name of the Thai font to use. Default font is "TH Sarabun New". It can be any Thai font that installed in your system.
 #' @param line_spacing (Numeric) Spacing between each line. Line spacing 1.5 is recommended for Thai language (default).
 #' @param open (Logical) Open the newly created file for editing? Using default editor of `.tex` to open.
 #' @param overwrite (Logical) If file already exist, do you want to overwrite?
