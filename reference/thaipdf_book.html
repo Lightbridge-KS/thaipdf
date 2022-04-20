@@ -12,7 +12,7 @@ It is a wrapper around bookdown::pdf_book() with argument base_format set to tha
     
     <a class="navbar-brand me-2" href="../index.html">thaipdf</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,8 +63,12 @@ It is a wrapper around <a href="https://pkgs.rstudio.com/bookdown/reference/pdf_
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>...</dt>
-<dd><p>Arguments passed to <a href="https://pkgs.rstudio.com/bookdown/reference/pdf_book.html" class="external-link"><code>pdf_book()</code></a>, and then to <code><a href="thaipdf_document.html">thaipdf_document()</a></code>. You may supply argument <code>thai_font</code> and <code>line_spacing</code> in here.</p></dd>
+<dd><p>Arguments to pass to <a href="https://pkgs.rstudio.com/bookdown/reference/pdf_book.html" class="external-link"><code><a href="https://pkgs.rstudio.com/bookdown/reference/pdf_book.html" class="external-link">bookdown::pdf_book()</a></code></a>, and then to <code><a href="thaipdf_document.html">thaipdf_document()</a></code>. You may supply argument <code>thai_font</code> and <code>line_spacing</code> in here.</p></dd>
 </dl></div>
+    <div class="section level2">
+    <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
+    <p>An S3 object of class "rmarkdown_output_format" to pass to <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/render.html" class="external-link">rmarkdown::render()</a></code></p>
+    </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index">
@@ -75,7 +79,7 @@ It is a wrapper around <a href="https://pkgs.rstudio.com/bookdown/reference/pdf_
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span><span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span><span class="op">{</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
 <span class="r-in"> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/rmarkdown" class="external-link">rmarkdown</a></span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"> <span class="co"># Simple Conversion</span></span>

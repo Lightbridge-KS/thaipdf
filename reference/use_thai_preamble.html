@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">thaipdf</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -101,6 +101,35 @@
 <span class="r-in"> <span class="co"># Specify Thai font to use</span></span>
 <span class="r-in"> <span class="fu">use_thai_preamble</span><span class="op">(</span>thai_font <span class="op">=</span> <span class="st">"Laksaman"</span><span class="op">)</span></span>
 <span class="r-in"><span class="op">}</span></span>
+<span class="r-in"></span>
+<span class="r-in"> <span class="co"># Example</span></span>
+<span class="r-in"> <span class="va">.old_wd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"> <span class="fu">use_thai_preamble</span><span class="op">(</span><span class="op">)</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Writing <span style="color: #0000BB;">"thai-preamble.tex"</span> at <span style="color: #0000BB;">/tmp/Rtmp2ZE2N1/thai-preamble.tex</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Thai font was set to <span style="color: #0000BB;">"TH Sarabun New"</span> in the preamble.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Line spacing was set to <span style="color: #0000BB;">1.5</span> in the preamble.</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">TODO</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────────────────────</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> For YAML header of R Markdown in `pdf_document:` or `bookdown::pdf_document2:`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> • Set `latex_engine` to `xelatex`</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> • Set to include the path to LaTeX preamble</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ── Like This ───────────────────────────────────────────────────────────────────</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     latex_engine: xelatex</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>     includes:</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span>       in_header: thai-preamble.tex</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> ────────────────────────────────────────────────────────────────────────────────</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> • Add LaTeX macro `\sloppy` to the beginning of the body of R Markdown (just</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> after YAML header).</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="font-weight: bold;">For more details see</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> • How to include preamble in R Markdown</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB; font-style: italic;">&lt;https://bookdown.org/yihui/rmarkdown-cookbook/latex-preamble.html&gt;</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> • LaTeX setting in Thai</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #0000BB; font-style: italic;">&lt;http://pioneer.netserv.chula.ac.th/~wdittaya/LaTeX/LaTeXThai.pdf&gt;</span></span>
+<span class="r-in"> <span class="fu"><a href="https://rdrr.io/r/base/getwd.html" class="external-link">setwd</a></span><span class="op">(</span><span class="va">.old_wd</span><span class="op">)</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
