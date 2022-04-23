@@ -17,6 +17,13 @@ Referece
 1. [Release a PKG Chaper](https://r-pkgs.org/release.html)
 2. [Prepare for CRAN from ThinkR](https://github.com/ThinkR-open/prepare-for-cran)
 
+## Badges
+
+```{r}
+usethis::use_cran_badge()
+```
+
+
 ## General Check
 
 - Check DESCRIPTION File
