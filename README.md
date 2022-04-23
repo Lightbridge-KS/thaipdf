@@ -7,9 +7,12 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/thaipdf)](https://CRAN.R-project.org/package=thaipdf)
 [![R-CMD-check](https://github.com/Lightbridge-KS/thaipdf/workflows/R-CMD-check/badge.svg)](https://github.com/Lightbridge-KS/thaipdf/actions)
 [![codecov](https://codecov.io/gh/Lightbridge-KS/thaipdf/branch/main/graph/badge.svg?token=QPhwQZt2vf)](https://app.codecov.io/gh/Lightbridge-KS/thaipdf)
 [![pkgdown](https://github.com/Lightbridge-KS/thaipdf/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/Lightbridge-KS/thaipdf/actions/workflows/pkgdown.yaml)
+
 <!-- badges: end -->
 
 > R package :package: ช่วยสร้าง PDF document จาก R Markdown ที่ใช้
@@ -36,8 +39,16 @@ Markdown](https://rmarkdown.rstudio.com) ได้โดยง่าย**
 
 # Install
 
-**Install thaipdf:** ติดตั้ง development version ของ thaipdf จาก
-[GitHub](https://github.com/Lightbridge-KS/thaipdf) ด้วย:
+**Install thaipdf:**
+
+-   ติดตั้งจาก CRAN ด้วย:
+
+``` r
+install.packages("thaipdf")
+```
+
+-   หรือติดตั้ง development version จาก
+    [GitHub](https://github.com/Lightbridge-KS/thaipdf) ด้วย:
 
 ``` r
 # install.packages("remotes")
@@ -93,4 +104,4 @@ PDF ภาษาไทยที่มี เนื้อหา โค้ด แ�
 
 ------------------------------------------------------------------------
 
-Last Updated: 2022-04-12
+Last Updated: 2022-04-23

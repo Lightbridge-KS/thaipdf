@@ -43,6 +43,7 @@ usethis::use_git()
 usethis::use_git_ignore("*.nb.html") # Ignore dev/ html_notebook
 # usethis::use_git_ignore("testdata/") # ignore private Test Data in `inst/testdata`
 ```
+
 ## Build Ignore
 
 May be not ignore dev/ ?

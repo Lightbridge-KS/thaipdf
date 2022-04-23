@@ -1,5 +1,6 @@
 # thaipdf 0.1.2
 
+-   First release on CRAN 🎉
 -   Fix function documentation and examples.
 
 # thaipdf 0.1.1
