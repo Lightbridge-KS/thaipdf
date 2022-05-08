@@ -1,6 +1,6 @@
 Package: thaipdf
 Title: R Markdown to PDF in Thai Language
-Version: 0.1.2
+Version: 0.1.2.9000
 Authors@R: c(
     person("Kittipos", "Sirivongrungson", role = c("aut", "cre"), email = "ki11ip0.s.a.s@gmail.com"),
     person("Dittaya", "Wanvarie", role = c("cph"), email = "dittaya.w@chula.ac.th", comment = "Author of an article on Thai language typesetting in LaTeX")
