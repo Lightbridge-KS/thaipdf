@@ -1,6 +1,16 @@
-# thaipdf 0.1.2
+# thaipdf 0.1.2.9000 (beta)
 
--   First release on CRAN 🎉
+### Template
+
+-   `Thai PDF R Markdown`: simplify the contents. I've removed plot example and use simple date formatting in YAML.
+
+### Unit Test
+
+-   Add local test snapshot to render to PDF and TeX (#12).
+
+# thaipdf 0.1.2 (1^st^ official release)
+
+-   First official release on CRAN 🎉
 -   Fix function documentation and examples.
 
 # thaipdf 0.1.1
