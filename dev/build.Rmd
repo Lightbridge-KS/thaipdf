@@ -163,9 +163,10 @@ usethis::use_news_md()
 usethis::use_vignette("thaipdf")
 ```
 
+## Article
 
 ```{r}
-# usethis::use_article("thaipdf")
+usethis::use_article("quarto-pdf", "Quarto in Thai language to PDF")
 ```
 
 Images folder
